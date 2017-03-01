@@ -127,3 +127,23 @@
         margin-right: 0;
     }
 }
+
+#target{
+    border:2px dashed #999999;
+    border-radius: 20px;
+    height: 45vh;
+    width:80%;
+    margin-top: 21vh;
+    margin-left:10%;
+    margin-right:0;
+    float:left;
+    color:#999999;    
+}
+
+#send-button{
+    margin-top: 2vh;
+    margin-left: 2%;
+    width: 80%;
+    margin-right:0;
+}
+
