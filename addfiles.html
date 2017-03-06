@@ -1,0 +1,60 @@
+       <h1 id="heading-browse">Add files to the database</h1>
+
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-default btn-browse"><span>Choose file</span><input type="file" multiple /></span>
+            <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+        </div>
+
+        <table class="table table-file-selection">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Type</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>    
+          <tr class="success">
+            <td>Success</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr class="warning">
+            <td>Warning</td>
+            <td>Refs</td>
+            <td>bo@example.com</td>
+          </tr>
+        </tbody>
+        </table>
+
+        <div>
+          <label for="creator" class="txt-info">Added by:</label>
+          <input type="text" class="txt-field" id="creator">
+        </div>
+
+        <div>
+          <label for="u-id" class="txt-info">Unique ID for Test Data entry:</label>
+          <input type="text" class="txt-field" id="u-id">
+        </div>
+
+        <div>
+          <label for="patient-name" class="txt-info">Patient name:</label>
+          <input type="text" class="txt-field" id="patient-name">
+        </div>
+
+        <div>
+          <label for="tags" class="txt-info">Labels:</label>
+          <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control">
+          <button type="button" class="btn btn-add-tags btn-sm">Add tags</button>
+        </div>
+
+        <div>
+          <label for="comments" class="txt-info">Comments:</label>
+          <textarea type="text" class="txt-area" id="comments"></textarea>
+        </div>
+
+
+        <div class="buttons">
+          <button type="button" class="btn btn-cancel">Cancel</button>
+          <button type="button" class="btn btn-import">Add entry</button>    
+        </div>
