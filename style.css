@@ -1,11 +1,20 @@
 
+body{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+}
 
 .navbar {
 	margin-bottom: 0 !important;
-	background-color: #1c1c1c !important;
+	background-color: #003399 !important;
 	border-radius: 0 !important;
+	border: 0 !important;
+
 }
 
 .navbar-brand {
-	color: #99ccff !important;
+	color: white !important;
+}
+
+#header-image {
+	height: 100%;
 }

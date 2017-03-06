@@ -17,7 +17,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Sectra</a>
+      <a class="navbar-brand" href="#"><img id="header-image" src="Sectra_logo.png" alt="Sectra"></a>
     </div>
   </div>
 </nav>
@@ -32,15 +32,11 @@
         <li>
           <a href="#">Add Files</a>
         </li> 
-        <li>
-            <div id="target" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
-        </li>
-        <li>
-            <button type="button" class="btn btn-default" id="send-button">Send to test</button>
-        </li>
       </ul>
-      <!--<div id="drag-and-drop-box"></div>
-       button type="button" class="btn btn-default" id="send-button">Send to test</button>--><
+      <ul id="drag-drop-and-button">        
+        <div id="target" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
+        <button type="button" class="btn btn-default" id="send-button">Send to test</button>
+      </ul>
     </div>
 
     <!-- The top navigation bar -->
@@ -63,7 +59,6 @@
         </div>
       </div>
     </div>
-    <!-- /#page-content-wrapper -->
 
   </div>
 </body>

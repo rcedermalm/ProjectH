@@ -30,11 +30,12 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #d9d9d9;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    font-size: 16px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -56,7 +57,7 @@
 
 .sidebar-nav {
     position: absolute;
-    top: 0;
+    top: 10px;
     width: 250px;
     margin: 0;
     padding: 0;
@@ -66,17 +67,19 @@
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #666666;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #999999;
     background: rgba(255,255,255,0.2);
 }
 
@@ -128,16 +131,18 @@
     }
 }
 
+#drag-drop-and-button {
+    margin-top: 90%;
+}
+
 #target{
-    border:2px dashed #999999;
+    border:2px dashed #b3b3b3;
     border-radius: 20px;
     height: 45vh;
-    width:80%;
-    margin-top: 21vh;
-    margin-left:10%;
-    margin-right:0;
-    float:left;
-    color:#999999;    
+    width:90%;
+    margin-left:-5%;
+    
+    color:#b3b3b3;    
 }
 
 #send-button{
@@ -145,5 +150,8 @@
     margin-left: 2%;
     width: 80%;
     margin-right:0;
+    background: #666666 !important;
+    color: white !important;
+    margin-bottom: 20%;
 }
 
