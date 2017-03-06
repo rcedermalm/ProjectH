@@ -29,7 +29,7 @@ body {
     width: 0;
     height: 100%;
     margin-left: -250px;
-    overflow-y: visible;
+    overflow-y: hidden;
     background: #000;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -79,7 +79,9 @@ body {
 .sidebar-nav li a:hover {
     text-decoration: none;
     background-color: #66ccff;
-    color: #333333;
+    color: white;
+    background-size: 2px 2px;
+    background-origin: 
     /*
     background: rgba(255,255,255,0.2);
     color: #fff;*/
@@ -134,11 +136,12 @@ body {
 }
 
 #drag-drop-and-button {
-    margin-top: 45vh;
+    margin-top: 46vh;
 }
 
 #target{
-    border:2px dashed #999999;
+    border:3px dashed #999999;
+    border-color: #262626;
     border-radius: 20px;
     height: 35vh;
     width:90%;
@@ -150,7 +153,7 @@ body {
     position: relative;  
 }
 
-@media screen and (min-height: 640px) {
+@media screen and (min-height: 700px) {
     #target {
         height: 45vh;
 
@@ -166,6 +169,10 @@ body {
     width: 80%;
     margin-right:0;
     margin-bottom: 20%;
+    background: #66ccff;
+    border:0;
+    color: white;
+
 }
 
 #dimensions {
