@@ -1,9 +1,9 @@
  
 //SIDEBAR
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+});
 
 
 
@@ -30,11 +30,20 @@ function dragstart_handler(ev) {
 
 function dragover_handler(ev) {
   console.log("dragOver");
+  ev.currentTarget.style.background = "#333333";
+  
   // Change the target element's border to signify a drag over event
   // has occurred
   //ev.currentTarget.style.background = "lightblue";
   ev.preventDefault();
 }
+
+function dragleave_handler(ev){
+	console.log("dragLeave");
+	ev.currentTarget.style.background = "#000000";
+}
+
+var has_been_dragged = false;
 
 function drop_handler(ev) {
   console.log("Drop");
@@ -43,9 +52,12 @@ function drop_handler(ev) {
   // Get the id of drag source element (that was added to the drag data
   // payload by the dragstart event handler)
   var id = ev.dataTransfer.getData("text");
+  ev.currentTarget.style.background = "#000000";
 
   // Copy the element if the source and destination ids are both "copy"
-  if (id == "src_copy" && ev.target.id == "target") {
+  if (id == "src_copy" && ev.target.id == "target" && !has_been_dragged) {
+  	has_been_dragged = true;
+
    var nodeCopy = document.getElementById(id).cloneNode(true);
    nodeCopy.id = "newId";
    ev.target.appendChild(nodeCopy);
@@ -54,7 +66,11 @@ function drop_handler(ev) {
 function dragend_handler(ev) {
   console.log("dragEnd");
   // Restore source's border
- ev.currentTarget.style.color = "lightgray";
+
+  var el=document.getElementById("src_copy");
+ 	el.style.background = "#666666";
+
+
   // Remove all of the drag data
   ev.dataTransfer.clearData();
 }

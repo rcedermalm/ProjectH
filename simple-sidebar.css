@@ -163,7 +163,6 @@ body {
     width: 80%;
     margin-right:0;
     margin-bottom: 20%;
-    position: relative;
 }
 
 #dimensions {
@@ -172,4 +171,18 @@ body {
     float:right;
 }
 
+.navbar {
+    margin-bottom: 0 !important;
+    /*background-color: #1c1c1c !important;*/
+    background-color: black !important;
+    border-radius: 0 !important;
+}
+
+.navbar-brand {
+    color: #99ccff !important;
+}
+
+#header-image {
+    height: 100%;
+}
 
