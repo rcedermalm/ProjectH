@@ -8,8 +8,6 @@
 
 
 //DRAG AND DROP
-
-
 function dragstart_handler(ev) {
   console.log("dragStart");
   // Change the source element's background color to signify drag has started

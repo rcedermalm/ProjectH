@@ -1,2 +1,11 @@
 
 
+.navbar {
+	margin-bottom: 0 !important;
+	background-color: #1c1c1c !important;
+	border-radius: 0 !important;
+}
+
+.navbar-brand {
+	color: #99ccff !important;
+}
