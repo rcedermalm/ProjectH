@@ -45,9 +45,7 @@ function drop_handler(ev) {
 function dragend_handler(ev) {
   console.log("dragEnd");
   // Restore source's border
-		ev.currentTarget.style.color = "lightgray";
- 	  //ev.currentTarget.style.background = "black";
-  
+ ev.currentTarget.style.color = "lightgray";
   // Remove all of the drag data
   ev.dataTransfer.clearData();
 }
