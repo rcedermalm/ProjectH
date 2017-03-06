@@ -29,7 +29,7 @@ body {
     width: 0;
     height: 100%;
     margin-left: -250px;
-    overflow-y: auto;
+    overflow-y: visible;
     background: #000;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -134,7 +134,7 @@ body {
 }
 
 #drag-drop-and-button {
-    margin-top: 40vh;
+    margin-top: 45vh;
 }
 
 #target{
@@ -150,10 +150,13 @@ body {
     position: relative;  
 }
 
-@media screen and (min-height: 620px) {
+@media screen and (min-height: 640px) {
     #target {
         height: 45vh;
 
+    }
+    #drag-drop-and-button {
+        margin-top: 40vh;
     }
 }
 
