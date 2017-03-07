@@ -155,6 +155,18 @@ body {
     position: relative;  
 }
 
+@media screen and (max-height: 400px) {
+    #target {
+        height: 0;
+        border:0;
+
+    }
+    #send-button{
+        display: none;
+    }
+
+}
+
 @media screen and (min-height: 700px) {
     #target {
         height: 45vh;
