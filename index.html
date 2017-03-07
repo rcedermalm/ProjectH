@@ -6,47 +6,51 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
+  <link href="sidebar.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link href="simple-sidebar.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="sidebar.js"></script>
 </head>
-<body>
 
-	<div id="wrapper">
-		        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand"><img id="header-image" src="Sectra_logo.png" alt="Sectra"></a>
+        <p id="dimensions"></p>
+      </div>
+    </div>
+  </nav>
+
+  <div id="wrapper">
+	<!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav" id="sidebar-ul">
+        <li><a href="#">Search</a>
+        <li><a href="#">Add Files</a> 
+      </ul>
+      <ul id="drag-drop-and-button">        
+        <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event);"></div>
+        <button type="button" class="btn btn-default" id="send-button">Send to test</button>
+      </ul>
+    </div>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+          <ul>
+            <li id="src-copy" draggable="true" ondragstart="dragstartHandler(event);" ondragend="dragendHandler(event)"> Hej
+            <li draggable="true" ondragstart="dragstartHandler(event);" ondragend="dragendHandler(event)"> HEJ
+          </ul>
+          </div>           
         </div>
-	</div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
