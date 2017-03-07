@@ -1,26 +1,26 @@
 #heading-browse {
-    margin-left: 2%;
+  margin-left: 2%;
 }
 
 .btn-browse {
-    position: relative;
-    overflow: hidden;
-    margin-left: 2%;
+  position: relative;
+  overflow: hidden;
+  margin-left: 2%;
 }
 .btn-browse input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
 }
 
 .table-file-selection {
