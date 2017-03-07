@@ -5,37 +5,43 @@
   <title>TDDB</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="simple-sidebar.css">
+  <link rel="stylesheet" href="sidebar.css">
   <link rel="stylesheet" href="add_files.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="add_files.js"></script>
+  <script src="sidebar.js"></script>
   <script src="typeahead.js"></script>
   <script src="bootstrap-tagsinput.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-</head>
+ </head>
+  
 <body ng-app="TDDB">
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand"><img id="header-image" src="Sectra_logo.png" alt="Sectra"></a>
+        <p id="dimensions"></p>
+      </div>
+    </div>
+  </nav>
+  
   <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a href="#/">
-            Sectra TDDB
-          </a>
-        </li>
-        <li>
-          <a href="#page_search">Search</a>
-        </li>
-        <li>
-          <a href="#page_add">Add files</a>
-        </li>
-        <li>
-          <a href="#page_test">Testing</a>
-        </li>
+      <ul class="sidebar-nav" id="sidebar-ul">
+        <li><a href="#page_search">Search</a>
+        <li><a href="#page_add">Add Files</a>
+        <li><a href="#page_test">Testing</a>
+          
+      </ul>
+      <ul id="drag-drop-and-button">        
+        <!-- How to make an object draggable 
+        <li id="src-copy" draggable="true" ondragstart="dragstartHandler(event);" ondragend="dragendHandler(event)"> Hej -->
+        <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event);"></div>
+        <button type="button" class="btn btn-default" id="send-button">Send to test</button>
       </ul>
     </div>
     <div ng-view></div>
@@ -50,5 +56,6 @@
     .when("/page_test", {templateUrl : "test.html"});
   });
   </script>
+
 </body>
 </html>
