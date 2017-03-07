@@ -2,71 +2,53 @@
 
 <html lang="en">
 <head>
-    <title>TDDB</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="simple-sidebar.css" rel="stylesheet">
-    <link href="add_files.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="add_files.js"></script>
-    <script type="text/javascript" src="typeahead.js"></script>
-    <script type="text/javascript" src="bootstrap-tagsinput.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-
-  <!--<link href="bootstrap-tagsinput.css" rel="stylesheet"> -->
-
-
+  <title>TDDB</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="simple-sidebar.css">
+  <link rel="stylesheet" href="add_files.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="add_files.js"></script>
+  <script src="typeahead.js"></script>
+  <script src="bootstrap-tagsinput.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 </head>
-<body ng-app="myApp">
-
-    <div id="wrapper">
-                <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#/">
-                        Sectra TDDB
-                    </a>
-                </li>
-                <li>
-                    <a href="#page_search">Search</a>
-                </li>
-                <li>
-                    <a href="#page_add">Add files</a>
-                </li>
-                <li>
-                    <a href="#page_test">Testing</a>
-                </li>
-            </ul>
-        </div>
-        <div ng-view></div>
+<body ng-app="TDDB">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#/">
+            Sectra TDDB
+          </a>
+        </li>
+        <li>
+          <a href="#page_search">Search</a>
+        </li>
+        <li>
+          <a href="#page_add">Add files</a>
+        </li>
+        <li>
+          <a href="#page_test">Testing</a>
+        </li>
+      </ul>
     </div>
-
-
-    <script>
-    var app = angular.module("myApp", ["ngRoute"]);
-    app.config(function($routeProvider) {
-        $routeProvider
-        .when("/", {
-            templateUrl : "http://localhost:8888/ProjectH/main.html"
-        })
-        .when("/page_search", {
-            templateUrl : "http://localhost:8888/ProjectH/search.html"
-        })
-        .when("/page_add", {
-            templateUrl : "http://localhost:8888/ProjectH/add_files.html"
-        })
-        .when("/page_test", {
-            templateUrl : "http://localhost:8888/ProjectH/test.html"
-        });
-    });
-    </script>
-
-
+    <div ng-view></div>
+  </div>
+  <script>
+  var app = angular.module("TDDB", ["ngRoute"]);
+  app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {templateUrl : "http://localhost:8888/ProjectH/main.html"})
+    .when("/page_search", {templateUrl : "http://localhost:8888/ProjectH/search.html"})
+    .when("/page_add", {templateUrl : "http://localhost:8888/ProjectH/add_files.html"})
+    .when("/page_test", {templateUrl : "http://localhost:8888/ProjectH/test.html"});
+  });
+  </script>
 </body>
 </html>
