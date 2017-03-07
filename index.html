@@ -6,42 +6,36 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
+  <link href="simple-sidebar.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link href="simple-sidebar.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="sidebar.js"></script>
 </head>
+
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img id="header-image" src="Sectra_logo.png" alt="Sectra"></a>
-      <p id="dimensions"></p>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand"><img id="header-image" src="Sectra_logo.png" alt="Sectra"></a>
+        <p id="dimensions"></p>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <div id="wrapper">
 	<!-- Sidebar -->
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav" id="sidebar-ul">
-        <li>
-          <a href="#">Search</a>
-        </li>
-        <li>
-          <a href="#">Add Files</a>
-        </li> 
+        <li><a href="#">Search</a>
+        <li><a href="#">Add Files</a> 
       </ul>
       <ul id="drag-drop-and-button">        
-        <div id="target" ondrop="drop_handler(event);" ondragleave="dragleave_handler(event)" ondragover="dragover_handler(event);"></div>
+        <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event);"></div>
         <button type="button" class="btn btn-default" id="send-button">Send to test</button>
       </ul>
     </div>
-
-    <!-- The top navigation bar -->
-    <div id="top-nav-bar"></div>
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -49,18 +43,14 @@
         <div class="row">
           <div class="col-lg-12">
           <ul>
-              <li id="src_copy" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event)">
-                Hej
-              </li>
-              <li draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event)"> 
-                HEJ
-              </li>
+            <li id="src-copy" draggable="true" ondragstart="dragstartHandler(event);" ondragend="dragendHandler(event)"> Hej
+            <li draggable="true" ondragstart="dragstartHandler(event);" ondragend="dragendHandler(event)"> HEJ
           </ul>
           </div>           
         </div>
       </div>
     </div>
-
   </div>
+
 </body>
 </html>
