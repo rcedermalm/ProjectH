@@ -8,6 +8,7 @@ body {
   background-color: #262626 !important;
   color: white !important;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* Toggle Styles */
@@ -47,6 +48,8 @@ body {
   padding: 15px;
   position: absolute;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 #wrapper.toggled #page-content-wrapper {
