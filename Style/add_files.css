@@ -37,8 +37,7 @@
 
 .txt-field {
   color: black;
-  margin-left: 2%;
-  margin-top:5px;
+  margin: 5px 2% 5px 2%;
   vertical-align: top;
   width: 25%;
 }

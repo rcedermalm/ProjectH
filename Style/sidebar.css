@@ -188,6 +188,14 @@ body {
   margin-bottom: 0 !important;
 }
 
+.container-fluid {
+  -webkit-box-shadow: 0 20px 6px -6px #999;
+  -moz-box-shadow: 0 20px 6px -6px #999;
+  box-shadow: 0 8px 90px -10px #999;
+  position: relative;
+  z-index:1010;
+}
+
 .navbar-brand {
   color: #9cf !important;
 }
