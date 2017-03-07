@@ -6,6 +6,8 @@
 
 body {
     overflow-x: hidden;
+    background-color: #262626 !important;
+    color: white !important;
  }
 
 /* Toggle Styles */

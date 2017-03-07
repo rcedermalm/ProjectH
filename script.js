@@ -57,18 +57,19 @@ function drop_handler(ev) {
   // Copy the element if the source and destination ids are both "copy"
   if (id == "src_copy" && ev.target.id == "target" && !has_been_dragged) {
   	has_been_dragged = true;
+    var nodeCopy = document.getElementById(id).cloneNode(true);
+    nodeCopy.id = "newId";
+    ev.target.appendChild(nodeCopy);
 
-   var nodeCopy = document.getElementById(id).cloneNode(true);
-   nodeCopy.id = "newId";
-   ev.target.appendChild(nodeCopy);
+    var el=document.getElementById("src_copy");
+    el.style.background = "#666666";
   }
 }
 function dragend_handler(ev) {
   console.log("dragEnd");
   // Restore source's border
 
-  var el=document.getElementById("src_copy");
- 	el.style.background = "#666666";
+
 
 
   // Remove all of the drag data
