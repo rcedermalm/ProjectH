@@ -24,8 +24,10 @@
 }
 
 .table-file-selection {
+  color:white;
   margin-left: 2%;
-  width: 50%;
+  width: 50% !important;
+  max-width: 50% !important;
 }
 
 .txt-info {
@@ -34,6 +36,7 @@
 }
 
 .txt-field {
+  color: black;
   margin-left: 2%;
   margin-top:5px;
   vertical-align: top;
@@ -41,6 +44,7 @@
 }
 
 .txt-area {
+  color: black;
   height: 15%;
   margin: 5px 2% 5px 2%;
   resize: none;
@@ -85,12 +89,28 @@
 }
 
 .btn-cancel {
+  background: #6cf;
   margin: 5px 2% 5px 2%;
 }
 
 .btn-import {
+  background: #6cf;
   margin: 5px 2% 5px 2%;
 }
 
+.btn-add-tags {
+  background: #6cf;
+}
 
-
+.success{
+  background: #6cf;
+}
+.warning{
+  background: #c60000;
+}
+td {
+  background: inherit !important;
+}
+thead {
+  border: none;
+}
