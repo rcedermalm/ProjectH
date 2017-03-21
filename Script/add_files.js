@@ -40,3 +40,18 @@ function handleFileSelect(evt) {
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
+
+
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+});
+
+//Used to create highlight over Labels
+$('.bootstrap-tagsinput').focusin(function() {
+  $(this).addClass('focus');
+});
+//Used to create highlight over Labels
+$('.bootstrap-tagsinput').focusout(function() {
+  $(this).removeClass('focus');
+});
