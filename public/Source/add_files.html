@@ -6,8 +6,8 @@
 
 <!-- Select files -->
 <div class="fileinput fileinput-new" data-provides="fileinput">
-  <span class="btn btn-default btn-browse"><span>Choose file</span><input type="file" multiple /></span>
-  <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+  <input type="file" class="btn btn-default btn-browse" id="files" name="files[]" multiple />
+  <output id="list"></output>
 </div>
 
 <!-- Table to display selected files to add to database -->
