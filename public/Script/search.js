@@ -18,13 +18,18 @@ function format ( d ) {
 }
  
 $(document).ready(function() {
-    var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=cr";
+    var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=*";
 
         var table = $('#mainTable').DataTable( {
         "ajax": {"url":sectraAPI,"dataSrc": "Result"},
+        
          "columns": [
-            { "data": "Id" },
+            { "data": "Document.(0010,0010)",
+              "defaultContent": "undefined"},
+            { "data": "Document.(0008,0060)",
+              "defaultContent": "undefined"},
             { "data": "Type" }
+
           ]
         
     } );
