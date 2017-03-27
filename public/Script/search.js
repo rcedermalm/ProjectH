@@ -18,23 +18,15 @@ function format ( d ) {
 }
  
 $(document).ready(function() {
-    var table = $('#mainTable').DataTable( {
-        "ajax": "data/dummyData.json",
-        "pageLength": 25,
-          "columns": [
-           {
-                "className":      'table-control',
-                "orderable":      false,
-                "data":           null,
-                "defaultContent": ''
-            },
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "salary" }
-        ],
-        "order": [[1, 'asc']]  
+    var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=cr";
 
+        var table = $('#mainTable').DataTable( {
+        "ajax": {"url":sectraAPI,"dataSrc": "Result"},
+         "columns": [
+            { "data": "Id" },
+            { "data": "Type" }
+          ]
+        
     } );
      
     // Add event listener for opening and closing details
