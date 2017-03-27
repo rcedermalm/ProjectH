@@ -22,6 +22,10 @@ $(document).ready(function() {
 
         var table = $('#mainTable').DataTable( {
         "ajax": {"url":sectraAPI,"dataSrc": "Result"},
+
+        if({"data": "Type"} == "txtfile"){
+            var 
+        }
         
          "columns": [
             { "data": "Document.(0010,0010)",
