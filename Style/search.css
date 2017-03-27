@@ -9,3 +9,38 @@ tr.shown td.table-control {
     background-color: white;
     color:black;        
 }
+
+/*.dropdown .btn-link:focus{outline: none}*/
+
+.dropdown-menu{width: 30%; padding:20px; margin-left: 0px}
+
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+
+.btn {
+    border-radius: 0;
+    float: left;
+}
+.btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#adv-search{
+    color: #000
+    
+}

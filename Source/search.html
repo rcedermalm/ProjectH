@@ -7,6 +7,44 @@
   <script src="Script/jquery.js"></script>
   <script src="Script/jquery.dataTables.js"></script>
   <script src="Script/search.js"></script>
+  
+  <div class="container" id="adv-search">
+      <div class="row">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search..."/>
+              <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+          </div>
+      </div>
+      
+      <div class="row">
+          <div class="dropdown">
+              <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-pressed="false">Advanced search <b class="caret"></b></button>
+              <div class="dropdown-menu">
+                  <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                          <label for="filter">Filter by</label>
+                          <select class="form-control">
+                              <option value="0" selected>All Files</option>
+                              <option value="1">.JPEG</option>
+                              <option value="2">.DICOM</option>
+                              <option value="3">.txt</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="contain">User</label>
+                          <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                          <label for="contain">Tags</label>
+                          <input class="form-control" type="text" />
+                      </div>
+                  </form>
+              </div>
+          </div> 
+      </div>
+  </div>
 
  <div class="table-responsive"> 
 
