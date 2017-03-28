@@ -63,3 +63,11 @@ document.getElementById("btn-add").addEventListener("click", AddEntry);
 function AddEntry() {
     alert("Files Added!");
 }
+
+
+//Create on click listner for add tags button (Will later be used to write tags to json file?)
+document.getElementById("btn-tag").addEventListener("click", AddTags);
+
+function AddTags() {
+    alert("Tags Added!");
+}
