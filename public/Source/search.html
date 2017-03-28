@@ -47,11 +47,18 @@
 
 <div ng-controller="show_data_ctrl"> 
 
-<ul>
-  <li ng-repeat="x in show_data">
-    {{ x.Type + ', ' + x.Id }}
-  </li>
-</ul>
+<table>
+  <tr>
+    <th>Patient Name</th>
+    <th>Id</th>
+    <th>Type</th> 
+  </tr>
+  <tr ng-repeat="x in show_data | orderBy : 'id'">
+    <td>{{ x.Document["(0010,0010)"] }}</td>
+    <td>{{ x.Id }}</td>
+    <td>{{ x.Type }}</td>
+  </tr>
+</table>
 
 </div>
 

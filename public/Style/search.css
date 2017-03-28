@@ -1,14 +1,20 @@
-td.table-control {
-    background: url('Images/details_open.png') no-repeat center center;
-    cursor: pointer;
+/**** TABLE *****/
+table, th , td {
+  color: black;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
 }
-tr.shown td.table-control {
-    background: url('Images/details_close.png') no-repeat center center;
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
 }
-#mainTable{
-    background-color: white;
-    color:black;        
+table tr:nth-child(even) {
+  background-color: #ffffff;
 }
+
+
+
+/**** SEARCH BUTTON ******/
 
 /*.dropdown .btn-link:focus{outline: none}*/
 
