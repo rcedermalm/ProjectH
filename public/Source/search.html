@@ -54,9 +54,9 @@
     <th>Type</th> 
   </tr>
   <tr ng-repeat="x in show_data | orderBy : 'id'">
-    <td>{{ x.Document["(0010,0010)"] }}</td>
-    <td>{{ x.Id }}</td>
-    <td>{{ x.Type }}</td>
+    <td>{{ x.name }}</td>
+    <!--<td>{{ x.objects.Type }}</td>
+    <td>{{ x.Type }}</td>-->
   </tr>
 </table>
 
