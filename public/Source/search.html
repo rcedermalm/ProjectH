@@ -1,13 +1,12 @@
 
-  <link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">
+  <!--<link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">-->
   <link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="Style/search.css">
 
 
-  <script src="Script/jquery.js"></script>
-  <script src="Script/jquery.dataTables.js"></script>
-  <script src="Script/search.js"></script>
-  
+  <!--<script src="Script/jquery.js"></script>
+  <script src="Script/jquery.dataTables.js"></script>-->
+
   <div class="container" id="adv-search">
       <div class="row">
           <div class="input-group">
@@ -46,6 +45,18 @@
       </div>
   </div>
 
+<div ng-controller="show_data_ctrl"> 
+
+<ul>
+  <li ng-repeat="x in show_data">
+    {{ x.Type + ', ' + x.Id }}
+  </li>
+</ul>
+
+</div>
+
+
+<!-- Before
  <div class="table-responsive"> 
 
         <table id="mainTable" class="table table-striped compact" cellspacing="0" width="100%">
@@ -66,4 +77,4 @@
             </tfoot>
         </table>
 
-</div>
+</div>-->
