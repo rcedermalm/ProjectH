@@ -41,7 +41,7 @@ function handleFileSelect(evt) {
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 
-
+//Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
@@ -55,3 +55,11 @@ $('.bootstrap-tagsinput').focusin(function() {
 $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
+
+
+//Create on click listner for add button (Will later be used to "activate" POST)
+document.getElementById("btn-add").addEventListener("click", AddEntry);
+
+function AddEntry() {
+    alert("Files Added!");
+}
