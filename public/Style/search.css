@@ -21,15 +21,11 @@ table{
   cursor: pointer; 
 }
 
-.sort-by {
- /* text-align: right;*
-  margin: 5px;
-}
 
 /**** SEARCH BUTTON ******/
 
 /*.dropdown .btn-link:focus{outline: none}*/
-/*
+
 .dropdown-menu{width: 30%; padding:20px; margin-left: 0px}
 
 .dropdown.dropdown-lg .dropdown-menu {
@@ -61,4 +57,4 @@ table{
 #adv-search{
     color: #000
     
-}*/
+}
