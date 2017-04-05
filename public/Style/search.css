@@ -1,4 +1,6 @@
 /**** TABLE *****/
+
+
 table, th , td {
   color: black;
   border: 1px solid grey;
@@ -11,13 +13,23 @@ table tr:nth-child(odd) {
 table tr:nth-child(even) {
   background-color: #ffffff;
 }
+table{
+  width: 100%;
+}
 
+#table-header { 
+  cursor: pointer; 
+}
 
+.sort-by {
+ /* text-align: right;*
+  margin: 5px;
+}
 
 /**** SEARCH BUTTON ******/
 
 /*.dropdown .btn-link:focus{outline: none}*/
-
+/*
 .dropdown-menu{width: 30%; padding:20px; margin-left: 0px}
 
 .dropdown.dropdown-lg .dropdown-menu {
@@ -49,4 +61,4 @@ table tr:nth-child(even) {
 #adv-search{
     color: #000
     
-}
+}*/

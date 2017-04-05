@@ -43,4 +43,14 @@ app.controller('show_data_ctrl', function($scope, $http) {
         // "Returns" the patient array, the data will be stored in the variable "show_data"
         $scope.show_data = the_patients;
     });
+
+    /** FOR SORTING THE TABLE **/
+    $scope.property_name = 'name';
+    $scope.reverse = true;
+
+    $scope.sortBy = function(property_name) {
+      $scope.reverse = ($scope.property_name === property_name) ? !$scope.reverse : false;
+      $scope.property_name = property_name;
+    };
+    /***************************/
 });
