@@ -54,10 +54,22 @@
       <th ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png">
         <span class="sortorder" ng-show="property_name === 'name'" ng-class="{reverse: reverse}"></span> 
       </th>
+      <th>Modality</th>
+      <th>Study ID</th>
+      <th>Accesion Number</th>
+      <th>Size (MB)</th>
+      <th>Images</th>
+      <th>Keywords</th>
     </tr>
     <!-- Loop through show_data and display the name -->
     <tr ng-repeat="x in show_data | orderBy:property_name:reverse | filter : search_filter"> 
-      <td>{{ x.name }}</td>
+      <td id="name-slot">{{ x.name }}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
   </table>
 

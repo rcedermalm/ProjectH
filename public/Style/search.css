@@ -1,6 +1,9 @@
+.container {
+  width: 100%;
+}
+
+
 /**** TABLE *****/
-
-
 table, th , td {
   color: black;
   border: 1px solid grey;
