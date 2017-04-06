@@ -47,8 +47,10 @@
       </div>
   </div>
 
+
+
 <!-- Show the data in a table -->
-<div ng-controller="show_data_ctrl"> 
+<div ng-controller="show_data_ctrl">
   <table>
     <tr id="table-header">
       <th ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png">
@@ -62,8 +64,9 @@
       <th>Keywords</th>
     </tr>
     <!-- Loop through show_data and display the name -->
-    <tr ng-repeat="x in show_data | orderBy:property_name:reverse | filter : search_filter"> 
-      <td id="name-slot">{{ x.name }}</td>
+    <tr  ng-show="loading"><td colspan="7"><div class="loader"></div></td></tr> <!-- Loader -->
+    <tr ng-repeat="x in show_data | orderBy:property_name:reverse | filter : search_filter">
+      <td>{{ x.name }}</td>
       <td></td>
       <td></td>
       <td></td>
