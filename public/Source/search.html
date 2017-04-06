@@ -1,79 +1,88 @@
+<!--<link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">-->
+<link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="Style/search.css">
 
-  <!--<link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">-->
-  <link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="Style/search.css">
 
-
-  <!--<script src="Script/jquery.js"></script>
+<!--<script src="Script/jquery.js"></script>
   <script src="Script/jquery.dataTables.js"></script>-->
 
-  <div class="container" id="adv-search">
-     
-      <div class="row">
-         <div class="input-group">
-              <input type="text" class="form-control" ng-model="search_filter" placeholder="Search..."/>
-              <button type="button" class="btn btn-default">
+<div class="container" id="adv-search">
+
+    <div class="row">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="search_filter" placeholder="Search..." />
+            <button type="button" class="btn btn-default">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
               </button>
-          </div>
-      </div>
-     
-      <div class="row">
-          <div class="dropdown">
-              <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-pressed="false">Advanced search <b class="caret"></b></button>
-              
-              <div class="dropdown-menu">
-                  <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                          <label for="filter">Filter by</label>
-                          <select class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="dropdown">
+            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                aria-pressed="false">Advanced search <b class="caret"></b></button>
+
+                <div class="dropdown-menu">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="filter">Filter by</label>
+                            <select class="form-control">
                               <option value="0" selected>All Files</option>
                               <option value="1">.JPEG</option>
                               <option value="2">.DICOM</option>
                               <option value="3">.txt</option>
                           </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="contain">User</label>
-                          <input class="form-control" type="text" />
-                      </div>
-                      <div class="form-group">
-                          <label for="contain">Tags</label>
-                          <input class="form-control" type="text" />
-                      </div>
-                  </form>
-              </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contain">User</label>
+                            <input class="form-control" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contain">Tags</label>
+                            <input class="form-control" type="text" />
+                        </div>
+                    </form>
+                </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
 
 
 
 <!-- Show the data in a table -->
 <div ng-controller="show_data_ctrl">
-  <table>
-    <tr id="table-header">
-      <th ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png">
-        <span class="sortorder" ng-show="property_name === 'name'" ng-class="{reverse: reverse}"></span> 
-      </th>
-      <th>Modality</th>
-      <th>Study ID</th>
-      <th>Accesion Number</th>
-      <th>Size (MB)</th>
-      <th>Images</th>
-      <th>Keywords</th>
-    </tr>
-    <!-- Loop through show_data and display the name -->
-    <tr  ng-show="loading"><td colspan="7"><div class="loader"></div></td></tr> <!-- Loader -->
-    <tr ng-repeat="x in show_data | orderBy:property_name:reverse | filter : search_filter">
-      <td>{{ x.name }}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
+    <table>
+        <tr id="table-header">
+            <th ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png">
+                <span class="sortorder" ng-show="property_name === 'name'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>Modality</th>
+            <th>Study ID</th>
+            <th>Accesion Number</th>
+            <th>Size (MB)</th>
+            <th>Images</th>
+            <th>Keywords</th>
+        </tr>
+        <!-- Loop through show_data and display the name -->
+        <tr  ng-show="loading"><td colspan="7"><div class="loader"></div></td></tr> <!-- Loader -->
+        <tr ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
+            <td ng-click="x.expanded = !x.expanded">{{x.name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
 
+        <tr ng-if="x.expanded" ng-repeat="object in x.objects" ng-repeat-end="">
+            <td></td>
+            <td ng-click="object.expanded = !object.expanded"> {{object.Id}} </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
 </div>
