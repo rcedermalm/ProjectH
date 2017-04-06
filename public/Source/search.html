@@ -62,6 +62,7 @@
             <th>Keywords</th>
         </tr>
         <!-- Loop through show_data and display the name -->
+        <tr ng-repeat-start="x in show_data | orderBy : property_name:reverse | filter:search_filter">
             <td ng-click="x.expanded = !x.expanded">{{x.name}}</td>
             <td></td>
             <td></td>
