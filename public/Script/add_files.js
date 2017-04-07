@@ -38,8 +38,7 @@ function handleFileSelect(evt) {
     document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
   }
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
+  //document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 
 $("#menu-toggle").click(function(e) {
@@ -55,3 +54,26 @@ $('.bootstrap-tagsinput').focusin(function() {
 $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
+
+
+// Create angular controller and pass in $scope and $http
+// This handles the input from the user, it is possible to add more paramenters
+// for the user input
+app.controller('AddController', function($scope, $http) {
+  
+   // create a blank object to hold our form information
+    // $scope will allow this to pass between controller and view
+      $scope.formData = {};
+
+    // process the form
+    $scope.processForm = function() {
+      $http({
+      method  : 'POST',
+      url     : '/upload',
+      data    : $.param($scope.formData),  // pass in data as strings
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+    })};
+
+});
+
+

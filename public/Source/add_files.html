@@ -1,7 +1,7 @@
-<script src="Script/add_files.js"></script>
-<script src="Script/typeahead.js"></script>
-<script src="Script/bootstrap-tagsinput.js"></script>
-
+<head>
+  <script src="Script/typeahead.js"></script>
+  <script src="Script/bootstrap-tagsinput.js"></script>
+</head>
 <h1 id="heading-browse">Add files to the database</h1>
 
 <!-- Select files -->
@@ -29,34 +29,39 @@
 </table>
 
 <!-- User input -->
-<div>
-  <label for="creator" class="txt-info">Added by:</label>
-  <input type="text" class="txt-field" id="creator">
-</div>
+<div ng-controller="AddController">
+  <form ng-submit="processForm()">
+  <div>
+    <label for="creator" class="txt-info">Added by:</label>
+      <input type="text" ng-model="formData.name" class="txt-field" id="creator" >
+  </div>
 
-<div>
-  <label for="u-id" class="txt-info">Unique ID for Test Data entry:</label>
-  <input type="text" class="txt-field" id="u-id">
-</div>
+  <div>
+    <label for="u-id" class="txt-info">Unique ID for Test Data entry:</label>
+    <input type="text" class="txt-field" id="u-id">
+  </div>
 
-<div>
-  <label for="patient-name" class="txt-info">Patient name:</label>
-  <input type="text" class="txt-field" id="patient-name">
-</div>
+  <div>
+    <label for="patient-name" class="txt-info">Patient name:</label>
+    <input type="text" class="txt-field" id="patient-name">
+  </div>
 
-<div>
-  <label for="tags" class="txt-info">Labels:</label>
-  <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control">
-  <button type="button" class="btn btn-add-tags btn-sm">Add tags</button>
-</div>
+  <div>
+    <label for="tags" class="txt-info">Tags:</label>
+    <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control" ng-model="formData.Tags">
+    <button type="button" class="btn btn-add-tags btn-sm">Add tags</button>
+  </div>
 
-<div>
-  <label for="comments" class="txt-info">Comments:</label>
-  <textarea type="text" class="txt-area" id="comments"></textarea>
-</div>
+  <div>
+    <label for="comments" class="txt-info">Comments:</label>
+    <textarea type="text" class="txt-area" id="comments" ng-model="formData.Info" placeholder="Info"></textarea>
+  </div>
 
 
-<div class="buttons">
-  <button type="button" class="btn btn-cancel">Cancel</button>
-  <button type="button" class="btn btn-import">Add entry</button>    
+  <div class="buttons">
+    <button type="button" class="btn btn-cancel">Cancel</button>
+    <button type="submit" class="btn btn-import">Add entry</button>    
+  </div>
+  </form>
+  {{formData}}
 </div>

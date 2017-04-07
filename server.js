@@ -4,6 +4,8 @@
     var morgan = require('morgan');             // log requests to the console (express4)
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+    var fs = require('fs');                     // Filewriting var'
+    var bodyParser = require('body-parser');
 
     // configuration =================
 
@@ -18,9 +20,20 @@
     app.listen(8080);
     console.log("App listening on port 8080");
 
-
-
     // application -------------------------------------------------------------
     app.get('*', function(req, res) {
         res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
+
+    // This is for handling input form the client, it types it out with console.log
+    app.post('/upload', function(req,res) {
+        res.contentType('application/json');
+        console.log(req.body);
+        res.end(); 
+    });
+
+    //writing to file
+    fs.writeFile('message.json', 'Shitty text', (err) => {
+      if (err) throw err;
+    console.log('It\'s saved!');
+});
