@@ -28,12 +28,9 @@
     // This is for handling input form the client, it types it out with console.log
     app.post('/upload', function(req,res) {
         res.contentType('application/json');
-        console.log(req.body);
-        res.end(); 
+        fs.writeFile('td.json',JSON.stringify(req.body), (err) =>{
+            if (err) throw err;
+            console.log('Saved: ' + JSON.stringify(req.body));
+        })
     });
 
-    //writing to file
-    fs.writeFile('message.json', 'Shitty text', (err) => {
-      if (err) throw err;
-    console.log('It\'s saved!');
-});
