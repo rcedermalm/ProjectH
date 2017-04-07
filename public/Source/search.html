@@ -75,10 +75,10 @@
             <td></td>
         </tr>
 
-        <tr ng-if="x.expanded" ng-repeat="object in x.objects" ng-repeat-end="">
+        <tr ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter" ng-repeat-end="">
             <td></td>
             <td ng-click="xExpand(object)"> {{object.Id}} </td>
-            <td ng-if="object.expanded" class="tableExp">
+            <td ng-if="object.expanded" >
                 <div>
                     InstanceCreationDate
                     <BR> InstanceCreationTime:
@@ -126,8 +126,8 @@
                     <BR> {{ object.Document["(0010,0030)"] }}
                 </div>
             </td>
-            <td ng-if="!object.expanded"></td>
-            <td ng-if="!object.expanded"></td>
+            <td ng-if="!object.expanded">...</td>
+            <td ng-if="!object.expanded">...</td>
             <td></td>
             <td></td>
             <td></td>
