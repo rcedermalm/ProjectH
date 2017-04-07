@@ -51,7 +51,7 @@
 
 <!-- Show the data in a table -->
 <div ng-controller="show_data_ctrl">
-    <table>
+    <table class="table table-responsive table-condensed table-hover">
         <tr id="table-header">
             <th ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png">
                 <span class="sortorder" ng-show="property_name === 'name'" ng-class="{reverse: reverse}"></span>
@@ -66,7 +66,7 @@
         <!-- Loop through show_data and display the name -->
         <tr  ng-show="loading"><td colspan="7"><div class="loader"></div></td></tr> <!-- Loader -->
         <tr ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
-            <td ng-click="x.expanded = !x.expanded">{{x.name}}</td>
+            <td ng-click="xExpand(x,1)">{{x.name}}</td>
             <td></td>
             <td></td>
             <td></td>
@@ -77,12 +77,61 @@
 
         <tr ng-if="x.expanded" ng-repeat="object in x.objects" ng-repeat-end="">
             <td></td>
-            <td ng-click="object.expanded = !object.expanded"> {{object.Id}} </td>
-            <td></td>
+            <td ng-click="xExpand(object)"> {{object.Id}} </td>
+            <td ng-if="object.expanded" class="tableExp">
+                <div>
+                    InstanceCreationDate
+                    <BR> InstanceCreationTime:
+                    <BR> SOPClassUID:
+                    <BR> SOPInstanceUID:
+                    <BR> StudyDate:
+                    <BR> AcquisitionDate:
+                    <BR> StudyTime:
+                    <BR> AcquisitionTime:
+                    <BR> AccessionNumber:
+                    <BR> Modality:
+                    <BR> Manufacturer:
+                    <BR> InstitutionName:
+                    <BR> ReferringPhysicianName:
+                    <BR> StationName:
+                    <BR> StudyDescription:
+                    <BR> SeriesDescription:
+                    <BR> InstitutionalDepartmentName:
+                    <BR> PerformingPhysicianName:
+                    <BR> ManufacturersModelName:
+                    <BR> PatientBirthDate:
+                </div>
+            </td>
+            <td ng-if="object.expanded">
+                <div>
+                    {{ object.Document["(0008,0012)"] }}
+                    <BR> {{ object.Document["(0008,0013)"] }}
+                    <BR> {{ object.Document["(0008,0016)"] }}
+                    <BR> {{ object.Document["(0008,0018)"] }}
+                    <BR> {{ object.Document["(0008,0020)"] }}
+                    <BR> {{ object.Document["(0008,0022)"] }}
+                    <BR> {{ object.Document["(0008,0030)"] }}
+                    <BR> {{ object.Document["(0008,0032)"] }}
+                    <BR> {{ object.Document["(0008,0050)"] }}
+                    <BR> {{ object.Document["(0008,0060)"] }}
+                    <BR> {{ object.Document["(0008,0070)"] }}
+                    <BR> {{ object.Document["(0008,0080)"] }}
+                    <BR> {{ object.Document["(0008,0090)"] }}
+                    <BR> {{ object.Document["(0008,1010)"] }}
+                    <BR> {{ object.Document["(0008,1030)"] }}
+                    <BR> {{ object.Document["(0008,103E)"] }}
+                    <BR> {{ object.Document["(0008,1040)"] }}
+                    <BR> {{ object.Document["(0008,1050)"] }}
+                    <BR> {{ object.Document["(0008,1090)"] }}
+                    <BR> {{ object.Document["(0010,0030)"] }}
+                </div>
+            </td>
+            <td ng-if="!object.expanded"></td>
+            <td ng-if="!object.expanded"></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-    </table>
+    </table>    
 </div>
