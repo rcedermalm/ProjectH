@@ -10,7 +10,7 @@
   <output id="list"></output>
 </div>
 
-<!-- Table to display selected files to add to database -->
+<!-- Table to display selected files to add to database 
 <table class="table table-file-selection">
 <thead>
   <tr>
@@ -26,7 +26,7 @@
     <td>Warning
     <td>Refs
     <td>bo@example.com
-</table>
+</table> -->
 
 <!-- User input -->
 <div ng-controller="AddController">
@@ -49,15 +49,11 @@
   <div>
     <label for="tags" class="txt-info">Tags:</label>
     <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control" ng-model="formData.Tags">
-    <button type="button" class="btn btn-add-tags btn-sm">Add tags</button>
   </div>
-
   <div>
     <label for="comments" class="txt-info">Comments:</label>
     <textarea type="text" class="txt-area" id="comments" ng-model="formData.Info" placeholder="Info"></textarea>
   </div>
-
-
   <div class="buttons">
     <button type="button" class="btn btn-cancel">Cancel</button>
     <button type="submit" class="btn btn-import">Add entry</button>    

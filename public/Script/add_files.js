@@ -38,9 +38,9 @@ function handleFileSelect(evt) {
     document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
   }
 
-  //document.getElementById('files').addEventListener('change', handleFileSelect, false);
+//document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-
+//Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
@@ -54,7 +54,6 @@ $('.bootstrap-tagsinput').focusin(function() {
 $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
-
 
 // Create angular controller and pass in $scope and $http
 // This handles the input from the user, it is possible to add more paramenters
@@ -75,5 +74,4 @@ app.controller('AddController', function($scope, $http) {
     })};
 
 });
-
 
