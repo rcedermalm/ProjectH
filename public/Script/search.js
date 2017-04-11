@@ -1,5 +1,5 @@
 // The URL to the API.
-var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=*";
+var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=*&from=0&size=1000";
 
 // A controller for getting and showing the data.
 app.controller('show_data_ctrl', function ($scope, $http) {
@@ -57,15 +57,25 @@ app.controller('show_data_ctrl', function ($scope, $http) {
         $scope.property_name = property_name;
     };
 
-    $scope.xExpand = function (x,parent) {
+    $scope.xExpand = function (x, parent) {
         x.expanded = !x.expanded;
-        if(!x.expanded && parent)collapseAll(x);
+        if (!x.expanded && parent) collapseAll(x);
     }
-    function collapseAll(x){
-        for(var i=0;i<x.objects.length;i++){
+    function collapseAll(x) {
+        for (var i = 0; i < x.objects.length; i++) {
             x.objects[i].expanded = false;
         }
     }
+    var limitStep = 5;
+
+    $scope.limit = 20;
+
+    $scope.incrementLimit = function () {
+        $scope.limit += limitStep;
+    };
+    $scope.decrementLimit = function () {
+        $scope.limit -= limitStep;
+    };
 
 
     /***************************/

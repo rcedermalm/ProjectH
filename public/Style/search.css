@@ -4,6 +4,7 @@
 
 
 /**** TABLE *****/
+/*
 table, th , td {
   color: black;
   border: 1px solid grey;
@@ -22,6 +23,38 @@ table{
 
 #table-header { 
   cursor: pointer; 
+}
+*/
+.rTable {
+  	display: table;
+  	width: 100%;
+}
+.rTableRow {
+  	display: table-row;
+
+}
+.rTableHeading {
+  	display: table-header-group;
+  	background-color: #ddd;
+}
+.rTableCell, .rTableHead {
+  	display: table-cell;
+  	padding: 3px 10px;
+  	border: 1px solid #999999;
+}
+.rTableHeading {
+  	display: table-header-group;
+  	background-color: #ddd;
+  	font-weight: bold;
+}
+.rTableFoot {
+  	display: table-footer-group;
+  	font-weight: bold;
+  	background-color: #ddd;
+}
+.rTableBody {
+  	display: table-row-group;
+      
 }
 
 
