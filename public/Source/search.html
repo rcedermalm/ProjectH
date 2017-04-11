@@ -68,8 +68,8 @@
             </td>
         </tr>
         <tr ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
-            <td ng-click="xExpand(x,1)">{{x.name}}</td>
-            <td>{{results.length}}</td>
+            <td ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}" >{{x.name}}</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -81,6 +81,7 @@
             <td></td>
             <td ng-click="xExpand(object)"> {{object.Id}} </td>
             <td ng-if="object.expanded">
+
                 <div>
                     InstanceCreationDate
                     <BR> InstanceCreationTime:
@@ -147,7 +148,7 @@
 
 <div class="rTable" ng-controller="show_data_ctrl">
     <div class="rTableHeading">
-        <div class="rTableHead">a</div>
+        <div class="rTableHead" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
         <div class="rTableHead">b</div>
         <div class="rTableHead">c</div>
         <div class="rTableHead">d</div>
@@ -155,8 +156,10 @@
         <div class="rTableHead">f</div>
         <div class="rTableHead">g</div>
     </div>
+    <div ng-show="loading" class="loader">
+    </div>
     <div class="rTableRow" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
-        <div class="rTableCell" ng-click="xExpand(x,1)">{{x.name}}</div>
+        <div class="rTableCell" ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">{{x.name}}</div>
         <div class="rTableCell"></div>
         <div class="rTableCell"></div>
         <div class="rTableCell"></div>
