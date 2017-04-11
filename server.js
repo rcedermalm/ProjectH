@@ -5,7 +5,6 @@
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
     var fs = require('fs');                     // Filewriting var'
-    var bodyParser = require('body-parser');
 
     // configuration =================
 
@@ -28,9 +27,12 @@
     // This is for handling input form the client, it types it out with console.log
     app.post('/upload', function(req,res) {
         res.contentType('application/json');
+
+        //This is taking care of writing to a file (in cour case td.json)
         fs.writeFile('td.json',JSON.stringify(req.body), (err) =>{
             if (err) throw err;
             console.log('Saved: ' + JSON.stringify(req.body));
         })
+
     });
 
