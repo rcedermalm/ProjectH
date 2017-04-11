@@ -10,26 +10,33 @@
   <output id="list"></output>
 </div>
 
-<!-- Table to display selected files to add to database 
-<table class="table table-file-selection">
-<thead>
-  <tr>
-    <th>Filename
-    <th>Type
-    <th>Size
-<tbody>    
-  <tr class="success">
-    <td>Success
-    <td>Doe
-    <td>john@example.com
-  <tr class="warning">
-    <td>Warning
-    <td>Refs
-    <td>bo@example.com
-</table> -->
 
 <!-- User input -->
+<!--
+<div >
+  <label for="directory" class="txt-info">Folder directory:</label>
+  <input ng-controller="HttpPostController" type="text" class="txt-field" ng-model="inputDirectory" required>
+</div>
+
+<div >
+  <label for="tags" class="txt-info">Tags:</label>
+  <input type="text" class="txt-field" ng-model="inputTags">
+</div>
+-->
+
+
 <div ng-controller="AddController">
+
+<div>
+  <label for="directory" class="txt-info">Folder directory:</label>
+  <input type="text" class="txt-field" ng-model="inputDirectory" required>
+  {{content}}
+</div>
+<div >
+  <label for="types" class="txt-info">File Type:</label>
+  <input type="text" class="txt-field" ng-model="inputTags">
+</div>
+
   <form ng-submit="processForm()">
   <div>
     <label for="creator" class="txt-info">Added by:</label>
@@ -56,8 +63,8 @@
   </div>
   <div class="buttons">
     <button type="button" class="btn btn-cancel">Cancel</button>
-    <button type="submit" class="btn btn-import">Add entry</button>    
+    <!--<button type="submit" class="btn btn-import">Add entry</button>  -->
+    <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button>   
   </div>
   </form>
-  {{formData}}
 </div>
