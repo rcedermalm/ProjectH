@@ -69,8 +69,11 @@ function dropHandler(ev) {
     node_copy.id = "new_id";
     ev.target.appendChild(node_copy);
 
+    // find the name in our array of objects
     var index = show_data_array.findIndex(x => x.name == id);
 
+    // add the object to a new array that stores all the objects that have been
+    // dragged to the drop zone
     objectsInDropZone.push(show_data_array[index]);
 
     // Change the background color of the element if is has been dropped 

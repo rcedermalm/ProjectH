@@ -1,5 +1,6 @@
 // The URL to the API.
 var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=*&from=0&size=1000";
+// Will contain the objects read from the database.
 var show_data_array = new Array();
 
 // A controller for getting and showing the data.
@@ -42,8 +43,10 @@ app.controller('show_data_ctrl', function ($scope, $http) {
             console.log(the_patients[i].objects[j].Type);
         }*/
 
-        // "Returns" the patient array, the data will be stored in the variable "show_data"
+        // To keep the object array as a "global" array.
         show_data_array = the_patients;
+
+        // "Returns" the patient array, the data will be stored in the variable "show_data"
         $scope.show_data = the_patients;
 
     }).finally(function () {
