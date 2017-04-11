@@ -25,7 +25,7 @@ function dragstartHandler(ev) {
  
   // Add the id of the drag source element to the drag data payload so
   // it is available when the drop event is fired
-  ev.dataTransfer.setData("text", ev.target.id);
+  ev.dataTransfer.setData("name", ev.target.id);
 
   // Tell the browser both copy and move are possible
   ev.effectAllowed = "copy";
@@ -47,30 +47,38 @@ function dragleaveHandler(ev){
 	ev.currentTarget.style.background = "#000000";
 }
 
+var objectsInDropZone = new Array();
+
+
 function dropHandler(ev) {
   console.log("Drop");
   ev.preventDefault();
   
   // Get the id of drag source element (that was added to the drag data
   // payload by the dragstart event handler)
-  var id = ev.dataTransfer.getData("text");
+  var id = ev.dataTransfer.getData("name");
 
   // Change the color of the target back to normal
   ev.currentTarget.style.background = "#000000";
 
   // Copy the element if the source and destination ids are both "copy" and 
   // the element has not been dragged before
-  if (id == "src-copy" && ev.target.id == "target" && !has_been_dragged) {
+  if (/*id == "src-copy" &&*/ ev.target.id == "target" /*&& !has_been_dragged*/) {
   	has_been_dragged = true;
     var node_copy = document.getElementById(id).cloneNode(true);
     node_copy.id = "new_id";
     ev.target.appendChild(node_copy);
 
+    var index = show_data_array.findIndex(x => x.name == id);
+
+    objectsInDropZone.push(show_data_array[index]);
+
     // Change the background color of the element if is has been dropped 
     // in a valid target
-    var el = document.getElementById("src-copy");
+    /*var el = document.getElementById("src-copy");
     el.style.background = "#666666";
-    el.style.color = "#999999";
+    el.style.color = "#999999";*/
+    console.log(id);
   }
 }
 
@@ -79,4 +87,18 @@ function dragendHandler(ev) {
 
 	// Remove all of the drag data
 	ev.dataTransfer.clearData();
+}
+
+function sendFiles(){
+  var alert_text = "The objects: ";
+  for(var i = 0; i < objectsInDropZone.length; i++){
+    alert_text = alert_text + objectsInDropZone[i].name;
+
+    if(i != objectsInDropZone.length - 1){
+      alert_text = alert_text + ", ";
+    }
+  }
+
+  alert_text = alert_text + "\nare sent to test.";
+  alert(alert_text);
 }

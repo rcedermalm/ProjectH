@@ -66,7 +66,7 @@
         <!-- Loop through show_data and display the name -->
         <tr  ng-show="loading"><td colspan="7"><div class="loader"></div></td></tr> <!-- Loader -->
         <tr ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
-            <td ng-click="xExpand(x,1)">{{x.name}}</td>
+            <td ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}" >{{x.name}}</td>
             <td></td>
             <td></td>
             <td></td>
@@ -77,7 +77,7 @@
 
         <tr ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter" ng-repeat-end="">
             <td></td>
-            <td ng-click="xExpand(object)"> {{object.Id}} </td>
+            <td  ng-click="xExpand(object)"> {{object.Id}} </td>
             <td ng-if="object.expanded" >
                 <div>
                     InstanceCreationDate

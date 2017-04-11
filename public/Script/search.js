@@ -1,5 +1,6 @@
 // The URL to the API.
-var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=*";
+var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/TestData?q=*&from=0&size=1000";
+var show_data_array = new Array();
 
 // A controller for getting and showing the data.
 app.controller('show_data_ctrl', function ($scope, $http) {
@@ -42,11 +43,14 @@ app.controller('show_data_ctrl', function ($scope, $http) {
         }*/
 
         // "Returns" the patient array, the data will be stored in the variable "show_data"
+        show_data_array = the_patients;
         $scope.show_data = the_patients;
 
     }).finally(function () {
         $scope.loading = false;
     });
+
+
 
     /** FOR SORTING THE TABLE **/
     $scope.property_name = 'name';
