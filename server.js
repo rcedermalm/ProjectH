@@ -29,7 +29,7 @@ app.post('/upload', function(req,res) {
 
 //This is taking care of writing to a file (in cour case td.json)
 //Write to folder uploads
-fs.writeFile('uploads/td.json',JSON.stringify(req.body), (err) =>{
+fs.writeFile('/public/Uploads/td.json',JSON.stringify(req.body), (err) =>{
   if (err) throw err;
   console.log('Saved: ' + JSON.stringify(req.body));
 })
