@@ -1,7 +1,7 @@
-<script src="Script/add_files.js"></script>
-<script src="Script/typeahead.js"></script>
-<script src="Script/bootstrap-tagsinput.js"></script>
-
+<head>
+  <script src="Script/typeahead.js"></script>
+  <script src="Script/bootstrap-tagsinput.js"></script>
+</head>
 <h1 id="heading-browse">Add files to the database</h1>
 
 <!-- Select files -->
@@ -10,53 +10,61 @@
   <output id="list"></output>
 </div>
 
-<!-- Table to display selected files to add to database -->
-<table class="table table-file-selection">
-<thead>
-  <tr>
-    <th>Filename
-    <th>Type
-    <th>Size
-<tbody>    
-  <tr class="success">
-    <td>Success
-    <td>Doe
-    <td>john@example.com
-  <tr class="warning">
-    <td>Warning
-    <td>Refs
-    <td>bo@example.com
-</table>
 
 <!-- User input -->
-<div>
-  <label for="creator" class="txt-info">Added by:</label>
-  <input type="text" class="txt-field" id="creator">
+<!--
+<div >
+  <label for="directory" class="txt-info">Folder directory:</label>
+  <input ng-controller="HttpPostController" type="text" class="txt-field" ng-model="inputDirectory" required>
 </div>
 
-<div>
-  <label for="u-id" class="txt-info">Unique ID for Test Data entry:</label>
-  <input type="text" class="txt-field" id="u-id">
+<div >
+  <label for="tags" class="txt-info">Tags:</label>
+  <input type="text" class="txt-field" ng-model="inputTags">
 </div>
-
-<div>
-  <label for="patient-name" class="txt-info">Patient name:</label>
-  <input type="text" class="txt-field" id="patient-name">
-</div>
-
-<div>
-  <label for="tags" class="txt-info">Labels:</label>
-  <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control">
-  <button type="button" class="btn btn-add-tags btn-sm">Add tags</button>
-</div>
-
-<div>
-  <label for="comments" class="txt-info">Comments:</label>
-  <textarea type="text" class="txt-area" id="comments"></textarea>
-</div>
+-->
 
 
-<div class="buttons">
-  <button type="button" class="btn btn-cancel">Cancel</button>
-  <button type="button" class="btn btn-import">Add entry</button>    
+<div ng-controller="AddController">
+
+  <div>
+    <label for="directory" class="txt-info">Folder directory:</label>
+    <input type="text" class="txt-field" ng-model="inputDirectory" required>
+    {{content}}
+  </div>
+  <div >
+    <label for="types" class="txt-info">File Type:</label>
+    <input type="text" class="txt-field" ng-model="inputTags">
+  </div>
+
+  <form ng-submit="processForm()">
+  <div>
+    <label for="creator" class="txt-info">Added by:</label>
+      <input type="text" ng-model="formData.name" class="txt-field" id="creator" >
+  </div>
+
+  <div>
+    <label for="u-id" class="txt-info">Unique ID for Test Data entry:</label>
+    <input type="text" class="txt-field" id="u-id">
+  </div>
+
+  <div>
+    <label for="patient-name" class="txt-info">Patient name:</label>
+    <input type="text" class="txt-field" id="patient-name">
+  </div>
+
+  <div>
+    <label for="tags" class="txt-info">Tags:</label>
+    <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control" ng-model="formData.Tags">
+  </div>
+  <div>
+    <label for="comments" class="txt-info">Comments:</label>
+    <textarea type="text" class="txt-area" id="comments" ng-model="formData.Info" placeholder="Info"></textarea>
+  </div>
+  <div class="buttons">
+    <button type="button" class="btn btn-cancel">Cancel</button>
+    <!--<button type="submit" class="btn btn-import">Add entry</button>  -->
+    <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button>   
+  </div>
+  </form>
 </div>
