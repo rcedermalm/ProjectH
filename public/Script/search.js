@@ -51,41 +51,46 @@ app.controller('show_data_ctrl', function ($scope, $http) {
         // "Returns" the patient array, the data will be stored in the variable "show_data"
         $scope.show_data = the_patients;
 
-    }).finally(function () {
+      }).finally(function () {
         $scope.loading = false;
-    });
+      });
 
 
 
-    /** FOR SORTING THE TABLE **/
-    $scope.property_name = 'name';
-    $scope.reverse = true;
+      /** FOR SORTING THE TABLE **/
+      $scope.property_name = 'name';
+      $scope.reverse = true;
 
-    $scope.sortBy = function (property_name) {
+      $scope.sortBy = function (property_name) {
         $scope.reverse = ($scope.property_name === property_name) ? !$scope.reverse : false;
         $scope.property_name = property_name;
-    };
+      };
 
-    $scope.xExpand = function (x, parent) {
+      /***************************/
+
+      /** FOR EXPANDING THE LIST **/
+      $scope.xExpand = function (x, parent) {
         x.expanded = !x.expanded;
         if (!x.expanded && parent) collapseAll(x);
-    }
-    function collapseAll(x) {
+      }
+      function collapseAll(x) {
         for (var i = 0; i < x.objects.length; i++) {
             x.objects[i].expanded = false;
         }
-    }
-    var limitStep = 5;
+      }
+      
+      var limitStep = 5;
+      $scope.limit = 20;
 
-    $scope.limit = 20;
-
-    $scope.incrementLimit = function () {
+      $scope.incrementLimit = function () {
         $scope.limit += limitStep;
-    };
-    $scope.decrementLimit = function () {
+      };
+      $scope.decrementLimit = function () {
         $scope.limit -= limitStep;
-    };
+      };
+      
+      /****************************/
 
 
-    /***************************/
+    
 });

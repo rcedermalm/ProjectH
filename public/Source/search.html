@@ -147,99 +147,99 @@
 
 
 <div class="rTable" ng-controller="show_data_ctrl">
-    <div class="rTableHeading">
-        <div class="rTableHead" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
-        <div class="rTableHead">b</div>
-        <div class="rTableHead">c</div>
-        <div class="rTableHead">d</div>
-        <div class="rTableHead">e</div>
-        <div class="rTableHead">f</div>
-        <div class="rTableHead">g</div>
-    </div>
-    <div ng-show="loading" class="loader">
-    </div>
-    <div class="rTableRow" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
-        <div class="rTableCell" ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">{{x.name}}</div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-    </div>
+  <div class="rTableHeading">
+    <div class="rTableHead" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
+    <div class="rTableHead">b</div>
+    <div class="rTableHead">c</div>
+    <div class="rTableHead">d</div>
+    <div class="rTableHead">e</div>
+    <div class="rTableHead">f</div>
+    <div class="rTableHead">g</div>
+  </div>
+  <div ng-show="loading" class="loader">
+  </div>
+  <div class="rTableRow" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
+    <div class="rTableCell" ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">{{x.name}}</div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+  </div>
 
-    <div class="rTableRow" ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter | limitTo: limit" ng-repeat-end="">
-        <div class="rTableCell"></div>
-        <div class="rTableCell" ng-click="xExpand(object)"> {{object.Id}}</div>
-        <div class="rTableCell" ng-if="object.expanded">
-            InstanceCreationDate
-            <BR> InstanceCreationTime:
-            <BR> SOPClassUID:
-            <BR> SOPInstanceUID:
-            <BR> StudyDate:
-            <BR> AcquisitionDate:
-            <BR> StudyTime:
-            <BR> AcquisitionTime:
-            <BR> AccessionNumber:
-            <BR> Modality:
-            <BR> Manufacturer:
-            <BR> InstitutionName:
-            <BR> ReferringPhysicianName:
-            <BR> StationName:
-            <BR> StudyDescription:
-            <BR> SeriesDescription:
-            <BR> InstitutionalDepartmentName:
-            <BR> PerformingPhysicianName:
-            <BR> ManufacturersModelName:
-            <BR> PatientBirthDate:
-        </div>
-        <div class="rTableCell" ng-if="object.expanded">
-            {{ object.Document["(0008,0012)"] }}
-            <BR> {{ object.Document["(0008,0013)"] }}
-            <BR> {{ object.Document["(0008,0016)"] }}
-            <BR> {{ object.Document["(0008,0018)"] }}
-            <BR> {{ object.Document["(0008,0020)"] }}
-            <BR> {{ object.Document["(0008,0022)"] }}
-            <BR> {{ object.Document["(0008,0030)"] }}
-            <BR> {{ object.Document["(0008,0032)"] }}
-            <BR> {{ object.Document["(0008,0050)"] }}
-            <BR> {{ object.Document["(0008,0060)"] }}
-            <BR> {{ object.Document["(0008,0070)"] }}
-            <BR> {{ object.Document["(0008,0080)"] }}
-            <BR> {{ object.Document["(0008,0090)"] }}
-            <BR> {{ object.Document["(0008,1010)"] }}
-            <BR> {{ object.Document["(0008,1030)"] }}
-            <BR> {{ object.Document["(0008,103E)"] }}
-            <BR> {{ object.Document["(0008,1040)"] }}
-            <BR> {{ object.Document["(0008,1050)"] }}
-            <BR> {{ object.Document["(0008,1090)"] }}
-            <BR> {{ object.Document["(0010,0030)"] }}
-        </div>
-        <div class="rTableCell" ng-if="!object.expanded">... </div>
-        <div class="rTableCell" ng-if="!object.expanded">... </div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
+  <div class="rTableRow" ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter | limitTo: limit" ng-repeat-end="">
+    <div class="rTableCell"></div>
+    <div class="rTableCell" ng-click="xExpand(object)"> {{object.Id}}</div>
+    <div class="rTableCell" ng-if="object.expanded">
+      InstanceCreationDate
+      <BR> InstanceCreationTime:
+      <BR> SOPClassUID:
+      <BR> SOPInstanceUID:
+      <BR> StudyDate:
+      <BR> AcquisitionDate:
+      <BR> StudyTime:
+      <BR> AcquisitionTime:
+      <BR> AccessionNumber:
+      <BR> Modality:
+      <BR> Manufacturer:
+      <BR> InstitutionName:
+      <BR> ReferringPhysicianName:
+      <BR> StationName:
+      <BR> StudyDescription:
+      <BR> SeriesDescription:
+      <BR> InstitutionalDepartmentName:
+      <BR> PerformingPhysicianName:
+      <BR> ManufacturersModelName:
+      <BR> PatientBirthDate:
     </div>
+    <div class="rTableCell" ng-if="object.expanded">
+      {{ object.Document["(0008,0012)"] }}
+      <BR> {{ object.Document["(0008,0013)"] }}
+      <BR> {{ object.Document["(0008,0016)"] }}
+      <BR> {{ object.Document["(0008,0018)"] }}
+      <BR> {{ object.Document["(0008,0020)"] }}
+      <BR> {{ object.Document["(0008,0022)"] }}
+      <BR> {{ object.Document["(0008,0030)"] }}
+      <BR> {{ object.Document["(0008,0032)"] }}
+      <BR> {{ object.Document["(0008,0050)"] }}
+      <BR> {{ object.Document["(0008,0060)"] }}
+      <BR> {{ object.Document["(0008,0070)"] }}
+      <BR> {{ object.Document["(0008,0080)"] }}
+      <BR> {{ object.Document["(0008,0090)"] }}
+      <BR> {{ object.Document["(0008,1010)"] }}
+      <BR> {{ object.Document["(0008,1030)"] }}
+      <BR> {{ object.Document["(0008,103E)"] }}
+      <BR> {{ object.Document["(0008,1040)"] }}
+      <BR> {{ object.Document["(0008,1050)"] }}
+      <BR> {{ object.Document["(0008,1090)"] }}
+      <BR> {{ object.Document["(0010,0030)"] }}
+    </div>
+    <div class="rTableCell" ng-if="!object.expanded">... </div>
+    <div class="rTableCell" ng-if="!object.expanded">... </div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+  </div>
 
-    <!--  DETTA FUNKAR INTE RIKTIGT ÄN, rad för att öka antalet resultat visat
-    <div class="rTableRow" ng-if="x.expanded">
-        <div class="rTableCell" ng-click="incrementLimit()">more</div>
-        <div class="rTableCell" ng-click="decrementLimit()">less</div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-    </div>
-    -->
-    <div class="rTableFoot">
-        <div class="rTableCell">Number of visible people: </div>
-        <div class="rTableCell">{{results.length}}</div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-        <div class="rTableCell"></div>
-    </div>
+  <!--  DETTA FUNKAR INTE RIKTIGT ÄN, rad för att öka antalet resultat visat
+  <div class="rTableRow" ng-if="x.expanded">
+      <div class="rTableCell" ng-click="incrementLimit()">more</div>
+      <div class="rTableCell" ng-click="decrementLimit()">less</div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+  </div>
+  -->
+  <div class="rTableFoot">
+    <div class="rTableCell">Number of visible people: </div>
+    <div class="rTableCell">{{results.length}}</div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+  </div>
 </div>
