@@ -27,11 +27,12 @@ app.get('*', function(req, res) {
 app.post('/upload', function(req,res) {
   res.contentType('application/json');
 
-  //This is taking care of writing to a file (in cour case td.json)
-  fs.writeFile('td.json',JSON.stringify(req.body), (err) =>{
-    if (err) throw err;
-    console.log('Saved: ' + JSON.stringify(req.body));
-  })
+//This is taking care of writing to a file (in cour case td.json)
+//Write to folder uploads
+fs.writeFile('uploads/td.json',JSON.stringify(req.body), (err) =>{
+  if (err) throw err;
+  console.log('Saved: ' + JSON.stringify(req.body));
+})
 
 });
 
