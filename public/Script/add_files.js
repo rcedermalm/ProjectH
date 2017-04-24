@@ -1,42 +1,43 @@
 //Function to handle selected files from computer
 function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
+  var files = evt.target.files; // FileList object
 
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
+  // Loop through the FileList and render image files as thumbnails.
+  for (var i = 0, f; f = files[i]; i++) {
 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-
-      //To read the chosen file
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
+    // Only process image files.
+    if (!f.type.match('image.*')) {
+      continue;
     }
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-    }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+    //To read the chosen file
+    var reader = new FileReader();
+
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+      return function(e) {
+        // Render thumbnail.
+        var span = document.createElement('span');
+        span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                          '" title="', escape(theFile.name), '"/>'].join('');
+        document.getElementById('list').insertBefore(span, null);
+      };
+    })(f);
+
+    // Read in the image file as a data URL.
+    reader.readAsDataURL(f);
   }
+
+  // files is a FileList of File objects. List some properties.
+  var output = [];
+  for (var i = 0, f; f = files[i]; i++) {
+    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                f.size, ' bytes, last modified: ',
+                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                '</li>');
+  }
+  document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+}
 
 //document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
@@ -65,48 +66,47 @@ $('.bootstrap-tagsinput').focusout(function() {
 // for the user input
 app.controller('AddController', function($scope, $http) {
 
-
   $scope.SendData = function () {
-     // use $.param jQuery function to serialize data from JSON 
-      var data = { 'Directory': $scope.inputDirectory,
-        'Types': [$scope.inputTags],
-        'ErrorActionPreference': 0
-      };
-      console.log(data);
-
-      var config = {
-          headers : {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          }
-      }
-
-      $http.post('http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/StoreRequests', data, config)
-      .success(function (data, status, headers, config) {
-          $scope.PostDataResponse = data;
-          $scope.content = "Success.";
-      })
-      .error(function (data, status, headers, config) {
-        $scope.ResponseDetails = "Data: " + data +
-          "<hr />status: " + status +
-          "<hr />headers: " + headers +
-          "<hr />config: " + config;
-        $scope.content = "Failure.";
-      });
+    // use $.param jQuery function to serialize data from JSON 
+    var data = { 'Directory': $scope.inputDirectory,
+      'Types': [$scope.inputTags],
+      'ErrorActionPreference': 0
     };
-  
-   // create a blank object to hold our form information
-    // $scope will allow this to pass between controller and view
-    $scope.formData = {};
+    console.log(data);
 
-    // process the form
-    $scope.processForm = function() {
-      $http({
-      method  : 'POST',
-      url     : '/upload',
-      data    : $.param($scope.formData),  // pass in data as strings
-      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-    })};
+    var config = {
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+
+    $http.post('http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/StoreRequests', data, config)
+    .success(function (data, status, headers, config) {
+      $scope.PostDataResponse = data;
+      $scope.content = "Success.";
+    })
+    .error(function (data, status, headers, config) {
+      $scope.ResponseDetails = "Data: " + data +
+        "<hr />status: " + status +
+        "<hr />headers: " + headers +
+        "<hr />config: " + config;
+      $scope.content = "Failure.";
+    });
+  };
+
+ // create a blank object to hold our form information
+  // $scope will allow this to pass between controller and view
+  $scope.formData = {};
+
+  // process the form
+  $scope.processForm = function() {
+    $http({
+    method  : 'POST',
+    url     : '/upload',
+    data    : $.param($scope.formData),  // pass in data as strings
+    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+  })};
 
 });
 

@@ -27,15 +27,15 @@
 
 <div ng-controller="AddController">
 
-<div>
-  <label for="directory" class="txt-info">Folder directory:</label>
-  <input type="text" class="txt-field" ng-model="inputDirectory" required>
-  {{content}}
-</div>
-<div >
-  <label for="types" class="txt-info">File Type:</label>
-  <input type="text" class="txt-field" ng-model="inputTags">
-</div>
+  <div>
+    <label for="directory" class="txt-info">Folder directory:</label>
+    <input type="text" class="txt-field" ng-model="inputDirectory" required>
+    {{content}}
+  </div>
+  <div >
+    <label for="types" class="txt-info">File Type:</label>
+    <input type="text" class="txt-field" ng-model="inputTags">
+  </div>
 
   <form ng-submit="processForm()">
   <div>
