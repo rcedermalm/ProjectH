@@ -1,60 +1,245 @@
+<!--<link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">-->
+<link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="Style/search.css">
 
-  <!--<link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">-->
-  <link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="Style/search.css">
 
-
-  <!--<script src="Script/jquery.js"></script>
+<!--<script src="Script/jquery.js"></script>
   <script src="Script/jquery.dataTables.js"></script>-->
 
-  <div class="container" id="adv-search">
-      <div class="row">
-          <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search..."/>
-              <button type="button" class="btn btn-default">
+<div class="container" id="adv-search">
+
+    <div class="row">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="search_filter" placeholder="Search..." />
+            <button type="button" class="btn btn-default">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
               </button>
-          </div>
-      </div>
-      
-      <div class="row">
-          <div class="dropdown">
-              <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-pressed="false">Advanced search <b class="caret"></b></button>
-              <div class="dropdown-menu">
-                  <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                          <label for="filter">Filter by</label>
-                          <select class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="dropdown">
+            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                aria-pressed="false">Advanced search <b class="caret"></b></button>
+
+                <div class="dropdown-menu">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="filter">Filter by</label>
+                            <select class="form-control">
                               <option value="0" selected>All Files</option>
                               <option value="1">.JPEG</option>
                               <option value="2">.DICOM</option>
                               <option value="3">.txt</option>
                           </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="contain">User</label>
-                          <input class="form-control" type="text" />
-                      </div>
-                      <div class="form-group">
-                          <label for="contain">Tags</label>
-                          <input class="form-control" type="text" />
-                      </div>
-                  </form>
-              </div>
-          </div> 
-      </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contain">User</label>
+                            <input class="form-control" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contain">Tags</label>
+                            <input class="form-control" type="text" />
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<div ng-controller="show_data_ctrl">
+    <table class="table table-responsive table-condensed table-hover">
+        <tr id="table-header">
+            <th ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png">
+                <span class="sortorder" ng-show="property_name === 'name'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>Modality</th>
+            <th>Study ID</th>
+            <th>Accesion Number</th>
+            <th>Size (MB)</th>
+            <th>Images</th>
+            <th>Keywords</th>
+        </tr>
+        <tr ng-show="loading">
+            <td colspan="7">
+                <div class="loader"></div>
+            </td>
+        </tr>
+        <tr ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
+            <td ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}" >{{x.name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter as results" ng-repeat-end="">
+            <td></td>
+            <td ng-click="xExpand(object)"> {{object.Id}} </td>
+            <td ng-if="object.expanded">
+
+                <div>
+                    InstanceCreationDate
+                    <BR> InstanceCreationTime:
+                    <BR> SOPClassUID:
+                    <BR> SOPInstanceUID:
+                    <BR> StudyDate:
+                    <BR> AcquisitionDate:
+                    <BR> StudyTime:
+                    <BR> AcquisitionTime:
+                    <BR> AccessionNumber:
+                    <BR> Modality:
+                    <BR> Manufacturer:
+                    <BR> InstitutionName:
+                    <BR> ReferringPhysicianName:
+                    <BR> StationName:
+                    <BR> StudyDescription:
+                    <BR> SeriesDescription:
+                    <BR> InstitutionalDepartmentName:
+                    <BR> PerformingPhysicianName:
+                    <BR> ManufacturersModelName:
+                    <BR> PatientBirthDate:
+                </div>
+            </td>
+            <td ng-if="object.expanded">
+                <div>
+                    {{ object.Document["(0008,0012)"] }}
+                    <BR> {{ object.Document["(0008,0013)"] }}
+                    <BR> {{ object.Document["(0008,0016)"] }}
+                    <BR> {{ object.Document["(0008,0018)"] }}
+                    <BR> {{ object.Document["(0008,0020)"] }}
+                    <BR> {{ object.Document["(0008,0022)"] }}
+                    <BR> {{ object.Document["(0008,0030)"] }}
+                    <BR> {{ object.Document["(0008,0032)"] }}
+                    <BR> {{ object.Document["(0008,0050)"] }}
+                    <BR> {{ object.Document["(0008,0060)"] }}
+                    <BR> {{ object.Document["(0008,0070)"] }}
+                    <BR> {{ object.Document["(0008,0080)"] }}
+                    <BR> {{ object.Document["(0008,0090)"] }}
+                    <BR> {{ object.Document["(0008,1010)"] }}
+                    <BR> {{ object.Document["(0008,1030)"] }}
+                    <BR> {{ object.Document["(0008,103E)"] }}
+                    <BR> {{ object.Document["(0008,1040)"] }}
+                    <BR> {{ object.Document["(0008,1050)"] }}
+                    <BR> {{ object.Document["(0008,1090)"] }}
+                    <BR> {{ object.Document["(0010,0030)"] }}
+                </div>
+            </td>
+            <td ng-if="!object.expanded">...</td>
+            <td ng-if="!object.expanded">...</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td colspan="7">Number of visible people: {{results.length}}</tf>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+-->
+
+
+
+<div class="rTable" ng-controller="show_data_ctrl">
+  <div class="rTableHeading">
+    <div class="rTableHead" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
+    <div class="rTableHead">b</div>
+    <div class="rTableHead">c</div>
+    <div class="rTableHead">d</div>
+    <div class="rTableHead">e</div>
+    <div class="rTableHead">f</div>
+    <div class="rTableHead">g</div>
+  </div>
+  <div ng-show="loading" class="loader">
+  </div>
+  <div class="rTableRow" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter">
+    <div class="rTableCell" ng-click="xExpand(x,1)" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">{{x.name}}</div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
   </div>
 
-<!-- Show the data in a table -->
-<div ng-controller="show_data_ctrl"> 
-  <table>
-    <tr>
-      <th>Patient Name</th>
-    </tr>
-    <!-- Loop through show_data and display the name -->
-    <tr ng-repeat="x in show_data | orderBy : 'id'"> 
-      <td>{{ x.name }}</td>
-    </tr>
-  </table>
+  <div class="rTableRow" ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter | limitTo: limit" ng-repeat-end="">
+    <div class="rTableCell"></div>
+    <div class="rTableCell" ng-click="xExpand(object)"> {{object.Id}}</div>
+    <div class="rTableCell" ng-if="object.expanded">
+      InstanceCreationDate
+      <BR> InstanceCreationTime:
+      <BR> SOPClassUID:
+      <BR> SOPInstanceUID:
+      <BR> StudyDate:
+      <BR> AcquisitionDate:
+      <BR> StudyTime:
+      <BR> AcquisitionTime:
+      <BR> AccessionNumber:
+      <BR> Modality:
+      <BR> Manufacturer:
+      <BR> InstitutionName:
+      <BR> ReferringPhysicianName:
+      <BR> StationName:
+      <BR> StudyDescription:
+      <BR> SeriesDescription:
+      <BR> InstitutionalDepartmentName:
+      <BR> PerformingPhysicianName:
+      <BR> ManufacturersModelName:
+      <BR> PatientBirthDate:
+    </div>
+    <div class="rTableCell" ng-if="object.expanded">
+      {{ object.Document["(0008,0012)"] }}
+      <BR> {{ object.Document["(0008,0013)"] }}
+      <BR> {{ object.Document["(0008,0016)"] }}
+      <BR> {{ object.Document["(0008,0018)"] }}
+      <BR> {{ object.Document["(0008,0020)"] }}
+      <BR> {{ object.Document["(0008,0022)"] }}
+      <BR> {{ object.Document["(0008,0030)"] }}
+      <BR> {{ object.Document["(0008,0032)"] }}
+      <BR> {{ object.Document["(0008,0050)"] }}
+      <BR> {{ object.Document["(0008,0060)"] }}
+      <BR> {{ object.Document["(0008,0070)"] }}
+      <BR> {{ object.Document["(0008,0080)"] }}
+      <BR> {{ object.Document["(0008,0090)"] }}
+      <BR> {{ object.Document["(0008,1010)"] }}
+      <BR> {{ object.Document["(0008,1030)"] }}
+      <BR> {{ object.Document["(0008,103E)"] }}
+      <BR> {{ object.Document["(0008,1040)"] }}
+      <BR> {{ object.Document["(0008,1050)"] }}
+      <BR> {{ object.Document["(0008,1090)"] }}
+      <BR> {{ object.Document["(0010,0030)"] }}
+    </div>
+    <div class="rTableCell" ng-if="!object.expanded">... </div>
+    <div class="rTableCell" ng-if="!object.expanded">... </div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+  </div>
 
+  <!--  DETTA FUNKAR INTE RIKTIGT ÄN, rad för att öka antalet resultat visat
+  <div class="rTableRow" ng-if="x.expanded">
+      <div class="rTableCell" ng-click="incrementLimit()">more</div>
+      <div class="rTableCell" ng-click="decrementLimit()">less</div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+      <div class="rTableCell"></div>
+  </div>
+  -->
+  <div class="rTableFoot">
+    <div class="rTableCell">Number of visible people: </div>
+    <div class="rTableCell">{{results.length}}</div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+    <div class="rTableCell"></div>
+  </div>
 </div>
