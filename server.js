@@ -5,6 +5,7 @@ var morgan = require('morgan');                         // log requests to the c
 var bodyParser = require('body-parser');                // pull information from HTML POST (express4)
 var methodOverride = require('method-override');        // simulate DELETE and PUT (express4)
 var fs = require('fs');                                 // Filewriting var'
+var stringify = require('stringifier').stringify;       // This may be redundant, prepare to take it away.
 
 // configuration =================
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
@@ -24,15 +25,23 @@ app.get('*', function(req, res) {
 });
 
 // This is for handling input form the client, it types it out with console.log
+// This input is the path to the folder to be added to the database
+app.post('/filepath', function(req,res) {
+    res.contentType('text/html');
+    directoryToFolder = req.body;
+    console.log(Object.keys(directoryToFolder));
+});
+
+// This is for handling input form the client, it types it out with console.log
 app.post('/upload', function(req,res) {
   res.contentType('application/json');
 
-//This is taking care of writing to a file (in cour case td.json)
-//Write to folder uploads
-fs.writeFile('Uploads/td.json',JSON.stringify(req.body), (err) =>{
-  if (err) throw err;
-  console.log('Saved: ' + JSON.stringify(req.body));
-})
+    // This is taking care of writing to a file (in cour case td.json), first argument is the filepath, second is what goes in.
+    // Is currently hard coded to write to \\teatime.westeurope.cloudapp.azure.com\SharedStorage\nyTest123.
+    fs.writeFile( '\\\\teatime.westeurope.cloudapp.azure.com\\SharedStorage\\nyTest123' + '\\'  + 'td.json',JSON.stringify(req.body), (err) =>{
+        if (err) throw err;
+        console.log('Saved: ' + JSON.stringify(req.body) + ', to: ' + Object.keys(directoryToFolder) + '\\td.json' );
+    })
 
 });
 

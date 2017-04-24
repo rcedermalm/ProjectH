@@ -95,18 +95,30 @@ app.controller('AddController', function($scope, $http) {
     });
   };
 
- // create a blank object to hold our form information
-  // $scope will allow this to pass between controller and view
-  $scope.formData = {};
+    // $scope will allow this to pass between controller and view
+    // process the form
+    $scope.processForm = function() {
+      //File structure with comments from sectra
+      var jsonData = { 
+                "Tags":   [$scope.Tags],          // en Array av string
+                "Paths":  [],                     // Lämna denna tom
+                "Info":   $scope.Info             // Kan innehålla godtyckliga JSON key:value par
+      };
+      console.log(jsonData);
 
-  // process the form
-  $scope.processForm = function() {
-    $http({
-    method  : 'POST',
-    url     : '/upload',
-    data    : $.param($scope.formData),  // pass in data as strings
-    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-  })};
+      $http({
+      method  : 'POST',
+      url     : '/filepath',
+      data    : $scope.inputDirectory,  // pass in data as strings
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+      });
+
+      $http({
+      method  : 'POST',
+      url     : '/upload',
+      data    : $.param(jsonData),  // pass in data as strings
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+    })};
 
 });
 
