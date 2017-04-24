@@ -1,51 +1,84 @@
 <!--<link rel="stylesheet" type="text/css" href="Style/jquery.dataTables.min.css">-->
 <link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="Style/search.css">
+<link rel="stylesheet" type="text/css" href="Style/bootstrap-select.min.css">
 
 
 <!--<script src="Script/jquery.js"></script>
   <script src="Script/jquery.dataTables.js"></script>-->
+  
+<script src="Script/bootstrap-select.min.js"></script>
 
-<div class="container" id="adv-search">
+<div id="page-content-wrapper">
+  <div class="page-content">
+    <div class="container">
 
-    <div class="row">
-        <div class="input-group">
-            <input type="text" class="form-control" ng-model="search_filter" placeholder="Search..." />
-            <button type="button" class="btn btn-default">
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              </button>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="dropdown">
-            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                aria-pressed="false">Advanced search <b class="caret"></b></button>
-
-                <div class="dropdown-menu">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="filter">Filter by</label>
-                            <select class="form-control">
-                              <option value="0" selected>All Files</option>
-                              <option value="1">.JPEG</option>
-                              <option value="2">.DICOM</option>
-                              <option value="3">.txt</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="contain">User</label>
-                            <input class="form-control" type="text" />
-                        </div>
-                        <div class="form-group">
-                            <label for="contain">Tags</label>
-                            <input class="form-control" type="text" />
-                        </div>
-                    </form>
+    <div class="searchbar">
+        <div class="row">
+            <div class="col-md-12">  
+                <div class="input-group">
+                  <input type="text" class="form-control" style="width: 100%" ng-model="search_filter" placeholder="Search..."/>
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
                 </div>
+            </div>
         </div>
+
+        <div class="dropdown">
+        <div class="row">
+          <div class="col-md-12"> 
+            <div class="dropdownLink">       
+                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#adv-search" aria-expanded="false">Advanced search <b class="caret"></b></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">  
+            <div class="collapse" id="adv-search">
+                <div class="col-md-4 col1">
+                 
+                  <div class="selectFiletype">
+                    <p>Filetype:</p>
+                  
+                      <div class="checkbox">
+                        <label><input type="checkbox" value="dicom"> DICOM</label>
+                        <label><input type="checkbox" value="txt"> txt</label>
+                        <label><input type="checkbox" value="jpeg"> JPEG</label>
+                      </div>
+
+                  </div>
+
+                  <div class="selectModality">
+                    <p>Modality:</p>
+
+                    <div class="modality">
+                      <select class="selectpicker" multiple title="Choose DICOM type..." data-live-search="true">
+                        <option>CR</option>
+                        <option>CT</option>
+                        <option>MR</option>
+                      </select>
+                    </div>
+                  </div>
+
+               </div> 
+               <div class="col-md-4 col2">
+                <p>Tags: </p>
+                
+               </div>
+               <div class="col-md-4 col3">
+               <p>User:</p>
+               </div>
+               
+               </div>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
 
 <!--
@@ -145,7 +178,6 @@
 -->
 
 
-
 <div class="rTable" ng-controller="show_data_ctrl">
   <div class="rTableHeading">
     <div class="rTableHead" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
@@ -242,4 +274,6 @@
     <div class="rTableCell"></div>
     <div class="rTableCell"></div>
   </div>
+</div>
+</div>
 </div>
