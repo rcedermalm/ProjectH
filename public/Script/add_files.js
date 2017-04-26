@@ -100,9 +100,11 @@ app.controller('AddController', function($scope, $http) {
     $scope.processForm = function() {
       //File structure with comments from sectra
       var jsonData = { 
-                "Tags":   [$scope.Tags],          // en Array av string
-                "Paths":  [],                     // Lämna denna tom
-                "Info":   $scope.Info             // Kan innehålla godtyckliga JSON key:value par
+                "Tags":   $scope.Tags.split(","),      // en Array av string
+                "Paths":  [""],                        // Lämna denna tom
+                "Info":    {
+                  "Placeholder" : $scope.Info          // Kan innehålla godtyckliga JSON key:value par, ändra till det jacob vill sen.
+                }
       };
       console.log(jsonData);
 
