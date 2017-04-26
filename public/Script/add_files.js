@@ -100,11 +100,11 @@ app.controller('AddController', function($scope, $http) {
     $scope.processForm = function() {
       //File structure with comments from sectra
       var jsonData = { 
-                "Tags":   $scope.Tags.split(","),      // en Array av string
-                "Paths":  [""],                        // Lämna denna tom
+                "Tags":   $scope.Tags.split(","),      // $scope.Tags is a string with all the tags, and are divided by the function .split(","). This is because the tags-input divide all the tags by comma.
+                "Paths":  [""],                        // Requested to be empty, for now
                 "Info":    {
-                  "Placeholder" : $scope.Info          // Kan innehålla godtyckliga JSON key:value par, ändra till det jacob vill sen.
-                }
+                  "Placeholder" : $scope.Info          // This is where all the other info should go, i.e: Creator, Import date, Labels etc...
+                }                                      // Replace placeholder when the field in the HTML-code is correct
       };
       console.log(jsonData);
 
