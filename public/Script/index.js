@@ -4,6 +4,7 @@ var app = angular.module("TDDB", ["ngRoute"]);
     .when("/", {templateUrl : "Source/main.html"})
     .when("/page_search", {templateUrl : "Source/search.html"})
     .when("/page_add", {templateUrl : "Source/add_files.html"})
-    .when("/page_test", {templateUrl : "Source/test.html"});
+    .when("/page_test", {templateUrl : "Source/test.html"})
+    .when("/page_overview", {templateUrl : "Source/overview.html"});
   });
 
