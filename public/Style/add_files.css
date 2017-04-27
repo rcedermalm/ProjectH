@@ -40,6 +40,7 @@
   margin: 5px 2% 5px 2%;
   vertical-align: top;
   width: 25%;
+  border-radius: 5px;
 }
 
 .txt-area {
@@ -49,6 +50,7 @@
   resize: none;
   vertical-align: top;
   width: 25%;
+  border-radius: 5px;
 }
 
 .btn-add-tags {
@@ -97,10 +99,6 @@
   margin: 5px 2% 5px 2%;
 }
 
-.btn-add-tags {
-  background: #6cf;
-}
-
 .success{
   background: #6cf;
 }
@@ -114,3 +112,127 @@ thead {
   border: none;
 }
 
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  vertical-align: top;
+  margin: 5px 1% 5px 2%;
+  display: inline-block;
+  width: 56px;
+  height: 27px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color:#6cf;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #6cf;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px);
+}
+
+/* File selector */
+#upload-input {
+  display: none;
+}
+
+.btn:focus, .upload-btn:focus{
+  outline: 0 !important;
+} 
+
+.row {
+  margin-top: 10px;
+}
+
+.upload-btn {
+  color: #ffffff;
+  background-color: #6a6a6a;
+  border: none;
+  : right;
+}
+
+.upload-btn:hover,
+.upload-btn:focus,
+.upload-btn:active {
+  color: #ffffff;
+  background-color: #6a6a6a;
+  border: none;
+}
+
+h4 {
+  padding-bottom: 30px;
+  color: #B8BDC1;
+}
+
+.glyphicon {
+  font-size: 1.5em;
+  padding-right: 3px;
+  color: #ffffff;
+
+}
+
+.panel {
+  padding-top: 0px;
+  padding-bottom: 10px;
+  width: 41.5%;
+}
+
+#upload-input {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 450px;
+  }
+}
+
+.panel-heading {
+  text-align: left;
+  width: 100%;
+  height: 60px;
+}
+
+/* File selector */ 

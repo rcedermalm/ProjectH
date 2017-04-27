@@ -1,3 +1,5 @@
+/*
+
 //Function to handle selected files from computer
 function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
@@ -41,6 +43,8 @@ function handleFileSelect(evt) {
 
 //document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
+*/
+
 //Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
@@ -55,8 +59,6 @@ $('.bootstrap-tagsinput').focusin(function() {
 $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
-
-
 
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
@@ -95,14 +97,19 @@ app.controller('AddController', function($scope, $http) {
     });
   };
 
+  var today = new Date();
+
+  $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
+    
+  }
     // $scope will allow this to pass between controller and view
     // process the form
     $scope.processForm = function() {
       //File structure with comments from sectra
       var jsonData = { 
-                "Tags":   [$scope.Tags],          // en Array av string
-                "Paths":  [],                     // Lämna denna tom
-                "Info":   $scope.Info             // Kan innehålla godtyckliga JSON key:value par
+                "Tags":   $scope.Tags.split(","),      // $scope.Tags is a string with all the tags, and are divided by the function .split(","). This is because the tags-input divide all the tags by comma.
+                "Paths":  [""],                        // Requested to be empty, for now
+                "Info":   $scope.Info                  // This is where all the other info go, i.e: Creator, Import date, Labels etc...                                                     // Replace placeholder when the field in the HTML-code is correct
       };
       console.log(jsonData);
 
