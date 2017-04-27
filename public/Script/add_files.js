@@ -1,3 +1,5 @@
+/*
+
 //Function to handle selected files from computer
 function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
@@ -41,6 +43,8 @@ function handleFileSelect(evt) {
 
 //document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
+*/
+
 //Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
@@ -55,8 +59,6 @@ $('.bootstrap-tagsinput').focusin(function() {
 $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
-
-
 
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123

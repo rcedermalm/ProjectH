@@ -1,18 +1,41 @@
 <head>
   <script src="Script/typeahead.js"></script>
   <script src="Script/bootstrap-tagsinput.js"></script>
-</head>
+  <script src="Script/upload.js"></script> 
+ </head>
 <h1 id="heading-browse">Add files to the database</h1>
 
-<!-- Select files -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <button class="btn-sm upload-btn pull-left" type="button">
+          <span class="glyphicon glyphicon-upload"></span>Select files</button>
+        </div>  
+        <div class="panel-body">
+          <!--
+          <div class="progress">
+           <div class="progress-bar" role="progressbar"></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+Select files 
 <div class="fileinput fileinput-new" data-provides="fileinput">
   <input type="file" class="btn btn-default btn-browse" id="files" name="files[]" multiple />
   <output id="list"></output>
-</div>
+</div> -->
 
 
 <!-- User input -->
-<!--
 <div >
   <label for="directory" class="txt-info">Folder directory:</label>
   <input ng-controller="HttpPostController" type="text" class="txt-field" ng-model="inputDirectory" required>
@@ -22,7 +45,6 @@
   <label for="tags" class="txt-info">Tags:</label>
   <input type="text" class="txt-field" ng-model="inputTags">
 </div>
--->
 
 
 <div ng-controller="AddController">
@@ -33,21 +55,14 @@
     {{content}}
   </div>
   <div >
-    <label for="types" class="txt-info">File Type:</label>
+    <label for="types" class="txt-info">Labels:</label>
     <input type="text" class="txt-field" ng-model="inputTags">
   </div>
 
   <form ng-submit="processForm()">
-  <div>
-    <label for="anonymized" class="txt-info">Anonymized?</label>
-    <label class="switch">
-      <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'">
-      <div class="slider"></div>
-    </label>
-  </div>
 
   <div>
-    <label for="creator" class="txt-info">Added by:</label>
+    <label for="creator" class="txt-info">Creator:</label>
       <input type="text" ng-model="Info.Creator" class="txt-field" id="creator" >
   </div>
 
@@ -74,6 +89,15 @@
     <label for="comments" class="txt-info">Comments:</label>
     <textarea type="text" class="txt-area" id="comments" ng-model="Info.Comments" placeholder="Info"></textarea>
   </div>
+
+  <div>
+    <label for="anonymized" class="txt-info">Anonymized?</label>
+    <label class="switch">
+      <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'">
+      <div class="slider"></div>
+    </label>
+  </div>
+
   <div class="buttons">
     <button type="button" class="btn btn-cancel">Cancel</button>
     <!--<button type="submit" class="btn btn-import">Add entry</button>  -->
@@ -81,3 +105,4 @@
   </div>
   </form>
 </div>
+
