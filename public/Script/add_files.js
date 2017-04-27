@@ -95,6 +95,11 @@ app.controller('AddController', function($scope, $http) {
     });
   };
 
+  var today = new Date();
+
+  $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
+    
+  }
     // $scope will allow this to pass between controller and view
     // process the form
     $scope.processForm = function() {
@@ -102,9 +107,7 @@ app.controller('AddController', function($scope, $http) {
       var jsonData = { 
                 "Tags":   $scope.Tags.split(","),      // $scope.Tags is a string with all the tags, and are divided by the function .split(","). This is because the tags-input divide all the tags by comma.
                 "Paths":  [""],                        // Requested to be empty, for now
-                "Info":    {
-                  "Placeholder" : $scope.Info          // This is where all the other info should go, i.e: Creator, Import date, Labels etc...
-                }                                      // Replace placeholder when the field in the HTML-code is correct
+                "Info":   $scope.Info                  // This is where all the other info go, i.e: Creator, Import date, Labels etc...                                                     // Replace placeholder when the field in the HTML-code is correct
       };
       console.log(jsonData);
 
