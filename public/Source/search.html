@@ -55,10 +55,12 @@
       <div class="r-table-head">Modality</div>
       <div class="r-table-head">Study ID</div>
       <div class="r-table-head">Accession Nr</div>
+      <div class="r-table-head"></div><!-- For the edit icon in the cells -->
     </div>
     <div ng-show="loading" class="r-table-row">    
       <div class="r-table-cell"></div>
       <div class="r-table-cell"><div class="loader"></div></div>
+      <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
     </div>
@@ -69,6 +71,7 @@
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
+      <div class="r-table-cell"></div>
     </div>
 
     <div class="r-table-row" ng-if="x.expanded" ng-repeat="object in x.objects | filter : search_filter | limitTo: limit" ng-repeat-end="">
@@ -76,6 +79,7 @@
       <div class="r-table-cell">{{ object.Document["(0008,0060)"] }}</div> <!-- Modality -->
       <div class="r-table-cell">{{ object.Document["(0020,0010)"] }}</div> <!-- Study ID -->
       <div class="r-table-cell">{{ object.Document["(0008,0050)"] }}</div> <!-- Accession Nr -->
+      <div class="r-table-cell"> <button class="glyphicon glyphicon-pencil" aria-hidden="true"></button></div>
       <!-- How to expand the table once more (we keep it for now, if we want to use it), for example
       <div class="rTableCell" ng-click="xExpand(object)"> {{object.Id}}</div>
       <div class="rTableCell" ng-if="object.expanded">
@@ -84,6 +88,7 @@
     </div>
     <div class="r-table-foot">
       <div class="r-table-cell">Number of visible people: {{ show_data_length }}</div>
+      <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
