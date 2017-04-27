@@ -37,10 +37,9 @@
         <li><a href="#page_test">Testing</a>
           
       </ul>
-      <ul id="drag-drop-and-button">        
-        <!-- How to make an object draggable 
-        <li id="src-copy" draggable="true" ondragstart="dragstartHandler(event);" ondragend="dragendHandler(event)"> Hej -->
-        <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event);"></div>
+      <ul id="drag-drop-and-button">     
+        <!-- The target for dropping files -->   
+        <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event);"></div> 
         <button type="button" class="btn btn-default" onclick="sendFiles()" id="send-button">Send to test</button>
       </ul>
     </div>

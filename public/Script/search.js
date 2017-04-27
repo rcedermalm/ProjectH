@@ -50,6 +50,7 @@ app.controller('show_data_ctrl', function ($scope, $http) {
 
         // "Returns" the patient array, the data will be stored in the variable "show_data"
         $scope.show_data = the_patients;
+        $scope.show_data_length = the_patients.length;
 
       }).finally(function () {
         $scope.loading = false;

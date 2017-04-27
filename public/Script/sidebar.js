@@ -35,7 +35,7 @@ function dragoverHandler(ev) {
   console.log("dragOver");
 
   // Change the color of the target if someone
-  ev.currentTarget.style.background = "#333333";
+  ev.currentTarget.style.background = "white";
 
   ev.preventDefault();
 }
@@ -44,7 +44,7 @@ function dragleaveHandler(ev){
 	console.log("dragLeave");
 
 	// Change the color of the target back to normal
-	ev.currentTarget.style.background = "#000000";
+	ev.currentTarget.style.background = "#abad9f";
 }
 
 var objectsInDropZone = new Array();
@@ -59,14 +59,18 @@ function dropHandler(ev) {
   var id = ev.dataTransfer.getData("name");
 
   // Change the color of the target back to normal
-  ev.currentTarget.style.background = "#000000";
+  ev.currentTarget.style.background = "#abad9f";
+
+
 
   // Copy the element if the source and destination ids are both "copy" and 
   // the element has not been dragged before
-  if (/*id == "src-copy" &&*/ ev.target.id == "target" /*&& !has_been_dragged*/) {
-  	has_been_dragged = true;
+  if (ev.target.id == "target") {
     var node_copy = document.getElementById(id).cloneNode(true);
+    node_copy.style.color = "white";
+    node_copy.style.background = "#abad9f";
     node_copy.id = "new_id";
+
     ev.target.appendChild(node_copy);
 
     // find the name in our array of objects
@@ -78,9 +82,9 @@ function dropHandler(ev) {
 
     // Change the background color of the element if is has been dropped 
     // in a valid target
-    /*var el = document.getElementById("src-copy");
-    el.style.background = "#666666";
-    el.style.color = "#999999";*/
+    var element_in_list = document.getElementById(id);
+    element_in_list.style.background = "#999999";
+    element_in_list.style.color = "black";
     console.log(id);
   }
 }

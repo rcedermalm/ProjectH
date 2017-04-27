@@ -5,7 +5,7 @@
 */
 
 body {
-  background-color: #262626 !important;
+  background-color: #eae8e2 !important;
   color: white !important;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -26,7 +26,7 @@ body {
 }
 
 #sidebar-wrapper {
-  background: #000;
+  background: #abad9f;
   height: 100%;
   left: 250px;
   margin-left: -250px;
@@ -74,15 +74,15 @@ body {
 }
 
 .sidebar-nav li a {
-  color: #999;
+  color: white;
   display: block;
   text-decoration: none;
 }
 
 .sidebar-nav li a:hover {
-  background-color: #66ccff;
+  background-color: #eae8e2;
   background-size: 2px 2px;
-  color: white;
+  color: #2d2d2d;
   text-decoration: none;
 }
 
@@ -139,9 +139,8 @@ body {
 }
 
 #target{
-  border:3px dashed #999;
-  border-color: #262626;
-  border-radius: 20px;
+  border:3px dashed #eae8e2;
+  border-radius: 10px;
   color:#999;
   height: 35vh;
   margin-left:-3%;
@@ -172,11 +171,13 @@ body {
 }
 
 #send-button{
-  background: #6cf;
+  background: #eae8e2;
   border: 0;
-  color: white;
-  margin: 2vh 0 20% 2.5%;
-  width: 80%;
+  color: #2e2e2c;
+  height: 6vh;
+  margin: 2vh 0 20% -2vh;
+  width: 95%;
+
 }
 
 #dimensions {
@@ -185,12 +186,14 @@ body {
   margin-top: 20px;
 }
 
+/** Header **/
 .navbar {
-  background-color: black !important;
+  background-color: #014d6f !important;
   border-radius: 0 !important;
+  border-color:#014d6f !important;
   margin-bottom: 0 !important;
 }
-
+/*
 .container-fluid {
   -webkit-box-shadow: 0 20px 6px -6px #999;
   -moz-box-shadow: 0 20px 6px -6px #999;
@@ -201,8 +204,9 @@ body {
 
 .navbar-brand {
   color: #9cf !important;
-}
+}*/
 
+/** Sectra image on header **/
 #header-image {
   height: 100%;
 }
