@@ -75,6 +75,7 @@
         <div class="rTableCell"></div>
     </div>
 
+    <div class="rTableRow" ng-if="x.expanded" ng-repeat="object in x.objects | filter : checkBoxFilter" ng-repeat-end="">
         <div class="rTableCell"></div>
         <div class="rTableCell" ng-click="xExpand(object)"> {{object.Id}}</div>
         <div class="rTableCell" ng-if="object.expanded">
