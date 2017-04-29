@@ -35,74 +35,62 @@ Select files
 </div> -->
 
 
-<!-- User input -->
-<div >
-  <label for="directory" class="txt-info">Folder directory:</label>
-  <input ng-controller="HttpPostController" type="text" class="txt-field" ng-model="inputDirectory" required>
-</div>
-
-<div >
-  <label for="tags" class="txt-info">Tags:</label>
-  <input type="text" class="txt-field" ng-model="inputTags">
-</div>
-
-
 <div ng-controller="AddController">
-
-  <div>
-    <label for="directory" class="txt-info">Folder directory:</label>
-    <input type="text" class="txt-field" ng-model="inputDirectory" required>
-    {{content}}
-  </div>
-  <div >
-    <label for="types" class="txt-info">Labels:</label>
-    <input type="text" class="txt-field" ng-model="inputTags">
-  </div>
-
   <form ng-submit="processForm()">
 
-  <div>
-    <label for="creator" class="txt-info">Creator:</label>
-      <input type="text" ng-model="Info.Creator" class="txt-field" id="creator" >
-  </div>
+    <div>
+      <label for="directory" class="txt-info">Folder directory:</label>
+      <input type="text" class="txt-field" ng-model="inputDirectory" required>
+      {{content}}
+    </div>
+    <div >
+      <label for="types" class="txt-info">Labels:</label>
+      <input type="text" class="txt-field" ng-model="inputTags">
+    </div>
 
-  <div>
-    <label for="infoTestData" class="txt-info">TestData ID:</label>
-    <input type="text" ng-model="Info.TestDataID" class="txt-field" id="infoTestData">
-  </div>
+    <div>
+      <label for="creator" class="txt-info">Creator:</label>
+        <input type="text" ng-model="Info.Creator" class="txt-field" id="creator" >
+    </div>
 
-  <div>
-    <label for="infoTestCase" class="txt-info">TestCase ID:</label>
-    <input type="text" ng-model="Info.TestCaseID"  class="txt-field" id="infoTestCase">
-  </div>
+    <div>
+      <label for="infoTestData" class="txt-info">TestData ID:</label>
+      <input type="text" ng-model="Info.TestDataID" class="txt-field" id="infoTestData">
+    </div>
 
-  <div>
-    <label for="patient-name" class="txt-info">New patient name:</label>
-    <input type="text" ng-model="Info.NewPatientName" class="txt-field" id="patient-name">
-  </div>
+    <div>
+      <label for="infoTestCase" class="txt-info">TestCase ID:</label>
+      <input type="text" ng-model="Info.TestCaseID"  class="txt-field" id="infoTestCase">
+    </div>
 
-  <div>
-    <label for="tags" class="txt-info">Tags:</label>
-    <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control" ng-model="Tags" ng-init="Tags=''">
-  </div>
-  <div>
-    <label for="comments" class="txt-info">Comments:</label>
-    <textarea type="text" class="txt-area" id="comments" ng-model="Info.Comments" placeholder="Info"></textarea>
-  </div>
+    <div>
+      <label for="patient-name" class="txt-info">New patient name:</label>
+      <input type="text" ng-model="Info.NewPatientName" class="txt-field" id="patient-name">
+    </div>
 
-  <div>
-    <label for="anonymized" class="txt-info">Anonymized?</label>
-    <label class="switch">
-      <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'">
-      <div class="slider"></div>
-    </label>
-  </div>
+    <div>
+      <label for="tags" class="txt-info">Tags:</label>
+      <input type="text" id="tags" value="" data-role="tagsinput" id="tags" class="form-control" ng-model="Tags" ng-init="Tags=''">
+    </div>
+    <div>
+      <label for="comments" class="txt-info">Comments:</label>
+      <textarea type="text" class="txt-area" id="comments" ng-model="Info.Comments" placeholder="Info"></textarea>
+    </div>
 
-  <div class="buttons">
-    <button type="button" class="btn btn-cancel">Cancel</button>
-    <!--<button type="submit" class="btn btn-import">Add entry</button>  -->
-    <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button>   
-  </div>
+    <div>
+      <label for="anonymized" class="txt-info">Anonymized?</label>
+      <label class="switch">
+        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'">
+        <div class="slider"></div>
+      </label>
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="btn btn-cancel">Cancel</button>
+      <!--<button type="submit" class="btn btn-import">Add entry</button>  -->
+      <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button>   
+    </div>
+  
   </form>
 </div>
 
