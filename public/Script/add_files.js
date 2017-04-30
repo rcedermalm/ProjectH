@@ -129,3 +129,14 @@ app.controller('AddController', function($scope, $http) {
 
 });
 
+//Function to pass form input to modal
+function modalFunction() {
+    $('#directory').val($('#directory-init').val());
+    $('#labels').val($('#labels-init').val());
+    $('#creator').val($('#creator-init').val());
+    $('#TDID').val($('#TDID-init').val());
+    $('#TCID').val($('#TCID-init').val());
+    $('#patient-name').val($('#patient-name-init').val());
+}
+
+

@@ -35,37 +35,42 @@ Select files
 </div> -->
 
 
+<!-- User input -->
 <div ng-controller="AddController">
-  <form ng-submit="processForm()">
 
+  <form ng-submit="processForm()">
     <div>
       <label for="directory" class="txt-info">Folder directory:</label>
-      <input type="text" class="txt-field" ng-model="inputDirectory" required>
+      <input type="text" class="txt-field" ng-model="inputDirectory" id="directory-init" required>
       {{content}}
     </div>
     <div >
       <label for="types" class="txt-info">Labels:</label>
-      <input type="text" class="txt-field" ng-model="inputTags">
+      <input type="text" class="txt-field" ng-model="inputTags" id="labels-init">
     </div>
 
     <div>
+      <!-- old id: creator -->
       <label for="creator" class="txt-info">Creator:</label>
-        <input type="text" ng-model="Info.Creator" class="txt-field" id="creator" >
+        <input type="text" ng-model="Info.Creator" class="txt-field" id="creator-init">
     </div>
 
     <div>
+      <!-- old id: infoTestData -->
       <label for="infoTestData" class="txt-info">TestData ID:</label>
-      <input type="text" ng-model="Info.TestDataID" class="txt-field" id="infoTestData">
+      <input type="text" ng-model="Info.TestDataID" class="txt-field" id="TDID-init">
     </div>
 
     <div>
+      <!-- old id: infoTestCase -->
       <label for="infoTestCase" class="txt-info">TestCase ID:</label>
-      <input type="text" ng-model="Info.TestCaseID"  class="txt-field" id="infoTestCase">
+      <input type="text" ng-model="Info.TestCaseID"  class="txt-field" id="TCID-init">
     </div>
 
     <div>
+      <!-- old id: patient-name -->
       <label for="patient-name" class="txt-info">New patient name:</label>
-      <input type="text" ng-model="Info.NewPatientName" class="txt-field" id="patient-name">
+      <input type="text" ng-model="Info.NewPatientName" class="txt-field" id="patient-name-init">
     </div>
 
     <div>
@@ -87,10 +92,60 @@ Select files
 
     <div class="buttons">
       <button type="button" class="btn btn-cancel">Cancel</button>
-      <!--<button type="submit" class="btn btn-import">Add entry</button>  -->
-      <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button>   
+      <!--<button type="submit" class="btn btn-import">Add entry</button>  
+      <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
+      <button class="btn btn-import" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
     </div>
-  
   </form>
-</div>
 
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="register" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Overview</h4>
+        </div>
+        <div class="modal-body">
+
+          <div>
+            <label for="directory" class="txt-info">Folder directory:</label>
+            <input id="directory" name="directory" type="text" value="{{ request.form.directory }}" disabled/>
+          </div>
+
+          <div >
+            <label for="types" class="txt-info">Labels:</label>
+            <input id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
+          </div>
+
+          <div>
+            <label for="creator" class="txt-info">Creator:</label>
+            <input id="creator" name="creator" type="text" value="{{ request.form.creator }}" disabled/>
+          </div>
+
+          <div>
+            <label for="infoTestData" class="txt-info">TestData ID:</label>
+            <input id="TDID" name="TDID" type="text" value="{{ request.form.TDID }}" disabled/>
+          </div>
+
+          <div>
+            <label for="infoTestCase" class="txt-info">TestCase ID:</label>
+            <input id="TCID" name="TCID" type="text" value="{{ request.form.TCID }}" disabled/>
+          </div>
+
+          <div>
+            <label for="patient-name" class="txt-info">New patient name:</label>
+            <input id="patient-name" name="patient-name" type="text" value="{{ request.form.patient-name }}" disabled/>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button ng-click="SendData()" type="submit" class="btn btn-default">Add entry</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
