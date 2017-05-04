@@ -7,6 +7,7 @@ $("#menu-toggle").click(function(e) {
 
 
 /** CHECK THE USER'S WINDOWSIZE **/
+/*
 window.onresize = displayWindowSize;
 window.onload = displayWindowSize;
 function displayWindowSize() {
@@ -14,7 +15,7 @@ function displayWindowSize() {
     my_height = window.innerHeight;
     // your size calculation code here
     document.getElementById("dimensions").innerHTML = my_width + "x" + my_height;
-};
+};*/
 
 
 /** DRAG AND DROP **/
