@@ -137,6 +137,10 @@ function modalFunction() {
     $('#TDID').val($('#TDID-init').val());
     $('#TCID').val($('#TCID-init').val());
     $('#patient-name').val($('#patient-name-init').val());
+   // $('#tags').val($('#tags-init').val());
+    $('#comments').val($('#comments-init').val());
+   // $('#anonymized').val($('#anonymized-init').val());
+
 }
 
 
