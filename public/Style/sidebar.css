@@ -5,6 +5,7 @@
 */
 
 body {
+  /* Light grey/yellow color for background*/
   background-color: #eae8e2 !important;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -25,6 +26,7 @@ body {
 }
 
 #sidebar-wrapper {
+  /* Dark gray color, used in eg. sidebar*/
   background: #abad9f;
   height: 100%;
   left: 250px;
@@ -79,6 +81,7 @@ body {
 }
 
 .sidebar-nav li a:hover {
+  /* Darker grey for sidebar etc */
   background-color: #eae8e2;
   background-size: 2px 2px;
   color: #2d2d2d;
@@ -187,21 +190,22 @@ body {
 
 /** Header **/
 .navbar {
+  /* Dark blue color, used in eg. header */
   background-color: #014d6f !important;
   border-radius: 0 !important;
   border-color:#014d6f !important;
   margin-bottom: 0 !important;
 }
-/*
+
 .container-fluid {
-  -webkit-box-shadow: 0 20px 6px -6px #999;
-  -moz-box-shadow: 0 20px 6px -6px #999;
-  box-shadow: 0 8px 90px -10px #999;
+  -webkit-box-shadow: 0 20px 6px -6px #4c4c4c;
+  -moz-box-shadow: 0 20px 6px -6px #4c4c4c;
+  box-shadow: 0 8px 90px -10px #4c4c4c;
   position: relative;
   z-index:1010;
 }
 
-.navbar-brand {
+/*.navbar-brand {
   color: #9cf !important;
 }*/
 
