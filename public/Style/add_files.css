@@ -246,3 +246,14 @@ h4 {
 }
 
 /* File selector */ 
+
+
+
+/* Custom fields */
+#field {
+  margin-bottom:20px;
+}
+
+.form-control {
+  width: 25% !important;
+}

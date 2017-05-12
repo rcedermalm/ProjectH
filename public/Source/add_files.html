@@ -93,6 +93,23 @@ Select files
       </label>
     </div>
 
+    <!-- Custom Fields -->
+    <div class="row">
+    <input type="hidden" name="count" value="1" />
+        <div class="control-group" id="fields">
+            <label class="txt-info" for="field1">Custom Fields</label>
+            <div class="controls" id="profs"> 
+                <form>
+                    <div id="field">
+                      <input class="txt-field" id="field1" name="prof1" type="text" placeholder="Key" data-items="8"/>
+                      <!--<input class="tex-field" id="field21" name="prof21" type="text" placeholder="Value" data-items="8"/>-->
+                      <button id="b1" class="btn add-more" type="button">+</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+  </div>
+
     <div class="buttons">
       <button type="button" class="btn btn-cancel">Cancel</button>
       <!--<button type="submit" class="btn btn-import">Add entry</button>  
@@ -100,6 +117,44 @@ Select files
       <button class="btn btn-import" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
     </div>
   </form>
+
+  <script>
+
+  //JQuery 
+    $(document).ready(function(){
+    var next = 1;
+    $(".add-more").click(function(e){
+        e.preventDefault();
+        //Current key value text field, add more after the current one
+        var addto = "#field" + next; // Ex field2, field3, field4
+        var addRemove = "#field" + (next); // Ex ????
+
+        next = next + 1;
+        // New key value text field to be added after current
+        var newIn = '<input class="txt-field" id="field' + next + '" name="field' + next + '" type="text" placeholder="Key">';
+        var newInput = $(newIn);
+
+        //Delete button to be added after new key value text field
+        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div>';
+        var removeButton = $(removeBtn);
+
+        //Add new KV after current
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);  
+        
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = "#field" + fieldNum;
+                $(this).remove();
+                $(fieldID).remove();
+            });
+    }); 
+});
+
+  </script>
 
 
 
@@ -157,8 +212,6 @@ Select files
             <label for="anonymized" class="txt-info">Anonymized:</label>
             <input id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
           </div> -->
-
-
 
         </div>
         <div class="modal-footer">
