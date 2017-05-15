@@ -1,49 +1,37 @@
-/*
 
-//Function to handle selected files from computer
-function handleFileSelect(evt) {
-  var files = evt.target.files; // FileList object
+/******************** FILE PICKER **************************/
+var directory; 
+$(document).on('change', '.btn-file :file', function(value) {
+    console.log(value);
+        var input = $('.filename'),
+            numFiles = value.target.files ? value.target.files.length : 1,
+            label = value.target.files[0].name.replace(/\\/g, '/').replace(/.*\//, '');
+        if(numFiles == 1)
+        {
+          input.val(label);
+        }
+        else
+        {
+          input.val(numFiles + " files chosen");
+        }
 
-  // Loop through the FileList and render image files as thumbnails.
-  for (var i = 0, f; f = files[i]; i++) {
+        /* Printing the name of the chosen files, not working properly
+        var output = $('.file-output'),
+          $(numFiles).each([0,numFiles], function(value)
+          {
+            label = value.target.files[i].name.replace(/\\/g, '/').replace(/.*\//, '') + "<br>";
+            output.val(label);
+          });  */
+});
 
-    // Only process image files.
-    if (!f.type.match('image.*')) {
-      continue;
-    }
-
-    //To read the chosen file
-    var reader = new FileReader();
-
-    // Closure to capture the file information.
-    reader.onload = (function(theFile) {
-      return function(e) {
-        // Render thumbnail.
-        var span = document.createElement('span');
-        span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                          '" title="', escape(theFile.name), '"/>'].join('');
-        document.getElementById('list').insertBefore(span, null);
-      };
-    })(f);
-
-    // Read in the image file as a data URL.
-    reader.readAsDataURL(f);
-  }
-
-  // files is a FileList of File objects. List some properties.
-  var output = [];
-  for (var i = 0, f; f = files[i]; i++) {
-    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                '</li>');
-  }
-  document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+function selectFolder(e) {
+    var theFiles = e.target.files;
+    var relativePath = theFiles[0].webkitRelativePath;
+    var folder = relativePath.split("/");
+    directory = 'C:\\\\temp\\\\SharedStorage\\\\' + folder[0];
 }
 
-//document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-*/
+/******************** FILE PICKER **************************/
 
 //Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
@@ -69,8 +57,8 @@ $('.bootstrap-tagsinput').focusout(function() {
 app.controller('AddController', function($scope, $http) {
 
   $scope.SendData = function () {
-    // use $.param jQuery function to serialize data from JSON 
-    var data = { 'Directory': $scope.inputDirectory,
+    // use $.param jQuery function to serialize data from JSON, $scope.inputDirectory
+    var data = { 'Directory': directory,
       'Types': [$scope.inputTags],
       'ErrorActionPreference': 0
     };
@@ -131,7 +119,8 @@ app.controller('AddController', function($scope, $http) {
 
 //Function to pass form input to modal
 function modalFunction() {
-    $('#directory').val($('#directory-init').val());
+    //Change this, show the chosen folder?
+    //$('#directory').val($('#directory-init').val());
     $('#labels').val($('#labels-init').val());
     $('#creator').val($('#creator-init').val());
     $('#TDID').val($('#TDID-init').val());
