@@ -82,7 +82,7 @@ Select files
     <div>
       <!-- old id: comments -->
       <label for="comments" class="txt-info">Comments:</label>
-      <textarea type="text" class="txt-area" id="comments-init" ng-model="Info.Comments" placeholder="Info"></textarea>
+      <textarea type="text" class="txt-area" id="comments-init" ng-model="Info.Comments"/>
     </div>
 
     <div>
@@ -101,8 +101,8 @@ Select files
         <div class="custom-fields">
           <div class="controls" id="profs">
             <div class="float-field">
-              <input class="input1 txt-field" id="field1" name="prof2" type="text" placeholder="Key" data-items="8" />
-              <input class="input2 txt-field" id="field2" name="prof1" type="text" placeholder="Value" data-items="8" />
+              <input class="input1 txt-field" id="field1"  type="text"  ng-model="inputKey" placeholder="Key" />
+              <input class="input2 txt-field" id="field2" type="text" ng-model="inputValue" placeholder="Value" />
               <button class="remove btn-danger" type="button">
                 X
               </button>
@@ -131,7 +131,7 @@ Select files
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close btnX" data-dismiss="modal">x</button>
           <h2 class="modal-title">Overview</h2>
         </div>
         <div class="modal-body">
@@ -184,7 +184,7 @@ Select files
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-          <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> 
+          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" onclick="addFunction()" >Add entry</button> 
         </div>
       </div>
     </div>

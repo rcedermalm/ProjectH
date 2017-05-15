@@ -77,6 +77,8 @@ app.controller('AddController', function($scope, $http) {
         var newItem = $(".custom-fields:first").clone();
         newItem.find("input1").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
         newItem.find("input2").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+        //newItem.find("input1").attr("ng-model", "Info.Key" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+        //newItem.find("input2").attr("ng-model", "Info.Value" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
         newItem.show(); //show clone of template
         $(".custom-fields:last").after(newItem);
         bindRemove();
@@ -100,7 +102,7 @@ app.controller('AddController', function($scope, $http) {
       'Types': [$scope.inputTags],
       'ErrorActionPreference': 0
     };
-    console.log(data);
+    //console.log(data);
 
     var config = {
       headers : {
@@ -125,9 +127,9 @@ app.controller('AddController', function($scope, $http) {
 
   var today = new Date();
 
-  $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
-    
-  }
+  $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),}
+
+
     // $scope will allow this to pass between controller and view
     // process the form
     $scope.processForm = function() {
@@ -167,4 +169,10 @@ function modalFunction() {
     $('#comments').val($('#comments-init').val());
    // $('#anonymized').val($('#anonymized-init').val());
 
+}
+
+
+//Function to give feedback that files have been added to database
+function addFunction() {
+  alert("Files were added to the database!");
 }
