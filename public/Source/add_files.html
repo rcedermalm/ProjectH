@@ -88,7 +88,7 @@ Select files
     <div>
       <label for="anonymized" class="txt-info">Anonymized?</label>
       <label class="switch">
-        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id = "anonymized-init">
+        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
         <div class="slider"></div>
       </label>
     </div>
@@ -122,37 +122,9 @@ Select files
       <button type="button" class="btn btn-cancel">Cancel</button>
       <!--<button type="submit" class="btn btn-import">Add entry</button>  
       <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
-      <button class="btn btn-import" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
+      <button class="btn btn-import" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
     </div>
   </form>
-
-
-  <script>
-
-    $(".custom-fields:first").hide(); //hide template
-
-      /* Add new item based on hidden template */
-      $(".add-more").click(function() {
-        var newItem = $(".custom-fields:first").clone();
-        newItem.find("input1").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
-        newItem.find("input2").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
-        newItem.show(); //show clone of template
-        $(".custom-fields:last").after(newItem);
-        bindRemove();
-      });
-
-      /* Bind remove function to last added button*/
-      function bindRemove() {
-        $(".remove:last").click(function(e) {
-          if ($(".remove").length > 1)
-            $(this).parents(".custom-fields").remove();
-        });
-      }
-
-      /* Execute bind-function at startup */
-      bindRemove();
-
-  </script>
 
 
 
@@ -162,7 +134,7 @@ Select files
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Overview</h4>
+          <h2 class="modal-title">Overview</h2>
         </div>
         <div class="modal-body">
 
