@@ -26,7 +26,8 @@ function dragstartHandler(ev) {
  
   // Add the id of the drag source element to the drag data payload so
   // it is available when the drop event is fired
-  ev.dataTransfer.setData("name", ev.target.id);
+  //ev.dataTransfer.setData("name", ev.target.id);
+  ev.dataTransfer.setData("the_id", ev.target.id);
 
   // Tell the browser both copy and move are possible
   ev.effectAllowed = "copy";
@@ -57,13 +58,13 @@ function dropHandler(ev) {
   
   // Get the id of drag source element (that was added to the drag data
   // payload by the dragstart event handler)
-  var id = ev.dataTransfer.getData("name");
-
+  //var id = ev.dataTransfer.getData("name");
+  var id = ev.dataTransfer.getData("the_id");
   // Change the color of the target back to normal
   ev.currentTarget.style.background = "#abad9f";
 
 
-
+  console.log(id);
   // Copy the element if the source and destination ids are both "copy" and 
   // the element has not been dragged before
   if (ev.target.id == "target") {
@@ -72,14 +73,17 @@ function dropHandler(ev) {
     node_copy.style.background = "#abad9f";
     node_copy.id = "new_id";
 
+    //ev.target.appendChild(node_copy);
     ev.target.appendChild(node_copy);
 
     // find the name in our array of objects
-    var index = show_data_array.findIndex(x => x.name == id);
+    //var index = show_data_array.findIndex(x => x.name == id);
+
 
     // add the object to a new array that stores all the objects that have been
     // dragged to the drop zone
-    objectsInDropZone.push(show_data_array[index]);
+    //objectsInDropZone.push(show_data_array[index]);
+    objectsInDropZone.push(id);
 
     // Change the background color of the element if is has been dropped 
     // in a valid target
@@ -100,7 +104,7 @@ function dragendHandler(ev) {
 function sendFiles(){
   var alert_text = "The objects: ";
   for(var i = 0; i < objectsInDropZone.length; i++){
-    alert_text = alert_text + objectsInDropZone[i].name;
+    alert_text = alert_text + objectsInDropZone[i];//.name;
 
     if(i != objectsInDropZone.length - 1){
       alert_text = alert_text + ", ";
