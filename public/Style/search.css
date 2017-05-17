@@ -38,7 +38,7 @@
 	padding: 3px 10px;  	
 }
 #options {
-  width: 220px;
+  width: 220px ;
   align-content: right;
 }
 .r-table-foot {
@@ -56,6 +56,37 @@
   height: 25%;
   padding: 1%;
   cursor: pointer;
+}
+
+#expanded-table-head {
+		background: #eae8e2;
+	font-weight: bold;
+
+}
+
+.expanded-table {
+		background: #eae8e2;
+		
+}
+
+.expanded-first-cell {
+	padding-left: 30px;
+}
+
+.expanded-x2-first-cell {
+	padding-left: 60px;
+}
+
+.table-first-level {
+	width: 25% !important;
+}
+
+.table-second-level {
+	width: 17% !important;
+}
+
+.table-third-level {
+	padding-bottom: 10px;
 }
 
 /**** LOADER ****/

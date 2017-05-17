@@ -27,22 +27,57 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
                 if (index == -1) {
                     // the_objects is the array with all the files from the same patient.
                     var the_objects = new Array();
+                    var the_modalities = new Array();
+                    var the_tags = new Array();
+
                     the_patients.push({
                         "name": name,
-                        "objects": the_objects
+                        "objects": the_objects,
+                        "modalities": the_modalities,
+                        "tags": the_tags
                     })
                     index = the_patients.length - 1;
                 }
                 // Add the file to the patient´s object array
                 (the_patients[index].objects).push(response.data.Result[i]);
+
+                // Add the modality of the file if it is not already in modalitites.
+                var modality_exists_already = false;
+
+                for(var j = 0; j < the_patients[index].modalities.length; j++){
+                  if(the_patients[index].modalities[j] == response.data.Result[i].Document["(0008,0060)"]){
+                    modality_exists_already = true;
+                  }
+                }
+                if(!modality_exists_already){
+                  (the_patients[index].modalities).push(response.data.Result[i].Document["(0008,0060)"]);
+                }
+
+                // Add the tags if they do not already exist in tags //
+                var tag_exists_already = false;
+
+                for(var k = 0; k < response.data.Result[i].Document["Attributes"]["Tags"].length; k++){
+                  for(var j = 0; j < the_patients[index].tags.length; j++){
+                    if(the_patients[index].tags[j] == response.data.Result[i].Document["Attributes"]["Tags"][k]){
+                      tag_exists_already = true;
+                    }
+                  }
+                  if(!tag_exists_already){
+                    (the_patients[index].tags).push(response.data.Result[i].Document["Attributes"]["Tags"][k]);
+                  }
+                  else{
+                    tag_exists_already = false;
+                  }
+                }  
             }
 
         }
 
-        /* Just for checking that the patient array is the way it should be, could be deleted.
-        for(var i = 0; i < the_patients.length; i++){
-            for(var j = 0; j < the_patients[i].objects.length; j++)
-            console.log(the_patients[i].objects[j].Type);
+        // Just for checking that the patient array is the way it should be, could be deleted.
+        /*for(var i = 0; i < the_patients.length; i++){
+            console.log("jesö" + the_patients[i].modalities.length);
+            for(var j = 0; j < the_patients[i].modalities.length; j++)
+            console.log(the_patients[i].modalities[j]);
         }*/
 
         // To keep the object array as a "global" array.
