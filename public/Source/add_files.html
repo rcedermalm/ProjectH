@@ -11,7 +11,7 @@
         <span class="input-group-btn">
           <span class="btn btn-primary btn-file">
           Browse… <!-- <input type="file" multiple=""> -->
-          <input type="file"  onchange="selectFolder(event)" webkitdirectory directory multiple/>
+          <input type="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
           </span> 
         </span>
         <input type="text" class="form-control filename" readonly="">
@@ -76,7 +76,7 @@
     </div>
 
     <div class="buttons">
-      <button type="button" class="btn btn-cancel">Cancel</button>
+      <button type="button" onclick="reloadPage()" class="btn btn-cancel">Cancel</button>
       <!--<button type="submit" class="btn btn-import">Add entry</button>  
       <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
       <button class="btn btn-import" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
@@ -140,12 +140,10 @@
             <input id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
           </div> -->
 
-
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button ng-click="SendData()" type="submit" class="btn btn-default">Add entry</button> 
+          <button ng-click="SendData()" onclick="reloadPage()" type="submit" class="btn btn-default">Add entry</button> 
         </div>
       </div>
     </div>

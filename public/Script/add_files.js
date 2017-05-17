@@ -24,6 +24,7 @@ $(document).on('change', '.btn-file :file', function(value) {
           });  */
 });
 
+//Function to get the correct path to the chosen files from the shared storage so that they can be uploaded to the database
 function selectFolder(e) {
     var theFiles = e.target.files;
     var relativePath = theFiles[0].webkitRelativePath;
@@ -32,6 +33,11 @@ function selectFolder(e) {
 }
 
 /******************** FILE PICKER **************************/
+
+//Function to refresh page, e.g after adding an entry
+function reloadPage() {
+    location.reload();
+}
 
 //Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
