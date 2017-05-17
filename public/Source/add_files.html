@@ -97,23 +97,15 @@ Select files
     <!-- Custom Fields -->
 
     <div id="nestedform">
-        <label class="txt-info">Custom fields:</label>
-        <div class="custom-fields">
-          <div class="controls" id="profs">
-            <div class="float-field">
-              <input class="input1 txt-field" id="field1"  type="text"  ng-model="inputKey" placeholder="Key" />
-              <input class="input2 txt-field" id="field2" type="text" ng-model="inputValue" placeholder="Value" />
-              <button class="remove btn-danger" type="button">
-                X
-              </button>
-            </div>
-          </div>
-        </div>
+
+      <label class="txt-info">Custom fields:</label>
       <button id="b1" class="btn add-more btn-import" type="button">Add Custom Field</button>
-      
+        <div class="controls custom-fields" id="profs">
+          <input class="input1 custom-input" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
+          <input class="input2 txt-field custom-input" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
+          <button class="remove btn-danger" type="button">X</button>
+        </div>
     </div>
-
-
 
 
     <div class="buttons">

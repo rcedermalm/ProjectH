@@ -60,6 +60,8 @@ $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
 
+
+
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
 
@@ -95,6 +97,21 @@ app.controller('AddController', function($scope, $http) {
       /* Execute bind-function at startup */
       bindRemove();
 
+      //Test custom fields
+
+        var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
+        $("input1").each(function() {
+            var key = $(this).attr("id");
+            var val = $(this).val();
+
+            item = {}
+            item ["id"] = key;
+            item ["value"] = val;
+
+            jsonObj.push(item);
+        });
+
+        console.log(jsonObj);
 
   $scope.SendData = function () {
     // use $.param jQuery function to serialize data from JSON 
@@ -124,6 +141,7 @@ app.controller('AddController', function($scope, $http) {
       $scope.content = "Failure.";
     });
   };
+
 
   var today = new Date();
 
