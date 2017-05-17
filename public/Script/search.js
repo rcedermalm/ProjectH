@@ -6,7 +6,7 @@ var show_data_array = new Array();
 
 
 // A controller for getting and showing the data.
-app.controller('show_data_ctrl', function ($scope, $http) {
+app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     $scope.loading = true;
     $http.get(sectraAPI).then(function (response) {
         // Create a new array with patients, the "key" is the patient´s name
@@ -57,7 +57,6 @@ app.controller('show_data_ctrl', function ($scope, $http) {
       });
 
 
-
       /** FOR SORTING THE TABLE **/
       $scope.property_name = 'name';
       $scope.reverse = true;
@@ -92,6 +91,35 @@ app.controller('show_data_ctrl', function ($scope, $http) {
       
       /****************************/
 
+    $scope.deleteEntryItem = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+          .title('Delete Entry')
+          .textContent('Are you sure you want do delete this entry item?')
+          .ariaLabel('Close')
+          .targetEvent(ev)
+          .ok('Yes')
+          .cancel('No');
 
-    
+    $mdDialog.show(confirm).then(function() {
+      $scope.status = 'You decided to get rid of your debt.';
+    }, function() {
+      $scope.status = 'You decided to keep your debt.';
+    });
+    };
+
+    function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  };
 });
+

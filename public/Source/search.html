@@ -79,7 +79,7 @@
       <div class="r-table-cell">{{ object.Document["(0008,0060)"] }}</div> <!-- Modality -->
       <div class="r-table-cell">{{ object.Document["(0020,0010)"] }}</div> <!-- Study ID -->
       <div class="r-table-cell">{{ object.Document["(0008,0050)"] }}</div> <!-- Accession Nr -->
-      <div class="r-table-cell"> <button class="glyphicon glyphicon-pencil" aria-hidden="true"></button></div>
+      <div class="r-table-cell" id="options"> <md-button class="md-raised" aria-hidden="true" id="editBtn" >EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event)" id="deleteBtn" label="{{object.Id}}" aria-hidden="true">DELETE</md-button></div>
       <!-- How to expand the table once more (we keep it for now, if we want to use it), for example
       <div class="rTableCell" ng-click="xExpand(object)"> {{object.Id}}</div>
       <div class="rTableCell" ng-if="object.expanded">
