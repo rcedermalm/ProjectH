@@ -54,6 +54,8 @@ $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
 
+
+
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
 
@@ -62,13 +64,56 @@ $('.bootstrap-tagsinput').focusout(function() {
 // for the user input
 app.controller('AddController', function($scope, $http) {
 
+
+  //Custom fields 
+  $(".custom-fields:first").hide(); //hide template
+
+      /* Add new item based on hidden template */
+      $(".add-more").click(function() {
+        var newItem = $(".custom-fields:first").clone();
+        newItem.find("input1").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+        newItem.find("input2").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+        //newItem.find("input1").attr("ng-model", "Info.Key" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+        //newItem.find("input2").attr("ng-model", "Info.Value" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+        newItem.show(); //show clone of template
+        $(".custom-fields:last").after(newItem);
+        bindRemove();
+      });
+
+      /* Bind remove function to last added button*/
+      function bindRemove() {
+        $(".remove:last").click(function(e) {
+          if ($(".remove").length > 1)
+            $(this).parents(".custom-fields").remove();
+        });
+      }
+
+      /* Execute bind-function at startup */
+      bindRemove();
+
+      //Test custom fields
+
+        var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
+        $("input1").each(function() {
+            var key = $(this).attr("id");
+            var val = $(this).val();
+
+            item = {}
+            item ["id"] = key;
+            item ["value"] = val;
+
+            jsonObj.push(item);
+        });
+
+        console.log(jsonObj);
+
   $scope.SendData = function () {
     // use $.param jQuery function to serialize data from JSON, $scope.inputDirectory
     var data = { 'Directory': directory,
       'Types': [$scope.inputTags],
       'ErrorActionPreference': 0
     };
-    console.log(data);
+    //console.log(data);
 
     var config = {
       headers : {
@@ -91,11 +136,12 @@ app.controller('AddController', function($scope, $http) {
     });
   };
 
+
   var today = new Date();
 
-  $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),
-    
-  }
+  $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),}
+
+
     // $scope will allow this to pass between controller and view
     // process the form
     $scope.processForm = function() {
@@ -139,3 +185,7 @@ function modalFunction() {
 }
 
 
+//Function to give feedback that files have been added to database
+function addFunction() {
+  alert("Files were added to the database!");
+}

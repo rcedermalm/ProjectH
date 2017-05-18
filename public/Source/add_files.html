@@ -64,22 +64,37 @@
     <div>
       <!-- old id: comments -->
       <label for="comments" class="txt-info">Comments:</label>
-      <textarea type="text" class="txt-area" id="comments-init" ng-model="Info.Comments" placeholder="Info"></textarea>
+      <textarea type="text" class="txt-area" id="comments-init" ng-model="Info.Comments"/>
     </div>
 
     <div>
       <label for="anonymized" class="txt-info">Anonymized?</label>
       <label class="switch">
-        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id = "anonymized-init">
+        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
         <div class="slider"></div>
       </label>
     </div>
+
+
+    <!-- Custom Fields -->
+
+    <div id="nestedform">
+
+      <label class="txt-info">Custom fields:</label>
+      <button id="b1" class="btn add-more btn-import" type="button">Add Custom Field</button>
+        <div class="controls custom-fields" id="profs">
+          <input class="input1 custom-input" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
+          <input class="input2 txt-field custom-input" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
+          <button class="remove btn-danger" type="button">X</button>
+        </div>
+    </div>
+
 
     <div class="buttons">
       <button type="button" onclick="reloadPage()" class="btn btn-cancel">Cancel</button>
       <!--<button type="submit" class="btn btn-import">Add entry</button>  
       <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
-      <button class="btn btn-import" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
+      <button class="btn btn-import" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
     </div>
   </form>
 
@@ -90,8 +105,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Overview</h4>
+          <button type="button" class="close btnX" data-dismiss="modal">x</button>
+          <h2 class="modal-title">Overview</h2>
         </div>
         <div class="modal-body">
           <!-- CHANGE THIS TO CHOSEN FOLDER
@@ -142,8 +157,13 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button ng-click="SendData()" onclick="reloadPage()" type="submit" class="btn btn-default">Add entry</button> 
+
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" onclick="addFunction()" >Add entry</button> 
+
+
+         <!-- <button ng-click="SendData()" onclick="reloadPage()" type="submit" class="btn btn-default">Add entry</button> -->
+
         </div>
       </div>
     </div>

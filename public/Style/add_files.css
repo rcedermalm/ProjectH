@@ -31,16 +31,16 @@
 }
 
 .txt-info {
-  margin-left: 2%;
-  width: 20%;
+  margin-left: 2% !important;
+  width: 20% !important;
 }
 
 .txt-field {
-  color: black;
-  margin: 5px 2% 5px 2%;
-  vertical-align: top;
-  width: 25%;
-  border-radius: 5px;
+  color: black !important;
+  margin: 5px 2px 5px 2% !important;
+  vertical-align: top !important;
+  width: 25% !important;
+  border-radius: 5px !important;
 }
 
 .txt-area {
@@ -53,9 +53,6 @@
   border-radius: 5px;
 }
 
-.btn-add-tags {
-  margin-top: 5px;
-}
 
 .bootstrap-tagsinput {
   background-color: #fff;
@@ -132,7 +129,7 @@ thead {
 
 /* The slider */
 .slider {
-  background-color: #014d6f !important;
+  background-color: #abad9f !important; /*#014d6f; */
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -159,7 +156,7 @@ thead {
 }
 
 input:checked + .slider {
-  background-color:#6cf;
+  background-color: #014d6f !important;
 }
 
 input:focus + .slider {
@@ -209,4 +206,40 @@ input[readonly] {
   float: right;
 } 
 
-/* FILE SELECTOR */
+/* File selector */ 
+
+#field1 {
+  color: black !important;
+  margin-left: 2% !important;
+  margin-top: 5px !important;
+  vertical-align: top !important;
+  width: 20% !important;
+  border-radius: 5px !important;
+}
+
+.btn-danger {
+  margin-top: 4px !important;
+}
+
+/* Modal */
+.modal-header {
+  background-color: #014d6f !important;
+}
+
+.modal-title {
+  color: white !important;
+}
+
+.modal-body {
+  background-color: #eae8e2 !important;
+}
+
+.modal-footer {
+  background-color: #eae8e2 !important;
+}
+
+.btnX {
+  color: white;
+
+
+
