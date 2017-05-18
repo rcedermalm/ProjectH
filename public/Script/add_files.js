@@ -1,6 +1,8 @@
 
+//Variables to show anonymization and tags in modal
+var modalAnonymize;
+var modalTags;
 /******************** FILE PICKER **************************/
-var directory; 
 $(document).on('change', '.btn-file :file', function(value) {
     console.log(value);
         var input = $('.filename'),
@@ -25,10 +27,12 @@ $(document).on('change', '.btn-file :file', function(value) {
 });
 
 //Function to get the correct path to the chosen files from the shared storage so that they can be uploaded to the database
+var directory; 
+var folder;
 function selectFolder(e) {
     var theFiles = e.target.files;
     var relativePath = theFiles[0].webkitRelativePath;
-    var folder = relativePath.split("/");
+    folder = relativePath.split("/");
     directory = 'C:\\\\temp\\\\SharedStorage\\\\' + folder[0];
 }
 
@@ -53,8 +57,6 @@ $('.bootstrap-tagsinput').focusin(function() {
 $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
-
-
 
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
@@ -92,20 +94,19 @@ app.controller('AddController', function($scope, $http) {
       bindRemove();
 
       //Test custom fields
+      /*var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
+      $("input1").each(function() {
+          var key = $(this).attr("id");
+          var val = $(this).val();
 
-        var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
-        $("input1").each(function() {
-            var key = $(this).attr("id");
-            var val = $(this).val();
+          item = {}
+          item ["id"] = key;
+          item ["value"] = val;
 
-            item = {}
-            item ["id"] = key;
-            item ["value"] = val;
+          jsonObj.push(item);
+      });
 
-            jsonObj.push(item);
-        });
-
-        console.log(jsonObj);
+        console.log(jsonObj);*/
 
   $scope.SendData = function () {
     // use $.param jQuery function to serialize data from JSON, $scope.inputDirectory
@@ -124,20 +125,23 @@ app.controller('AddController', function($scope, $http) {
 
     $http.post('http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/StoreRequests', data, config)
     .success(function (data, status, headers, config) {
-      $scope.PostDataResponse = data;
+      //$scope.PostDataResponse = data;
       $scope.content = "Success.";
+      alert($scope.content);
     })
     .error(function (data, status, headers, config) {
-      $scope.ResponseDetails = "Data: " + data +
+      /*$scope.ResponseDetails = "Data: " + data +
         "<hr />status: " + status +
         "<hr />headers: " + headers +
-        "<hr />config: " + config;
+        "<hr />config: " + config;*/
       $scope.content = "Failure.";
+      alert($scope.content);
     });
   };
 
 
   var today = new Date();
+
 
   $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),}
 
@@ -152,6 +156,19 @@ app.controller('AddController', function($scope, $http) {
                 "Info":   $scope.Info                  // This is where all the other info go, i.e: Creator, Import date, Labels etc...                                                     // Replace placeholder when the field in the HTML-code is correct
       };
       console.log(jsonData);
+      console.log($scope.Tags);
+
+      //Copy value to modal variables
+      modalTags = $scope.Tags;
+      console.log(modalTags);
+      if (!$scope.Info.Anonymized) {
+        modalAnonymize = "false";
+      }
+      else{
+        modalAnonymize = "true";
+      }
+      console.log(modalAnonymize);
+
 
       $http({
       method  : 'POST',
@@ -165,22 +182,27 @@ app.controller('AddController', function($scope, $http) {
       url     : '/upload',
       data    : $.param(jsonData),  // pass in data as strings
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+
+
     })};
+
 
 });
 
+console.log(modalTags);
+
 //Function to pass form input to modal
 function modalFunction() {
-    //Change this, show the chosen folder?
-    //$('#directory').val($('#directory-init').val());
+  console.log(modalTags);
+    $('#directory').val(folder);
     $('#labels').val($('#labels-init').val());
     $('#creator').val($('#creator-init').val());
     $('#TDID').val($('#TDID-init').val());
     $('#TCID').val($('#TCID-init').val());
     $('#patient-name').val($('#patient-name-init').val());
-   // $('#tags').val($('#tags-init').val());
+    $('#tags').val(modalTags);
     $('#comments').val($('#comments-init').val());
-   // $('#anonymized').val($('#anonymized-init').val());
+    $('#anonymized').val(modalAnonymize);
 
 }
 
@@ -188,4 +210,5 @@ function modalFunction() {
 //Function to give feedback that files have been added to database
 function addFunction() {
   alert("Files were added to the database!");
+  location.reload();
 }

@@ -71,7 +71,7 @@
       <label for="anonymized" class="txt-info">Anonymized?</label>
       <label class="switch">
         <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
-        <div class="slider"></div>
+        <div class="slider" ng-click="sliderAnonymize"></div>
       </label>
     </div>
 
@@ -109,11 +109,10 @@
           <h2 class="modal-title">Overview</h2>
         </div>
         <div class="modal-body">
-          <!-- CHANGE THIS TO CHOSEN FOLDER
           <div>
-            <label for="directory" class="txt-info">Folder directory:</label>
+            <label for="directory" class="txt-info">Chosen Folder:</label>
             <input id="directory" name="directory" type="text" value="{{ request.form.directory }}" disabled/>
-          </div> -->
+          </div> 
 
           <div >
             <label for="types" class="txt-info">Data Types:</label>
@@ -140,29 +139,26 @@
             <input id="patient-name" name="patient-name" type="text" value="{{ request.form.patient-name }}" disabled/>
           </div>
 
-         <!-- <div>
+          <div>
             <label for="tags" class="txt-info">Labels:</label>
             <input id="tags" name="tags" type="text" value="{{ request.form.tags }}" disabled/>
-          </div> -->
+          </div> 
 
           <div>
             <label for="comments" class="txt-info">Comments:</label>
             <input id="comments" name="comments" type="text" value="{{ request.form.comments }}" disabled/>
           </div>
 
-          <!-- <div>
+          <div>
             <label for="anonymized" class="txt-info">Anonymized:</label>
             <input id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
-          </div> -->
+          </div> 
 
         </div>
         <div class="modal-footer">
 
           <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
           <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" onclick="addFunction()" >Add entry</button> 
-
-
-         <!-- <button ng-click="SendData()" onclick="reloadPage()" type="submit" class="btn btn-default">Add entry</button> -->
 
         </div>
       </div>
