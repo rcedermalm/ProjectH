@@ -1,4 +1,4 @@
-var app = angular.module("TDDB", ["ngRoute"]);
+var app = angular.module("TDDB", ["ngRoute","ngMaterial"]);
   app.config(function($routeProvider) {
     $routeProvider
     .when("/", {templateUrl : "Source/search.html"})
