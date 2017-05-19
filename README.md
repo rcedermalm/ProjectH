@@ -6,7 +6,7 @@ Instructions for running the server:
 
 2.  Navigate to the directory where server.js is located
 
-3. Shit+Rightclick and press "open command window here"
+3. Shift + Right click and press "open command window here"
 
 3.5 If it is the first time running, type "npm install"
 
