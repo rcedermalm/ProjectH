@@ -127,20 +127,20 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
       /****************************/
 
     $scope.deleteEntryItem = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-          .title('Delete Entry')
-          .textContent('Are you sure you want do delete this entry item?')
-          .ariaLabel('Close')
-          .targetEvent(ev)
-          .ok('Yes')
-          .cancel('No');
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Delete Entry')
+            .textContent('Are you sure you want do delete this entry item?')
+            .ariaLabel('Close')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
 
-    $mdDialog.show(confirm).then(function() {
-      $scope.status = 'You decided to get rid of your debt.';
-    }, function() {
-      $scope.status = 'You decided to keep your debt.';
-    });
+      $mdDialog.show(confirm).then(function() {
+        $scope.status = 'You decided to get rid of your debt.';
+      }, function() {
+        $scope.status = 'You decided to keep your debt.';
+      });
     };
 
     function DialogController($scope, $mdDialog) {
@@ -157,4 +157,46 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     };
   };
 });
+
+
+  function editInitData(ev){
+    var edit_id = ev.target.id;
+    var the_object;
+
+    console.log(edit_id)
+    for(var i = 0; i < show_data_array.length; i++){
+         
+      for(var j = 0; j < show_data_array[i].objects.length; j++){
+        if(show_data_array[i].objects[j].Id == edit_id){
+           console.log("HEj");
+          the_object = show_data_array[i].objects[j];
+          console.log(the_object.Document["Attributes"]["Info"]["Creator"]);
+          break;
+        }
+      }
+    }
+    //console.log(the_object.Document["Attributes"]["Info"]["Creator"])
+    $('#edit-creator').val(the_object.Document["Attributes"]["Info"]["Creator"]);
+    $('#edit-TDID').val(the_object.Document["Attributes"]["Info"]["TestDataID"]);
+    $('#edit-TCID').val(the_object.Document["Attributes"]["Info"]["TestCaseID"]);
+    $('#edit-patient-name').val(the_object.Document["Attributes"]["Info"]["NewPatientName"]);
+    $('#edit-tags').val(the_object.Document["Attributes"]["Tags"]);
+    $('#edit-description').val(the_object.Document["Attributes"]["Info"]["Description"]);
+    $('#edit-anonymize').val(the_object.Document["Attributes"]["Info"]["Anonymized"]);
+
+  }
+
+
+// Function that edits the data written by the user.
+function editDataFunction(){
+  var new_creator = $('#edit-creator').val();
+  var new_TDID = $('#edit-TDID').val();
+  var new_TCID = $('#edit-TCID').val();
+  var new_patient_name = $('#edit-patient-name').val();
+  var new_tags = $('#edit-tags').val();
+  var new_description = $('#edit-description').val();
+  var new_anonymized = $('#edit-anonymize').val();    
+  
+  console.log(new_tags);
+}
 
