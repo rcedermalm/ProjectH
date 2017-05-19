@@ -95,9 +95,9 @@
       <div class="r-table-cell table-second-level">{{ object.Document["(0008,0060)"] }}</div> <!-- Modality -->
       <div class="r-table-cell table-second-level">#{{ object.Document["(0020,1002)"] }}</div> <!-- #images -->
       <div class="r-table-cell table-second-level">{{ object.Document["(0008,0050)"] }}</div> <!-- Accession Nr / ExamID?? -->
-      <div class="r-table-cell table-second-level" id="options"><md-button class="md-raised" aria-hidden="true" id="editBtn" >EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event)" id="deleteBtn" label="{{object.Id}}" aria-hidden="true">DELETE</md-button></div>
+      <div class="r-table-cell table-second-level" id="options"><md-button class="md-raised" aria-hidden="true" id="editBtn" >EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event, object.Id, object.Type)" id="deleteBtn" value="{{object.Id}}" aria-hidden="true">DELETE</md-button></div>
     </div>
-    <div class="r-table-row expanded-table" ng-if="object.expanded" ng-repeat-end>
+    <div class="r-table-row expanded-tableX2" ng-if="object.expanded" ng-repeat-end>
       <div class="r-table-cell table-third-level expanded-x2-first-cell">
                Datatype: {{ object.Type }}
           <br> TestData ID: {{ object.Document["Attributes"]["Info"]["TestDataID"] }}
@@ -121,5 +121,6 @@
       <div class="r-table-cell table-first-level"></div>
       <div class="r-table-cell table-first-level"></div>
     </div>
+    {{status}}
   </div>
 </div>

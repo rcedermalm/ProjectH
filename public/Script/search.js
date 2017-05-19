@@ -125,21 +125,38 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
       };
       
       /****************************/
+      $scope.status = " ";
 
-    $scope.deleteEntryItem = function(ev) {
+    $scope.deleteEntryItem = function(ev, objectID, objectType) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
           .title('Delete Entry')
-          .textContent('Are you sure you want do delete this entry item?')
+          .textContent('Are you sure you want do delete the entry item with ID: ' + objectID + ", of the type: " + objectType)
           .ariaLabel('Close')
           .targetEvent(ev)
           .ok('Yes')
           .cancel('No');
 
     $mdDialog.show(confirm).then(function() {
-      $scope.status = 'You decided to get rid of your debt.';
+      $scope.status = 'Person with ID:' + objectID;
+      console.log("http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/" + objectType + "?purge=true", [objectID]);
+       /*$http({
+         method: 'DELETE',
+         url: "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/"
+         data: { testDataType: {
+           path : {"testDataType" : String(objectType)},
+           body: {"ids" : String([objectID])},
+           query:{"purge" : Boolean("true")}
+        }},
+         headers: {
+        "Content-type": "application/json"
+        } */
+       })
+        .success(function (data, status, headers) {
+            $scope.ServerResponse = objectID;
+        })
     }, function() {
-      $scope.status = 'You decided to keep your debt.';
+      $scope.status = 'Nothing removed.';
     });
     };
 
