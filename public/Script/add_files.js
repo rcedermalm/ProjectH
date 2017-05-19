@@ -30,13 +30,24 @@ $(document).on('change', '.btn-file :file', function(value) {
 var directory; 
 var folder;
 function selectFolder(e) {
+    //Folder select
     var theFiles = e.target.files;
     var relativePath = theFiles[0].webkitRelativePath;
     folder = relativePath.split("/");
     directory = 'C:\\\\temp\\\\SharedStorage\\\\' + folder[0];
+
+    //Display files in a list
+    var input = document.getElementById('file');
+    var output = document.getElementById('fileList');
+
+    output.innerHTML = '<ul>';
+    for (var i = 0; i < input.files.length; ++i) {
+      output.innerHTML += '<li class ="list-group-item">' + input.files.item(i).name + '</li>';
+    }
+    output.innerHTML += '</ul>';
 }
 
-/******************** FILE PICKER **************************/
+/******************** FILE PICKER END **************************/
 
 //Function to refresh page, e.g after adding an entry
 function reloadPage() {
