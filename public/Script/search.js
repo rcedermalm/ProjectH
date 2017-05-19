@@ -157,8 +157,8 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
         })
     }, function() {
       $scope.status = 'Nothing removed.';
-    });
     };
+    
 
     function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
