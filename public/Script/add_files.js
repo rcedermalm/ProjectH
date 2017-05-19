@@ -125,16 +125,11 @@ app.controller('AddController', function($scope, $http) {
 
     $http.post('http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/StoreRequests', data, config)
     .success(function (data, status, headers, config) {
-      //$scope.PostDataResponse = data;
-      $scope.content = "Success.";
+      $scope.content = "Files were successfully imported to the database.";
       alert($scope.content);
     })
     .error(function (data, status, headers, config) {
-      /*$scope.ResponseDetails = "Data: " + data +
-        "<hr />status: " + status +
-        "<hr />headers: " + headers +
-        "<hr />config: " + config;*/
-      $scope.content = "Failure.";
+      $scope.content = "Caution! Files were not imported to the database.";
       alert($scope.content);
     });
   };
@@ -201,14 +196,7 @@ function modalFunction() {
     $('#TCID').val($('#TCID-init').val());
     $('#patient-name').val($('#patient-name-init').val());
     $('#tags').val(modalTags);
-    $('#comments').val($('#comments-init').val());
+    $('#description').val($('#description-init').val());
     $('#anonymized').val(modalAnonymize);
 
-}
-
-
-//Function to give feedback that files have been added to database
-function addFunction() {
-  alert("Files were added to the database!");
-  location.reload();
 }
