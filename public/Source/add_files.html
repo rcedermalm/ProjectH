@@ -22,55 +22,49 @@
 
 
 <!-- User input -->
-<div ng-controller="AddController">
+<div id="ngController" ng-controller="AddController">
 
   <form ng-submit="processForm()">
 
     <div>
       <label for="types" class="txt-info">Data Types:</label>
-      <input type="text" class="txt-field" ng-model="inputTags" id="labels-init">
+      <input type="text" class="txt-field" ng-model="inputTags">
     </div>
 
     <div>
-      <!-- old id: creator -->
       <label for="creator" class="txt-info">Creator:</label>
-        <input type="text" ng-model="Info.Creator" class="txt-field" id="creator-init">
+        <input type="text" ng-model="Info.Creator" class="txt-field">
     </div>
 
     <div>
-      <!-- old id: infoTestData -->
       <label for="infoTestData" class="txt-info">TestData ID:</label>
-      <input type="text" ng-model="Info.TestDataID" class="txt-field" id="TDID-init">
+      <input type="text" ng-model="Info.TestDataID" class="txt-field">
     </div>
 
     <div>
-      <!-- old id: infoTestCase -->
       <label for="infoTestCase" class="txt-info">TestCase ID:</label>
-      <input type="text" ng-model="Info.TestCaseID"  class="txt-field" id="TCID-init">
+      <input type="text" ng-model="Info.TestCaseID"  class="txt-field">
     </div>
 
     <div>
-      <!-- old id: patient-name -->
       <label for="patient-name" class="txt-info">New patient name:</label>
-      <input type="text" ng-model="Info.NewPatientName" class="txt-field" id="patient-name-init">
+      <input type="text" ng-model="Info.NewPatientName" class="txt-field">
     </div>
 
     <div>
-      <!-- old id: tags -->
       <label for="tags" class="txt-info">Labels:</label>
-      <input type="text" id="tags" value="" data-role="tagsinput" id="tags-init" class="form-control" ng-model="Tags" ng-init="Tags=''">
+      <input type="text" id="tags" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''">
     </div>
 
     <div>
-      <!-- old id: comments -->
       <label for="description" class="txt-info">Description:</label>
-      <textarea type="text" class="txt-area" id="description-init" ng-model="Info.Description"/>
+      <textarea type="text" class="txt-area" ng-model="Info.Description"/>
     </div>
 
     <div>
       <label for="anonymized" class="txt-info">Anonymized?</label>
       <label class="switch">
-        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
+        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'">
         <div class="slider" ng-click="sliderAnonymize"></div>
       </label>
     </div>
@@ -109,49 +103,49 @@
           <h2 class="modal-title">Overview</h2>
         </div>
         <div class="modal-body">
-          <div>
-            <label for="directory" class="txt-info">Chosen Folder:</label>
-            <input id="directory" name="directory" type="text" value="{{ request.form.directory }}" disabled/>
+          <div class="modal1">
+            <label for="directory" class="txt-modal">Chosen Folder:</label>
+            <input class="input-modal" id="directory" name="directory" type="text" value="{{ request.form.directory }}" disabled/>
           </div> 
 
-          <div >
-            <label for="types" class="txt-info">Data Types:</label>
-            <input id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
+          <div class="modal1">
+            <label for="types" class="txt-modal">Data Types:</label>
+            <input class="input-modal" id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
           </div>
 
-          <div>
-            <label for="creator" class="txt-info">Creator:</label>
-            <input id="creator" name="creator" type="text" value="{{ request.form.creator }}" disabled/>
+          <div class="modal1">
+            <label for="creator" class="txt-modal">Creator:</label>
+            <input class="input-modal" id="creator" name="creator" type="text" value="{{ request.form.creator }}" disabled/>
           </div>
 
-          <div>
-            <label for="infoTestData" class="txt-info">TestData ID:</label>
-            <input id="TDID" name="TDID" type="text" value="{{ request.form.TDID }}" disabled/>
+          <div class="modal1">
+            <label for="infoTestData" class="txt-modal">TestData ID:</label>
+            <input class="input-modal" id="TDID" name="TDID" type="text" value="{{ request.form.TDID }}" disabled/>
           </div>
 
-          <div>
-            <label for="infoTestCase" class="txt-info">TestCase ID:</label>
-            <input id="TCID" name="TCID" type="text" value="{{ request.form.TCID }}" disabled/>
+          <div class="modal1">
+            <label for="infoTestCase" class="txt-modal">TestCase ID:</label>
+            <input class="input-modal" id="TCID" name="TCID" type="text" value="{{ request.form.TCID }}" disabled/>
           </div>
 
-          <div>
-            <label for="patient-name" class="txt-info">New patient name:</label>
-            <input id="patient-name" name="patient-name" type="text" value="{{ request.form.patient-name }}" disabled/>
+          <div class="modal1">
+            <label for="patient-name" class="txt-modal">New patient name:</label>
+            <input class="input-modal" id="patient-name" name="patient-name" type="text" value="{{ request.form.patient-name }}" disabled/>
           </div>
 
-          <div>
-            <label for="tags" class="txt-info">Labels:</label>
-            <input id="tags" name="tags" type="text" value="{{ request.form.tags }}" disabled/>
+          <div class="modal1">
+            <label for="tags" class="txt-modal">Labels:</label>
+            <input class="input-modal" id="tags" name="tags" type="text" value="{{ request.form.tags }}" disabled/>
           </div> 
 
-          <div>
-            <label for="description" class="txt-info">Description:</label>
-            <input id="description" name="description" type="text" value="{{ request.form.description }}" disabled/>
+          <div class="modal1">
+            <label for="description" class="txt-modal">Description:</label>
+            <input class="input-modal" id="description" name="description" type="text" value="{{ request.form.description }}" disabled/>
           </div>
 
-          <div>
-            <label for="anonymized" class="txt-info">Anonymized:</label>
-            <input id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
+          <div class="modal1">
+            <label for="anonymized" class="txt-modal">Anonymized:</label>
+            <input class="input-modal" id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
           </div> 
 
         </div>

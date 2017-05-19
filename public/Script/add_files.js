@@ -1,7 +1,4 @@
 
-//Variables to show anonymization and tags in modal
-var modalAnonymize;
-var modalTags;
 /******************** FILE PICKER **************************/
 $(document).on('change', '.btn-file :file', function(value) {
     console.log(value);
@@ -58,9 +55,15 @@ $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
 
+
+
+
+//Variables to show anonymization and tags in modal
+var modalAnonymize;
+var modalTags;
+
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
-
 // Create angular controller and pass in $scope and $http
 // This handles the input from the user, it is possible to add more paramenters
 // for the user input
@@ -151,18 +154,15 @@ app.controller('AddController', function($scope, $http) {
                 "Info":   $scope.Info                  // This is where all the other info go, i.e: Creator, Import date, Labels etc...                                                     // Replace placeholder when the field in the HTML-code is correct
       };
       console.log(jsonData);
-      console.log($scope.Tags);
 
       //Copy value to modal variables
-      modalTags = $scope.Tags;
-      console.log(modalTags);
       if (!$scope.Info.Anonymized) {
         modalAnonymize = "false";
       }
       else{
         modalAnonymize = "true";
       }
-      console.log(modalAnonymize);
+
 
 
       $http({
@@ -184,19 +184,20 @@ app.controller('AddController', function($scope, $http) {
 
 });
 
-console.log(modalTags);
 
 //Function to pass form input to modal
 function modalFunction() {
-  console.log(modalTags);
+    var hejhej = angular.element($("#ngController")).scope().Tags;
+    console.log(hejhej);
+
     $('#directory').val(folder);
-    $('#labels').val($('#labels-init').val());
-    $('#creator').val($('#creator-init').val());
-    $('#TDID').val($('#TDID-init').val());
-    $('#TCID').val($('#TCID-init').val());
-    $('#patient-name').val($('#patient-name-init').val());
-    $('#tags').val(modalTags);
-    $('#description').val($('#description-init').val());
-    $('#anonymized').val(modalAnonymize);
+    $('#labels').val(angular.element($("#ngController")).scope().inputTags);
+    $('#creator').val(angular.element($("#ngController")).scope().Info.Creator);
+    $('#TDID').val(angular.element($("#ngController")).scope().Info.TestDataID);
+    $('#TCID').val(angular.element($("#ngController")).scope().Info.TestCaseID);
+    $('#patient-name').val(angular.element($("#ngController")).scope().Info.NewPatientName);
+    $('#tags').val(angular.element($("#ngController")).scope().Tags);
+    $('#description').val(angular.element($("#ngController")).scope().Info.Description);
+    $('#anonymized').val(angular.element($("#ngController")).scope().Info.Anonymized);
 
 }

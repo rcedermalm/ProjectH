@@ -218,28 +218,44 @@ input[readonly] {
 }
 
 .btn-danger {
-  margin-top: 4px !important;
+  margin-top: 4px;
 }
 
 /* Modal */
 .modal-header {
-  background-color: #014d6f !important;
+  background-color: #014d6f;
 }
 
 .modal-title {
-  color: white !important;
+  color: white;
 }
 
 .modal-body {
-  background-color: #eae8e2 !important;
+  background-color: #eae8e2;
 }
 
 .modal-footer {
-  background-color: #eae8e2 !important;
+  background-color: #eae8e2;
 }
 
 .btnX {
   color: white;
+}
 
+.txt-modal {
+  margin: 5px 2px 5px 2%;
+  width: 25%;
+}
 
+.input-modal {
+  color: black;
+  margin: 5px 2px 5px 2%;
+  vertical-align: top;
+  width: 49%;
+}
+
+.modal1 {
+   margin: 2px 0px 2px 0px;
+   width: 100%;
+}
 
