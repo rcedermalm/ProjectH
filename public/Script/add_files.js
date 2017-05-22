@@ -27,16 +27,27 @@ $(document).on('change', '.btn-file :file', function(value) {
 var directory; 
 var folder;
 function selectFolder(e) {
+    //Folder select
     var theFiles = e.target.files;
     var relativePath = theFiles[0].webkitRelativePath;
     folder = relativePath.split("/");
     directory = 'C:\\\\temp\\\\SharedStorage\\\\' + folder[0];
+
+    //Display files in a list
+    var input = document.getElementById('file');
+    var output = document.getElementById('fileList');
+
+    output.innerHTML = '<ul>';
+    for (var i = 0; i < input.files.length; ++i) {
+      output.innerHTML += '<li class ="list-group-item">' + input.files.item(i).name + '</li>';
+    }
+    output.innerHTML += '</ul>';
 }
 
-/******************** FILE PICKER **************************/
+/******************** FILE PICKER END **************************/
 
 //Function to refresh page, e.g after adding an entry
-function reloadPage() {
+function reloadPage(){
     location.reload();
 }
 
@@ -121,9 +132,11 @@ app.controller('AddController', function($scope, $http) {
     .success(function (data, status, headers, config) {
       $scope.content = "Files were successfully imported to the database.";
       alert($scope.content);
+      //Function to refresh page, e.g after adding an entry
+      location.reload();
     })
     .error(function (data, status, headers, config) {
-      $scope.content = "Caution! Files were not imported to the database.";
+      $scope.content = "Caution! Import unsuccessfull";
       alert($scope.content);
     });
   };
@@ -148,7 +161,7 @@ app.controller('AddController', function($scope, $http) {
       $http({
       method  : 'POST',
       url     : '/filepath',
-      data    : $scope.inputDirectory,  // pass in data as strings
+      data    : folder[0],  // pass in data as strings
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
       });
 
@@ -163,7 +176,6 @@ app.controller('AddController', function($scope, $http) {
 
 
 });
-
 
 //Function to pass form input to modal
 function modalFunction() {

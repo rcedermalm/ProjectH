@@ -10,7 +10,7 @@
   margin:0 0 0 5px ;
 }
 #editBtn:hover {
-  background-color: cyan;
+  background-color: lightgray;
 }
 .r-table {
   border: 1px solid #014d6f;
@@ -70,8 +70,12 @@
 	 background-color: #efefef;
 		
 }
+.expanded-tableX2 {
+  background-color: #e8e8e8;
+}
+
 .expanded-table:hover{
-	 background-color: white;
+	 background-color: #f7f7f7;
 		
 }
 

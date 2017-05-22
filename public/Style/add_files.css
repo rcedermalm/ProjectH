@@ -190,23 +190,27 @@ input:checked + .slider:before {
   cursor: inherit;
   display: block;
 }
-.file-input-label {
-  padding: 0px 10px;
-  display: table-cell;
-  vertical-align: middle;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
+
 input[readonly] {
   background-color: white !important;
   cursor: text !important;
 }
 
-.filename {
-  float: right;
-} 
 
-/* File selector */ 
+/* Show selected files in a list */
+#fileList {
+  position: relative;
+  height: 400px;
+  width: 50%;
+  max-width: 600px;
+  min-width: 600px;
+  max-height: 800px;
+  min-height: 0px;
+  overflow-y:auto;  
+
+}
+
+/* File selector end */ 
 
 #field1 {
   color: black !important;

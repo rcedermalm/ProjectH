@@ -4,6 +4,7 @@
  </head>
 <h1 id="heading-browse">Add files to the database</h1>
 
+<!-- File picker -->
 <div class="container" style="margin-top: 20px;">
   <div class="row">
     <div class="col-lg-6 col-sm-6 col-12">
@@ -11,15 +12,16 @@
         <span class="input-group-btn">
           <span class="btn btn-primary btn-file">
           Browse… <!-- <input type="file" multiple=""> -->
-          <input type="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
+          <input type="file" name = "file" id="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
           </span> 
         </span>
         <input type="text" class="form-control filename" readonly="">
       </div>
     </div>
+    <!-- Show selected files in a list -->
+    <div id="fileList"></div>
   </div>
 </div>
-
 
 <!-- User input -->
 <div id="ngController" ng-controller="AddController">
@@ -85,7 +87,7 @@
 
 
     <div class="buttons">
-      <button type="button" onclick="reloadPage()" class="btn btn-cancel">Cancel</button>
+      <button type="button" onclick="reloadPage()" class="btn btn-cancel">Clear Fields</button>
       <!--<button type="submit" class="btn btn-import">Add entry</button>  
       <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
       <button class="btn btn-import" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
@@ -152,7 +154,8 @@
         <div class="modal-footer">
 
           <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import">Add entry</button>
+          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" >Add entry</button> 
+
 
         </div>
       </div>

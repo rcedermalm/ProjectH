@@ -95,9 +95,9 @@
       <div class="r-table-cell table-second-level">{{ object.Document["(0008,0060)"] }}</div> <!-- Modality -->
       <div class="r-table-cell table-second-level">#{{ object.Document["(0020,1002)"] }}</div> <!-- #images -->
       <div class="r-table-cell table-second-level">{{ object.Document["(0008,0050)"] }}</div> <!-- Accession Nr / ExamID?? -->
-      <div class="r-table-cell table-second-level" id="options"><md-button class="md-raised" aria-hidden="true" id="editBtn" >EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event)" id="deleteBtn" label="{{object.Id}}" aria-hidden="true">DELETE</md-button></div>
+      <div class="r-table-cell table-second-level" id="options"><md-button class="md-raised" onclick="editInitData(event)" data-toggle="modal" data-target="#editItem" aria-hidden="true" id="{{object.Id}}" label="editBtn">EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event, object.Id, object.Type)" id="deleteBtn" value="{{object.Id}}" aria-hidden="true">DELETE</md-button></div>
     </div>
-    <div class="r-table-row expanded-table" ng-if="object.expanded" ng-repeat-end>
+    <div class="r-table-row expanded-tableX2" ng-if="object.expanded" ng-repeat-end>
       <div class="r-table-cell table-third-level expanded-x2-first-cell">
                Datatype: {{ object.Type }}
           <br> TestData ID: {{ object.Document["Attributes"]["Info"]["TestDataID"] }}
@@ -121,5 +121,68 @@
       <div class="r-table-cell table-first-level"></div>
       <div class="r-table-cell table-first-level"></div>
     </div>
+    {{status}}
   </div>
+
+
+  <!-- Modal for edit items -->
+  <div class="modal fade" id="editItem" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close btnX" data-dismiss="modal">x</button>
+          <h2 class="modal-title">Edit TestData</h2>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label for="creator" class="txt-info">Creator:</label>
+            <input id="edit-creator" name="creator" type="text"/>
+          </div>
+
+          <div>
+            <label for="infoTestData" class="txt-info">TestData ID:</label>
+            <input id="edit-TDID" name="TDID" type="text"/>
+          </div>
+
+          <div>
+            <label for="infoTestCase" class="txt-info">TestCase ID:</label>
+            <input id="edit-TCID" name="TCID" type="text"/>
+          </div>
+
+          <div>
+            <label for="patient-name" class="txt-info">New patient name:</label>
+            <input id="edit-patient-name" name="patient-name" type="text" />
+          </div>
+
+          <div>
+            <label for="tags" class="txt-info">Labels:</label>
+            <input id="edit-tags" data-role="tagsinput" name="tags" type="text" />
+          </div>
+
+          <div>
+            <label for="description" class="txt-info">Description:</label>
+            <textarea type="text" class="txt-area" id="edit-description"/>
+          </div>
+
+          <div>
+            <label for="anonymized" class="txt-info">Anonymized?</label>
+            <label class="switch">
+              <input type="checkbox" id="edit-anonymize">
+              <div class="slider"></div>
+            </label>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+          <button ng-click="SendData()" type="submit" data-dismiss="modal" class="btn btn-import" onclick="editDataFunction()" >Save</button> 
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
