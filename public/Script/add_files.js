@@ -116,8 +116,6 @@ app.controller('AddController', function($scope, $http) {
   //Execute bind-function at startup 
   bindRemove();
 
-  /*********************** END CUSTOM FIELDS *******************************/
-
   //Test custom fields
   /*var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
   $("input1").each(function() {
@@ -132,6 +130,8 @@ app.controller('AddController', function($scope, $http) {
   });
 
     console.log(jsonObj);*/
+
+  /*********************** END CUSTOM FIELDS *******************************/
 
   /**************************** SEND DATA ************************************/
   //Function to add data to database using POST request
