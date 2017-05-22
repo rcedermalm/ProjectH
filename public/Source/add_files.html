@@ -28,7 +28,7 @@
 
     <div>
       <label for="types" class="txt-info">Data Types:</label>
-      <input type="text" class="txt-field" ng-model="inputTags">
+      <input type="text" class="txt-field" ng-model="dataTypes">
     </div>
 
     <div>
@@ -53,7 +53,7 @@
 
     <div>
       <label for="tags" class="txt-info">Labels:</label>
-      <input type="text" id="tags" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''">
+      <input type="text" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''">
     </div>
 
     <div>
@@ -110,7 +110,7 @@
 
           <div class="modal1">
             <label for="types" class="txt-modal">Data Types:</label>
-            <input class="input-modal" id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
+            <input class="input-modal" id="data-types" name="data-types" type="text" value="{{ request.form.data-types }}" disabled/>
           </div>
 
           <div class="modal1">
@@ -135,7 +135,7 @@
 
           <div class="modal1">
             <label for="tags" class="txt-modal">Labels:</label>
-            <input class="input-modal" id="tags" name="tags" type="text" value="{{ request.form.tags }}" disabled/>
+            <input class="input-modal" id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
           </div> 
 
           <div class="modal1">
@@ -152,7 +152,7 @@
         <div class="modal-footer">
 
           <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" onclick="reloadPage()" >Add entry</button> 
+          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import">Add entry</button>
 
         </div>
       </div>
