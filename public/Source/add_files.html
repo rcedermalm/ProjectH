@@ -27,17 +27,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
       <!-- ************************************************ User input begin ************************************************ -->
       <div ng-controller="AddController">
         <form ng-submit="processForm()" class="form-horizontal">
@@ -47,20 +36,25 @@
           <div class="form-group">
             <label class="col-md-4 control-label txt-info" for="types">Data Types</label>  
             <div class="col-md-4">
-            <input id="types" name="types" type="text" placeholder="E.g dicom" class="form-control input-md" ng-model="inputTags" required="" id="labels-init">
+            <input id="types" name="types" type="text" placeholder="dicom" class="form-control input-md" ng-model="inputTags" required="" id="labels-init">
             </div>
           </div>
 
-          <div>
-            <!-- old id: creator -->
-            <label for="creator" class="txt-info">Creator:</label>
-              <input type="text" ng-model="Info.Creator" class="txt-field" id="creator-init">
+          <div class="form-group">
+            <label class="col-md-4 control-label txt-info" for="creator">Creator</label>  
+            <div class="col-md-4">
+            <input id="types" name="types" type="text" placeholder="Critch Critchsson" class="form-control input-md" ng-model="Info.Creator" required="" id="creator-init">
+            </div>
           </div>
-          <div>
-            <!-- old id: infoTestData -->
-            <label for="infoTestData" class="txt-info">TestData ID:</label>
-            <input type="text" ng-model="Info.TestDataID" class="txt-field" id="TDID-init">
+
+          <div class="form-group">
+            <label class="col-md-4 control-label txt-info" for="infoTestData">TestData ID</label>  
+            <div class="col-md-4">
+            <input id="types" name="types" type="text" placeholder="12345" class="form-control input-md" ng-model="Info.TestDataID" required="" id="TDID-init">
+            </div>
           </div>
+
+
           <div>
             <!-- old id: infoTestCase -->
             <label for="infoTestCase" class="txt-info">TestCase ID:</label>
