@@ -1,14 +1,17 @@
 
-/******************** FILE PICKER **************************/
+/*********************************** FILE PICKER ***********************************************/
+//Changes the text in the file picker depending on the chosen files
 $(document).on('change', '.btn-file :file', function(value) {
     console.log(value);
         var input = $('.filename'),
             numFiles = value.target.files ? value.target.files.length : 1,
             label = value.target.files[0].name.replace(/\\/g, '/').replace(/.*\//, '');
+        //If only one file is chosen, write the file name
         if(numFiles == 1)
         {
           input.val(label);
         }
+        //If more files are chosen, only write the number of files
         else
         {
           input.val(numFiles + " files chosen");
@@ -23,7 +26,11 @@ $(document).on('change', '.btn-file :file', function(value) {
           });  */
 });
 
-//Function to get the correct path to the chosen files from the shared storage so that they can be uploaded to the database
+//Function to get the correct path to the chosen files from the shared storage 
+//Used to upload to the database
+
+//Global variables to store the filepath
+//Also uset in POST request for importing data
 var directory; 
 var folder;
 function selectFolder(e) {
@@ -44,13 +51,14 @@ function selectFolder(e) {
     output.innerHTML += '</ul>';
 }
 
-/******************** FILE PICKER END **************************/
+/******************************* END FILE PICKER ********************************************/
 
 //Function to refresh page, e.g after adding an entry
 function reloadPage(){
     location.reload();
 }
 
+/****************************** HIGHLIGHTING LABELS ******************************************/
 //Used to create highlight over Labels (?)
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
@@ -66,61 +74,75 @@ $('.bootstrap-tagsinput').focusout(function() {
   $(this).removeClass('focus');
 });
 
+/***************************** END HIGHLIGHTING LABELS ***************************************/
+
+
+
+/******************************** FORM HANDLING ***********************************************/
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
-// Create angular controller and pass in $scope and $http
-// This handles the input from the user, it is possible to add more paramenters
-// for the user input
+// Create angular controller and pass $scope and $http
+// This handles the input from the user
 app.controller('AddController', function($scope, $http) {
 
 
-  //Custom fields 
+  /**************************** CUSTOM FIELDS ************************************/
   $(".custom-fields:first").hide(); //hide template
 
-      /* Add new item based on hidden template */
-      $(".add-more").click(function() {
-        var newItem = $(".custom-fields:first").clone();
-        newItem.find("input1").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
-        newItem.find("input2").attr("id", "field" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
-        //newItem.find("input1").attr("ng-model", "Info.Key" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
-        //newItem.find("input2").attr("ng-model", "Info.Value" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
-        newItem.show(); //show clone of template
-        $(".custom-fields:last").after(newItem);
-        bindRemove();
-      });
+  // Add new items, based on hidden template, when add button (+) is clicked 
+  $(".add-more").click(function() {
+    //Clone template item
+    var newItem = $(".custom-fields:first").clone();
+    //rewrite template item's ids for key to avoid duplicates
+    newItem.find("input1").attr("id", "field" + ($(".custom-fields").length + 2)); 
+    //rewrite template item's ids for value to avoid duplicates
+    newItem.find("input2").attr("id", "field" + ($(".custom-fields").length + 2));
+    //newItem.find("input1").attr("ng-model", "Info.Key" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+    //newItem.find("input2").attr("ng-model", "Info.Value" + ($(".custom-fields").length + 2)); //rewrite id's to avoid duplicates
+    //show clone of template
+    newItem.show(); 
+    $(".custom-fields:last").after(newItem);
+    bindRemove();
+  });
 
-      /* Bind remove function to last added button*/
-      function bindRemove() {
-        $(".remove:last").click(function(e) {
-          if ($(".remove").length > 1)
-            $(this).parents(".custom-fields").remove();
-        });
-      }
-      /* Execute bind-function at startup */
-      bindRemove();
+  // Bind remove function to last added button
+  function bindRemove() {
+    //If remove button (X) is clicked, remove last item
+    $(".remove:last").click(function(e) {
+      if ($(".remove").length > 1)
+        $(this).parents(".custom-fields").remove();
+    });
+  }
+  //Execute bind-function at startup 
+  bindRemove();
 
-      //Test custom fields
-      /*var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
-      $("input1").each(function() {
-          var key = $(this).attr("id");
-          var val = $(this).val();
+  /*********************** END CUSTOM FIELDS *******************************/
 
-          item = {}
-          item ["id"] = key;
-          item ["value"] = val;
+  //Test custom fields
+  /*var jsonObj = {'Key' : $scope.KEYZ, 'value': $scope.VALUEZ};
+  $("input1").each(function() {
+    var key = $(this).attr("id");
+    var val = $(this).val();
 
-          jsonObj.push(item);
-      });
+    item = {}
+    item ["id"] = key;
+    item ["value"] = val;
 
-        console.log(jsonObj);*/
+    jsonObj.push(item);
+  });
 
+    console.log(jsonObj);*/
+
+  /**************************** SEND DATA ************************************/
+  //Function to add data to database using POST request
+  //$scope will allow input to pass between controller and view
   $scope.SendData = function () {
-    // use $.param jQuery function to serialize data from JSON, $scope.inputDirectory
+    //Variable to store information about files to be passed as an argument in POST request
     var data = { 'Directory': directory,
       'Types': [$scope.dataTypes],
       'ErrorActionPreference': 0
     };
-
+    //Variable with headers to be passed as an argument in POST request
     var config = {
       headers : {
         'Content-Type': 'application/json',
@@ -128,36 +150,44 @@ app.controller('AddController', function($scope, $http) {
       }
     }
 
+    //POST request to import data to the database
     $http.post('http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/StoreRequests', data, config)
+    //If import was successful
     .success(function (data, status, headers, config) {
+      //Give user feedback
       $scope.content = "Files were successfully imported to the database.";
       alert($scope.content);
-      //Function to refresh page, e.g after adding an entry
+      //Refresh page
       location.reload();
     })
+    //If import was unsuccessful
     .error(function (data, status, headers, config) {
+      //Give user feedback
       $scope.content = "Caution! Import unsuccessfull";
       alert($scope.content);
     });
   };
 
+  /************************** END SEND DATA *********************************/
 
+
+  /************************* WRITE JSON FILE ********************************/
+  //Add date to info in json file
   var today = new Date();
-
   $scope.Info = { "Import Date" : today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(),}
 
-
-    // $scope will allow this to pass between controller and view
-    // process the form
+    //FUnction to process the form for the json file
+    //$scope will allow input to pass between controller and view
     $scope.processForm = function() {
       //File structure with comments from sectra
       var jsonData = { 
                 "Tags":   $scope.Tags.split(","),      // $scope.Tags is a string with all the tags, and are divided by the function .split(","). This is because the tags-input divide all the tags by comma.
                 "Paths":  [""],                        // Requested to be empty, for now
-                "Info":   $scope.Info                  // This is where all the other info go, i.e: Creator, Import date, Labels etc...                                                     // Replace placeholder when the field in the HTML-code is correct
+                "Info":   $scope.Info                  // This is where all the other info go, i.e: Creator, Import date, Labels etc...                                                     
       };
       console.log(jsonData);
 
+      //POST request save json file in the selected folder to be imported to the database
       $http({
       method  : 'POST',
       url     : '/filepath',
@@ -174,10 +204,17 @@ app.controller('AddController', function($scope, $http) {
 
     })};
 
+  /************************ END WRITE JSON FILE ******************************/
+
 
 });
+/******************************* END FORM HANDLING *********************************************/
 
+
+/************************************** MODAL **************************************************/
 //Function to pass form input to modal
+//The function displays the inputform with corresponding input in a modal page
+//Used as an overview for the user before completing the import
 function modalFunction() {
     $('#directory').val(folder);
     $('#data-types').val(angular.element($("#ngController")).scope().dataTypes);
@@ -190,3 +227,4 @@ function modalFunction() {
     $('#anonymized').val(angular.element($("#ngController")).scope().Info.Anonymized);
 
 }
+/************************************ END MODAL ************************************************/
