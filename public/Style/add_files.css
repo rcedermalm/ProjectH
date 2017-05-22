@@ -200,14 +200,18 @@ input[readonly] {
 /* Show selected files in a list */
 #fileList {
   position: relative;
-  height: 400px;
-  width: 50%;
+  height: 500px;
+  /* width: 50%;
   max-width: 600px;
   min-width: 600px;
   max-height: 800px;
-  min-height: 0px;
-  overflow-y:auto;  
+  min-height: 0px; */
+  overflow-y: auto;  
 
+}
+
+.input-group{
+  padding: 10px;
 }
 
 /* File selector end */ 
