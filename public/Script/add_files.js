@@ -156,6 +156,8 @@ app.controller('AddController', function($scope, $http) {
     .success(function (data, status, headers, config) {
       //Give user feedback
       $scope.content = "Files were successfully imported to the database.";
+      /*var alertMsg = document.getElementById('successMsg');                        <- Experiment    
+        alertMsg.style.visibility = 'visible';*/ 
       alert($scope.content);
       //Refresh page
       location.reload();
