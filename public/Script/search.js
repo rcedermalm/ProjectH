@@ -124,10 +124,10 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
       };
       
       /****************************/
-      $scope.status = " ";
+    // Delete function, this part deletes an ENTRYITEM, in values are objectID and objectType, objectID is the id to be removed, objectType is
+    // the type like dicom  
 
     $scope.deleteEntryItem = function(ev, objectID, objectType) {
-    // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
           .title('Delete Entry')
           .textContent('Are you sure you want do delete the entry item with ID: ' + objectID + ", of the type: " + objectType)
@@ -136,27 +136,24 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
           .ok('Yes')
           .cancel('No');
 
+    // Upon confirming the delete request will be sent.
     $mdDialog.show(confirm).then(function() {
-      $scope.status = 'Person with ID:' + objectID;
       console.log("http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/" + objectType + "?purge=true", [objectID]);
-       /*$http({
+       $http({
          method: 'DELETE',
-         url: "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/"
-         data: { testDataType: {
-           path : {"testDataType" : String(objectType)},
-           body: {"ids" : String([objectID])},
-           query:{"purge" : Boolean("true")}
-        }},
+         url: 'http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/' + objectType + '?purge=true' ,
+         data: [objectID],
          headers: {
-        "Content-type": "application/json"
-        } */
-       })
-        .success(function (data, status, headers) {
-            $scope.ServerResponse = objectID;
-        })
-    }, function() {
-      $scope.status = 'Nothing removed.';
-    };
+        "Content-type": "application/json",
+        "Accept" : "application/json"
+        }
+       }).success(function(data, status, headers) {
+            console.log(data);
+           /* var row = document.getElementById(objectID);
+            row.style.display = 'hidden'; */
+      })
+    })
+    }
     
 
     function DialogController($scope, $mdDialog) {  
