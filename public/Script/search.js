@@ -4,7 +4,6 @@ var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/
 // Will contain the objects read from the database.
 var show_data_array = new Array();
 
-
 // A controller for getting and showing the data.
 app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     $scope.loading = true;
@@ -160,23 +159,24 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     };
     
 
-    function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-      $mdDialog.hide();
-    };
+    function DialogController($scope, $mdDialog) {  
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
 
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
 
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
+      $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
     };
-  };
 });
 
+var is_anonymized = false;
 
-  function editInitData(ev){
+function editInitData(ev){
     var edit_id = ev.target.id;
     var the_object;
 
@@ -199,21 +199,23 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     $('#edit-patient-name').val(the_object.Document["Attributes"]["Info"]["NewPatientName"]);
     $('#edit-tags').val(the_object.Document["Attributes"]["Tags"]);
     $('#edit-description').val(the_object.Document["Attributes"]["Info"]["Description"]);
-    $('#edit-anonymize').val(the_object.Document["Attributes"]["Info"]["Anonymized"]);
+    if(the_object.Document["Attributes"]["Info"]["Anonymized"] == "true")
+      document.getElementById("edit-anonymize").checked = true;
+    else
+      document.getElementById("edit-anonymize").checked = false;
 
   }
 
 
-// Function that edits the data written by the user.
-function editDataFunction(){
-  var new_creator = $('#edit-creator').val();
-  var new_TDID = $('#edit-TDID').val();
-  var new_TCID = $('#edit-TCID').val();
-  var new_patient_name = $('#edit-patient-name').val();
-  var new_tags = $('#edit-tags').val();
-  var new_description = $('#edit-description').val();
-  var new_anonymized = $('#edit-anonymize').val();    
-  
-  console.log(new_tags);
-}
-
+  // Function that edits the data written by the user.
+  function editDataFunction(){
+    var new_creator = $('#edit-creator').val();
+    var new_TDID = $('#edit-TDID').val();
+    var new_TCID = $('#edit-TCID').val();
+    var new_patient_name = $('#edit-patient-name').val();
+    var new_tags = $('#edit-tags').val();
+    var new_description = $('#edit-description').val();
+    var new_anonymized = $('#edit-anonymize').val();    
+    
+    console.log(new_tags);
+  }
