@@ -12,82 +12,89 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="well">
-      <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
-      <h4>Choose files</h4>
-      <div class="input-group">
-        <span class="input-group-btn">
-          <span class="btn btn-primary btn-file">
-          Browse… <!-- <input type="file" multiple=""> -->
-            <input type="file" name = "file" id="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
-          </span> 
-        </span>
-        <input type="text" class="form-control filename" readonly="">
-      </div>
-      <!-- ************************************************ FILE PICKER END ******************************************** -->
-
-
-
+    
       <!-- ************************************************ User input begin ************************************************ -->
       <div ng-controller="AddController">
         <form ng-submit="processForm()" class="form-horizontal">
           <fieldset>
           
 
+           <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="types">Data Types</label>  
-            <div class="col-md-4">
+          <label class="col-md-5 control-label txt-info">Choose files</label>  
+          <div class="col-md-7">
+	      <div class="input-group">
+	        <span class="input-group-btn">
+	          <span class="btn btn-primary btn-file">
+	          Browse… <!-- <input type="file" multiple=""> -->
+	            <input type="file" name = "file" id="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
+	          </span> 
+	        </span>
+	        <input type="text" class="form-control filename" readonly="">
+	      </div>
+	      </div>
+	      </div>
+
+	      <!-- ************************************************ FILE PICKER END ******************************************** -->
+
+          <div class="form-group">
+            <label class="col-md-5 control-label txt-info" for="types">Data Types</label>  
+            <div class="col-md-7">
             <input type="text" placeholder="dicom" class="form-control input-md" ng-model="inputTags" required="">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="creator">Creator</label>  
-            <div class="col-md-4">
+            <label class="col-md-5 control-label txt-info" for="creator">Creator</label>  
+            <div class="col-md-7">
             <input type="text" placeholder="Critch Critchsson" class="form-control input-md" ng-model="Info.Creator" required="">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="infoTestData">TestData ID</label>  
-            <div class="col-md-4">
+            <label class="col-md-5 control-label txt-info" for="infoTestData">TestData ID</label>  
+            <div class="col-md-7">
             <input type="text" placeholder="12345" class="form-control input-md" ng-model="Info.TestDataID" required="">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="infoTestCase">TestCase ID</label>  
-            <div class="col-md-4">
+            <label class="col-md-5 control-label txt-info" for="infoTestCase">TestCase ID</label>  
+            <div class="col-md-7">
             <input type="text" placeholder="ABC123" class="form-control input-md" ng-model="Info.TestCaseID" required="">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="patient-name">New patient name</label>  
-            <div class="col-md-4">
+            <label class="col-md-5 control-label txt-info" for="patient-name">New patient name</label>  
+            <div class="col-md-7">
             <input type="text" placeholder="Anden Andersson" class="form-control input-md" ng-model="Info.NewPatientName" required="">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="tags"">Labels</label>  
-            <div class="col-md-4">
+            <label class="col-md-5 control-label txt-info" for="tags"">Labels</label>  
+            <div class="col-md-7">
             <input type="text" placeholder="tags" class="form-control input-md" ng-model="Tags" ng-init="Tags=''" required="" value="" data-role="tagsinput">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label txt-info" for="description">Description</label>  
-            <div class="col-md-4">
+            <label class="col-md-5 control-label txt-info" for="description">Description</label>  
+            <div class="col-md-7">
              <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description" required=""></textarea>
             </div>
           </div>
 
-          <div>
-            <label for="anonymized" class="txt-info">Anonymized?</label>
+
+          <div class="form-group">
+            <label class="col-md-5 control-label txt-info" for="anonymized">Anonymized</label>  
+            <div class="col-md-7">
             <label class="switch">
-              <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
+             <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
               <div class="slider" ng-click="sliderAnonymize"></div>
             </label>
+            </div>
           </div>
 
           <!-- Checkboxes instead of the switch?
@@ -105,22 +112,36 @@
             </div>
           </div> -->
 
+
+          <div class="form-group">
+            <label class="col-md-5 control-label txt-info" for="description">Description</label>  
+            <div class="col-md-7">
+             <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description" required=""></textarea>
+            </div>
+          </div>
+
           <!-- Custom Fields -->
+          <div class="form-group">
           <div id="nestedform">
-            <label class="txt-info">Custom fields:</label>
+            <label class="col-md-5 control-label txt-info">Custom fields:</label>
+            <div class="col-md-7">
             <button id="b1" class="btn add-more btn-import" type="button">Add Custom Field</button>
               <div class="controls custom-fields" id="profs">
-                <input class="input1 custom-input" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
-                <input class="input2 txt-field custom-input" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
-                <button class="remove btn-danger" type="button">X</button>
+                <input class="input1 form-control input-md" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
+                <input class="input2 form-control input-md" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
+                <button class="remove btn-custom form-control btn-danger glyphicon glyphicon-remove" type="button"></button>
               </div>
           </div>
+          </div>
+          </div>
+
           <div class="buttons">
             <button type="button" onclick="reloadPage()" class="btn btn-cancel">Cancel</button>
             <!--<button type="submit" class="btn btn-import">Add entry</button>  
             <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
             <button class="btn btn-import" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
           </div>
+
 
          </fieldset> 
         </form>

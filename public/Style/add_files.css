@@ -62,11 +62,11 @@
   color: #555;
   display: inline-block;
   line-height: 22px;
-  margin: 5px 2% 5px 2%;
+  margin: 0px 0% 0px 0%;
   max-width: 100%;
   padding: 4px 6px;
   vertical-align: top;
-  width: 25%;  
+  width: 100%;  
 }
 
 .bootstrap-tagsinput input {
@@ -75,7 +75,7 @@
   margin: 0;
   max-width: inherit;
   outline: none;
-  width: auto;
+  /* width: auto; */
 }
 
 
@@ -97,7 +97,7 @@
   background: #6cf;
   background-color: #014d6f !important;
   color: white;
-  margin: 5px 2% 5px 2%;
+
 }
 
 .success{
@@ -118,7 +118,6 @@ thead {
 .switch {
   position: relative;
   vertical-align: top;
-  margin: 5px 1% 5px 2%;
   display: inline-block;
   width: 56px;
   height: 27px;
@@ -210,23 +209,27 @@ input[readonly] {
 
 }
 
-.input-group{
-  padding: 10px;
-}
-
 /* File selector end */ 
 
-#field1 {
-  color: black !important;
-  margin-left: 2% !important;
-  margin-top: 5px !important;
-  vertical-align: top !important;
-  width: 20% !important;
-  border-radius: 5px !important;
+.input1 {
+  width: 44% !important;
+  float: left !important;
+  margin-right: 1%;
 }
 
-.btn-danger {
-  margin-top: 4px !important;
+.input2 {
+  width: 44% !important;
+  float: left !important;
+}
+
+.btn-custom {
+  float: right !important;
+  width: 5% !important;
+  position: relative;
+}
+
+.glyphicon-remove {
+vertical-align: center;
 }
 
 /* Modal */
@@ -248,6 +251,8 @@ input[readonly] {
 
 .btnX {
   color: white;
+}
+
 
 
 
