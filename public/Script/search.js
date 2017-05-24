@@ -149,8 +149,8 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
         }
        }).success(function(data, status, headers) {
             console.log(data);
-           /* var row = document.getElementById(objectID);
-            row.style.display = 'hidden'; */
+           var row = document.getElementById(objectID);
+            row.style.display = 'none';
       })
     })
     }
