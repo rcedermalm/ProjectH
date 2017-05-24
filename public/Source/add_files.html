@@ -112,36 +112,28 @@
             </div>
           </div> -->
 
-
-          <div class="form-group">
-            <label class="col-md-5 control-label txt-info" for="description">Description</label>  
-            <div class="col-md-7">
-             <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description" required=""></textarea>
-            </div>
-          </div>
-
           <!-- Custom Fields -->
           <div class="form-group">
           <div id="nestedform">
             <label class="col-md-5 control-label txt-info">Custom fields:</label>
             <div class="col-md-7">
-            <button id="b1" class="btn add-more btn-import" type="button">Add Custom Field</button>
+            <button id="b1" class="btn add-more btn-primary" type="button">Add Custom Field</button>
               <div class="controls custom-fields" id="profs">
                 <input class="input1 form-control input-md" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
                 <input class="input2 form-control input-md" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
-                <button class="remove btn-custom form-control btn-danger glyphicon glyphicon-remove" type="button"></button>
+                <button class="btn remove btn-custom form-control btn-danger glyphicon glyphicon-remove" type="button"></button>
               </div>
           </div>
           </div>
           </div>
 
-          <div class="buttons">
-            <button type="button" onclick="reloadPage()" class="btn btn-cancel">Cancel</button>
-            <!--<button type="submit" class="btn btn-import">Add entry</button>  
-            <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
-            <button class="btn btn-import" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
+          <div class="col-md-7">
           </div>
 
+          <div class="col-md-5">
+          <button type="button" onclick="reloadPage()" class="btn btn-cancel btn-primary">Cancel</button>
+          <button class="btn btn-import btn-primary" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
+          </div>
 
          </fieldset> 
         </form>

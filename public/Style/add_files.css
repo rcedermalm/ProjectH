@@ -87,18 +87,20 @@
 }
 
 .btn-cancel {
-  background: #6cf;
-  background-color: #014d6f !important;
-  color: white;
-  margin: 5px 2% 5px 2%;
+  width: 20% !important;
+  min-width: 70px !important;
+  margin-right: 4%;
+  margin-left: 6%;
+  float: left;
 }
 
 .btn-import {
-  background: #6cf;
-  background-color: #014d6f !important;
-  color: white;
-
+  min-width: 80px;
+  width: 20%;
+  float: left;
 }
+
+
 
 .success{
   background: #6cf;
@@ -212,20 +214,24 @@ input[readonly] {
 /* File selector end */ 
 
 .input1 {
-  width: 44% !important;
+  width: 45% !important;
   float: left !important;
   margin-right: 1%;
+  margin-top: 2%;
 }
 
 .input2 {
-  width: 44% !important;
+  width: 45% !important;
   float: left !important;
+  margin-top: 2%;
 }
 
 .btn-custom {
   float: right !important;
-  width: 5% !important;
+  width: 7% !important;
   position: relative;
+  margin-top: 1.7%;
+  height: ;
 }
 
 .glyphicon-remove {
