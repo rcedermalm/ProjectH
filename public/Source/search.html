@@ -1,199 +1,185 @@
 <link rel="stylesheet" type="text/css" href="Style/search.css">
+<script src="Script\lodash.js"></script>
+<div ng-controller="show_data_ctrl">
 
 
-<div id="page-content-wrapper">
-  <div class="searchbar">
-    <div class="input-group">
-      <input type="text" class="form-control" ng-model="search_filter" placeholder="Search..."/>
-      <button type="button" class="btn btn-default search-button">
+  <div id="page-content-wrapper">
+    <div class="searchbar">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="search_filter" placeholder="Search..." />
+        <button type="button" class="btn btn-default search-button">
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
       </button>
-    </div>
-
-    <div class="dropdown">
-      <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#adv-search" aria-expanded="false">
-        Advanced search <b class="caret"></b>
-      </button>
-      <div class="row">
-        <div class="col-md-12 collapse drop-down" id="adv-search" > 
-          <div class="col-md-4" >               
-            <div class="selectFiletype">
-              <p>Filetype:</p>               
-              <div class="checkbox">
-                <label><input type="checkbox" value="dicom"> DICOM</label>
-                <label><input type="checkbox" value="txt"> txt</label>
-                <label><input type="checkbox" value="jpeg"> JPEG</label>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="selectModality">
-              <p>Modality:</p>
-              <div class="modality">
-                <select class="selectpicker" multiple title="Choose DICOM type..." data-live-search="true">
-                  <option>CR</option>
-                  <option>CT</option>
-                  <option>MR</option>
-                </select>
-              </div>
-            </div>
-          </div> 
-          <div class="col-md-4">
-            <p>Tags: </p>  
-          </div>
-        </div>
       </div>
-    </div>
-  </div>
+      <div ng-dropdown-multiselect="" options="fullFilter" selected-model="selectedFilter" extra-settings="ddsettings"></div>
 
-  <div class="r-table" ng-controller="show_data_ctrl">
-    <div class="r-table-heading">
-      <div class="r-table-head table-first-level" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
-      <div class="r-table-head table-first-level">Tags</div>
-      <div class="r-table-head table-first-level">Modalities</div>
-      <div class="r-table-head table-first-level">#TestDataEntries</div>
-      <div class="r-table-head table-first-level paddThese"></div>
-      <div class="r-table-head table-first-level paddThese"></div><!-- For the edit icon in the cells -->
     </div>
-    <div ng-show="loading" class="r-table-row"> <!-- A loading animation when the data is being loaded -->   
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"><div class="loader"></div></div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
-    </div>
-    <div class="r-table-row" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter" >
-      <div class="r-table-cell table-first-level" ng-click="xExpand(x,1)" > <!-- Patient Name -->
-        <span class="glyphicon glyphicon-triangle-bottom search-glyph" ng-if="x.expanded" aria-hidden="true"></span><span class=" glyphicon glyphicon-triangle-right search-glyph" ng-if="!x.expanded" aria-hidden="true"></span>
-        <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">
+
+    <div class="r-table">
+      <div class="r-table-heading">
+        <div class="r-table-head table-first-level" ng-click="sortBy('name')">Patient Name <img src="Images/sort_both.png"></div>
+        <div class="r-table-head table-first-level">Tags</div>
+        <div class="r-table-head table-first-level">Modalities</div>
+        <div class="r-table-head table-first-level">#TestDataEntries</div>
+        <div class="r-table-head table-first-level paddThese"></div>
+        <div class="r-table-head table-first-level paddThese"></div>
+        <!-- For the edit icon in the cells -->
+      </div>
+      <div ng-show="loading" class="r-table-row">
+        <!-- A loading animation when the data is being loaded -->
+        <div class="r-table-cell table-first-level"></div>
+        <div class="r-table-cell table-first-level">
+          <div class="loader"></div>
+        </div>
+        <div class="r-table-cell table-first-level"></div>
+        <div class="r-table-cell table-first-level"></div>
+        <div class="r-table-cell table-first-level"></div>
+        <div class="r-table-cell table-first-level"></div>
+      </div>
+      <div class="r-table-row" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter | filter : removeParent" " >
+      <div class="r-table-cell table-first-level " ng-click="xExpand(x,1) " > <!-- Patient Name -->
+        <span class="glyphicon glyphicon-triangle-bottom search-glyph " ng-if="x.expanded " aria-hidden="true
+        "></span><span class=" glyphicon glyphicon-triangle-right search-glyph " ng-if="!x.expanded " aria-hidden="true "></span>
+        <span draggable="true " ondragstart="dragstartHandler(event) " ondragend="dragendHandler(event) " id="{{x.name}} ">
           {{x.name}}
         </span>
       </div>
-      <div class="r-table-cell table-first-level"> <!-- Tags -->
-        <span ng-repeat="tag in x.tags | limitTo: 5"> {{tag}} </span><span ng-if="x.tags.length > 5">...</span>
-      </div> 
-      <div class="r-table-cell table-first-level"> <!-- Modalities -->
-        <span ng-repeat="modality in x.modalities">{{modality}}</span>
-      </div>
-      <div class="r-table-cell table-first-level"> <!-- Nr of TestData -->
-        {{x.objects.length}}
-      </div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
+      <div class="r-table-cell table-first-level "> <!-- Tags -->
+        <span ng-repeat="tag in x.tags | limitTo: 5 "> {{tag}} </span><span ng-if="x.tags.length> 5">...</span>
     </div>
-    <div class="r-table-row" ng-if="x.expanded" id="expanded-table-head">
-      <div class="r-table-cell expanded-first-cell table-second-level">ID</div>
-      <div class="r-table-cell table-second-level">Tags</div>
-      <div class="r-table-cell table-second-level">Modality</div>
-      <div class="r-table-cell table-second-level">#images</div>
-      <div class="r-table-cell table-second-level">StudyID</div>
-      <div class="r-table-cell table-second-level"></div>
+    <div class="r-table-cell table-first-level">
+      <!-- Modalities -->
+      <span ng-repeat="modality in x.modalities">{{modality}}</span>
     </div>
-    <div class="r-table-row expanded-table" ng-if="x.expanded" ng-repeat-start="object in x.objects | filter : search_filter" id="{{object.Id}}" >
-      <div class="r-table-cell expanded-first-cell table-second-level" ng-click="xExpand(object)"> <!-- Id -->
-        <span class="glyphicon glyphicon-triangle-bottom search-glyph" ng-if="object.expanded" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-right search-glyph" ng-if="!object.expanded" aria-hidden="true"></span>
-        <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)">
+    <div class="r-table-cell table-first-level">
+      <!-- Nr of TestData -->
+      {{x.objects.length}}
+    </div>
+    <div class="r-table-cell table-first-level"></div>
+    <div class="r-table-cell table-first-level"></div>
+  </div>
+  <div class="r-table-row" ng-if="x.expanded" id="expanded-table-head">
+    <div class="r-table-cell expanded-first-cell table-second-level">ID</div>
+    <div class="r-table-cell table-second-level">Tags</div>
+    <div class="r-table-cell table-second-level">Modality</div>
+    <div class="r-table-cell table-second-level">#images</div>
+    <div class="r-table-cell table-second-level">StudyID</div>
+    <div class="r-table-cell table-second-level"></div>
+  </div>
+  <div class="r-table-row expanded-table" ng-if="x.expanded" ng-repeat-start="object in x.objects | filter : search_filter | filter:checkBoxFilter"
+    id="{{object.Id}}">
+    <div class="r-table-cell expanded-first-cell table-second-level" ng-click="xExpand(object)">
+      <!-- Id -->
+      <span class="glyphicon glyphicon-triangle-bottom search-glyph" ng-if="object.expanded" aria-hidden="true"></span><span
+        class="glyphicon glyphicon-triangle-right search-glyph" ng-if="!object.expanded" aria-hidden="true"></span>
+      <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)">
           {{object.Id}}
         </span>
-      </div> 
-      <div class="r-table-cell table-second-level" > <!-- Tags -->
-        <span ng-repeat="tag in object.Document['Attributes']['Tags']"> {{tag}} </span>
-      </div> 
-      <div class="r-table-cell table-second-level"> <!-- Modality -->
-        {{ object.Document["(0008,0060)"] }}
-      </div> 
-      <div class="r-table-cell table-second-level"> <!-- #images -->
-        #{{ object.Document["(0020,1002)"] }}
-      </div> 
-      <div class="r-table-cell table-second-level"> <!-- StudyID -->
-        {{ object.Document["(0020,0010)"] }}
-      </div> 
-      <div class="r-table-cell table-second-level" id="options">
-        <md-button class="md-raised" ng-click="editInitData(object)" data-toggle="modal" data-target="#editItem" aria-hidden="true" id="{{object.Id}}" label="editBtn">EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event, object.Id, object.Type)" id="deleteBtn" value="{{object.Id}}" aria-hidden="true">DELETE</md-button>
-      </div>
     </div>
-    <div class="r-table-row expanded-tableX2" ng-if="object.expanded" ng-repeat-end >
-      <div class="r-table-cell table-third-level expanded-x2-first-cell">
-          Datatype: {{ object.Type }} <br>
-          TestData ID: {{ object.Document["Attributes"]["Info"]["TestDataID"] }} <br> 
-          TestCase ID: {{ object.Document["Attributes"]["Info"]["TestCaseID"] }}  
-      </div>
-      <div class="r-table-cell table-third-level">
-        Creator: {{ object.Document["Attributes"]["Info"]["Creator"] }}<br> 
-        Import date: {{ object.Document["Attributes"]["Info"]["Import Date"]}} </div>
-      <div class="r-table-cell table-third-level">
-        Description: <br> 
-        {{ object.Document["Attributes"]["Info"]["Description"] }}
-      </div>
-      <div class="r-table-cell table-third-level"></div>
-      <div class="r-table-cell table-third-level"></div>
-      <div class="r-table-cell table-third-level"></div>
-    </div> 
-    <div ng-repeat-end ng-hide="true"></div> 
-    <div class="r-table-foot">
-      <div class="r-table-cell table-first-level">Number of visible people: {{ show_data_length }}</div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
-      <div class="r-table-cell table-first-level"></div>
+    <div class="r-table-cell table-second-level">
+      <!-- Tags -->
+      <span ng-repeat="tag in object.Document['Attributes']['Tags']"> {{tag}} </span>
     </div>
-  
-    <!-- Modal for edit items -->
-    <div class="modal fade"  id="editItem" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close btnX" data-dismiss="modal">x</button>
-            <h2 class="modal-title">Edit TestData</h2>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <label for="creator" class="col-sm-6 txt-info">Creator:</label>
-              <input id="edit-creator" class="col-sm-6" name="creator" type="text"/>
-            </div>
+    <div class="r-table-cell table-second-level">
+      <!-- Modality -->
+      {{ object.Document["(0008,0060)"] }}
+    </div>
+    <div class="r-table-cell table-second-level">
+      <!-- #images -->
+      #{{ object.Document["(0020,1002)"] }}
+    </div>
+    <div class="r-table-cell table-second-level">
+      <!-- StudyID -->
+      {{ object.Document["(0020,0010)"] }}
+    </div>
+    <div class="r-table-cell table-second-level" id="options">
+      <md-button class="md-raised" ng-click="editInitData(object)" data-toggle="modal" data-target="#editItem" aria-hidden="true"
+        id="{{object.Id}}" label="editBtn">EDIT</md-button>
+        <md-button class="md-raised md-primary" ng-click="deleteEntryItem($event, object.Id, object.Type)"
+          id="deleteBtn" value="{{object.Id}}" aria-hidden="true">DELETE</md-button>
+    </div>
+</div>
+<div class="r-table-row expanded-tableX2" ng-if="object.expanded" ng-repeat-end>
+  <div class="r-table-cell table-third-level expanded-x2-first-cell">
+    Datatype: {{ object.Type }} <br> TestData ID: {{ object.Document["Attributes"]["Info"]["TestDataID"] }} <br> TestCase
+    ID: {{ object.Document["Attributes"]["Info"]["TestCaseID"] }}
+  </div>
+  <div class="r-table-cell table-third-level">
+    Creator: {{ object.Document["Attributes"]["Info"]["Creator"] }}<br> Import date: {{ object.Document["Attributes"]["Info"]["Import
+    Date"]}} </div>
+  <div class="r-table-cell table-third-level">
+    Description: <br> {{ object.Document["Attributes"]["Info"]["Description"] }}
+  </div>
+  <div class="r-table-cell table-third-level"></div>
+  <div class="r-table-cell table-third-level"></div>
+  <div class="r-table-cell table-third-level"></div>
+</div>
+<div ng-repeat-end ng-hide="true"></div>
+<div class="r-table-foot">
+  <div class="r-table-cell table-first-level">Number of visible people: {{ show_data_length }}</div>
+  <div class="r-table-cell table-first-level"></div>
+  <div class="r-table-cell table-first-level"></div>
+  <div class="r-table-cell table-first-level"></div>
+  <div class="r-table-cell table-first-level"></div>
+  <div class="r-table-cell table-first-level"></div>
+</div>
 
-            <div class="row">
-              <label for="infoTestData" class="col-sm-6 txt-info">TestData ID:</label>
-              <input id="edit-TDID" class="col-sm-6" name="TDID" type="text"/>
-            </div>
+<!-- Modal for edit items -->
+<div class="modal fade" id="editItem" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btnX" data-dismiss="modal">x</button>
+        <h2 class="modal-title">Edit TestData</h2>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <label for="creator" class="col-sm-6 txt-info">Creator:</label>
+          <input id="edit-creator" class="col-sm-6" name="creator" type="text" />
+        </div>
 
-            <div class="row">
-              <label for="infoTestCase" class="col-md-6 txt-info">TestCase ID:</label>
-              <input id="edit-TCID" class="col-md-6" name="TCID" type="text"/>
-            </div>
+        <div class="row">
+          <label for="infoTestData" class="col-sm-6 txt-info">TestData ID:</label>
+          <input id="edit-TDID" class="col-sm-6" name="TDID" type="text" />
+        </div>
 
-            <div class="row">
-              <label for="patient-name" class="col-md-6 txt-info">New patient name:</label>
-              <input id="edit-patient-name" class="col-md-6" name="patient-name" type="text" />
-            </div>
+        <div class="row">
+          <label for="infoTestCase" class="col-md-6 txt-info">TestCase ID:</label>
+          <input id="edit-TCID" class="col-md-6" name="TCID" type="text" />
+        </div>
 
-            <div class="row">
-              <label for="tags" class="col-md-6 txt-info">Labels:</label>
-              <input id="edit-tags" class="col-md-6" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''" name="tags" type="text" />
-            </div>
+        <div class="row">
+          <label for="patient-name" class="col-md-6 txt-info">New patient name:</label>
+          <input id="edit-patient-name" class="col-md-6" name="patient-name" type="text" />
+        </div>
 
-            <div class="row">
-              <label for="description" class="col-md-6 txt-info">Description:</label>
-              <textarea type="text" class="col-md-6 txt-area" id="edit-description"/>
-            </div>
+        <div class="row">
+          <label for="tags" class="col-md-6 txt-info">Labels:</label>
+          <input id="edit-tags" class="col-md-6" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''"
+            name="tags" type="text" />
+        </div>
 
-            <div class="row">
-              <label for="anonymized" class="col-md-6 txt-info">Anonymized?</label>
-              <label class="switch">
+        <div class="row">
+          <label for="description" class="col-md-6 txt-info">Description:</label>
+          <textarea type="text" class="col-md-6 txt-area" id="edit-description" />
+        </div>
+
+        <div class="row">
+          <label for="anonymized" class="col-md-6 txt-info">Anonymized?</label>
+          <label class="switch">
                 <input type="checkbox" class="col-md-6" id="edit-anonymize">
                 <div class="slider"></div>
               </label>
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-            <button type="submit" data-dismiss="modal" class="btn btn-import" ng-click="editDataFunction()" >Save</button> 
-          </div>
         </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+        <button type="submit" data-dismiss="modal" class="btn btn-import" ng-click="editDataFunction()">Save</button>
       </div>
     </div>
   </div>
+</div>
+</div>
+</div>
 </div>
