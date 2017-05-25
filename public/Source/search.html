@@ -65,7 +65,10 @@
     </div>
     <div class="r-table-row" ng-repeat-start="x in show_data | orderBy:property_name:reverse | filter : search_filter" >
       <div class="r-table-cell table-first-level" ng-click="xExpand(x,1)" > <!-- Patient Name -->
-        <img ng-if="x.expanded" class="expand-arrow" src="Images/down_arrow.png"><img ng-if="!x.expanded" class="expand-arrow" src="Images/right_arrow.png"><p draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">{{x.name}}</p>
+        <span class="glyphicon glyphicon-triangle-bottom search-glyph" ng-if="x.expanded" aria-hidden="true"></span><span class=" glyphicon glyphicon-triangle-right search-glyph" ng-if="!x.expanded" aria-hidden="true"></span>
+        <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{x.name}}">
+          {{x.name}}
+        </span>
       </div>
       <div class="r-table-cell table-first-level"> <!-- Tags -->
         <span ng-repeat="tag in x.tags | limitTo: 5"> {{tag}} </span><span ng-if="x.tags.length > 5">...</span>
@@ -87,12 +90,27 @@
       <div class="r-table-cell table-second-level"></div><!-- For the edit icon in the cells -->
     </div>
     <div class="r-table-row expanded-table" ng-if="x.expanded" ng-repeat-start="object in x.objects | filter : search_filter"  >
-      <div class="r-table-cell expanded-first-cell table-second-level" ng-click="xExpand(object)"><img ng-if="object.expanded" class="expand-arrow" src="Images/down_arrow.png"><img ng-if="!object.expanded" class="expand-arrow" src="Images/right_arrow.png"><p draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{object.Id}}">{{object.Id}}</p></div> 
-      <div class="r-table-cell table-second-level"><span ng-repeat="tag in object.Document['Attributes']['Tags']"> {{tag}} </span></div> <!-- Tags -->
-      <div class="r-table-cell table-second-level">{{ object.Document["(0008,0060)"] }}</div> <!-- Modality -->
-      <div class="r-table-cell table-second-level">#{{ object.Document["(0020,1002)"] }}</div> <!-- #images -->
-      <div class="r-table-cell table-second-level">{{ object.Document["(0020,0010)"] }}</div> <!-- StudyID -->
-      <div class="r-table-cell table-second-level" id="options"><md-button class="md-raised" ng-click="editInitData($event)" data-toggle="modal" data-target="#editItem" aria-hidden="true" id="{{object.Id}}" label="editBtn">EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event, object.Id, object.Type)" id="deleteBtn" value="{{object.Id}}" aria-hidden="true">DELETE</md-button></div>
+      <div class="r-table-cell expanded-first-cell table-second-level" ng-click="xExpand(object)"> <!-- Id -->
+        <span class="glyphicon glyphicon-triangle-bottom search-glyph" ng-if="object.expanded" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-right search-glyph" ng-if="!object.expanded" aria-hidden="true"></span>
+        <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{object.Id}}">
+          {{object.Id}}
+        </span>
+      </div> 
+      <div class="r-table-cell table-second-level"> <!-- Tags -->
+        <span ng-repeat="tag in object.Document['Attributes']['Tags']"> {{tag}} </span>
+      </div> 
+      <div class="r-table-cell table-second-level"> <!-- Modality -->
+        {{ object.Document["(0008,0060)"] }}
+      </div> 
+      <div class="r-table-cell table-second-level"> <!-- #images -->
+        #{{ object.Document["(0020,1002)"] }}
+      </div> 
+      <div class="r-table-cell table-second-level"> <!-- StudyID -->
+        {{ object.Document["(0020,0010)"] }}
+      </div> 
+      <div class="r-table-cell table-second-level" id="options">
+        <md-button class="md-raised" ng-click="editInitData($event)" data-toggle="modal" data-target="#editItem" aria-hidden="true" id="{{object.Id}}" label="editBtn">EDIT</md-button><md-button class="md-raised md-primary" ng-click="deleteEntryItem($event, object.Id, object.Type)" id="deleteBtn" value="{{object.Id}}" aria-hidden="true">DELETE</md-button>
+      </div>
     </div>
     <div class="r-table-row expanded-tableX2" ng-if="object.expanded" ng-repeat-end>
       <div class="r-table-cell table-third-level expanded-x2-first-cell">
