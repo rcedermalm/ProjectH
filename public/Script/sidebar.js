@@ -17,16 +17,13 @@ function displayWindowSize() {
     document.getElementById("dimensions").innerHTML = my_width + "x" + my_height;
 };*/
 
-
-/** DRAG AND DROP **/
-var has_been_dragged = false;
+/***************************************************************************/
+/**************************** DRAG AND DROP ********************************/
+/***************************************************************************/
 
 function dragstartHandler(ev) {
-  console.log("dragStart");
- 
   // Add the id of the drag source element to the drag data payload so
   // it is available when the drop event is fired
-  //ev.dataTransfer.setData("name", ev.target.id);
   ev.dataTransfer.setData("the_id", ev.target.id);
 
   // Tell the browser both copy and move are possible
@@ -34,83 +31,71 @@ function dragstartHandler(ev) {
 }
 
 function dragoverHandler(ev) {
-  console.log("dragOver");
+  ev.preventDefault();
 
   // Change the color of the target if someone
+  // hovers an object above the target
   ev.currentTarget.style.background = "white";
-
-  ev.preventDefault();
 }
 
 function dragleaveHandler(ev){
-	console.log("dragLeave");
-
 	// Change the color of the target back to normal
+  // if the user leaves the target with the object
 	ev.currentTarget.style.background = "#abad9f";
 }
 
+// Create array for the id´s of the objects in the target drop zone
 var objectsInDropZone = new Array();
 
-
 function dropHandler(ev) {
-  console.log("Drop");
   ev.preventDefault();
+  
+  // Change the color of the target back to normal
+  ev.currentTarget.style.background = "#abad9f";
   
   // Get the id of drag source element (that was added to the drag data
   // payload by the dragstart event handler)
-  //var id = ev.dataTransfer.getData("name");
   var id = ev.dataTransfer.getData("the_id");
-  // Change the color of the target back to normal
-  ev.currentTarget.style.background = "#abad9f";
 
+  // Create array for the id's
+  var the_ids = new Array(); 
 
-  console.log(id);
-  // Copy the element if the source and destination ids are both "copy" and 
-  // the element has not been dragged before
-  if (ev.target.id == "target") {
-    var node_copy = document.getElementById(id).cloneNode(true);
-    node_copy.style.color = "white";
-    node_copy.style.background = "#abad9f";
-    node_copy.id = "new_id";
+  // Check if the the_id is a name or an id
+  var name_index = show_data_array.findIndex(x => x.name == id);
+  if(name_index != -1){
+    for(var i = 0; i < show_data_array[name_index].objects.length; i++){
+      the_ids.push(show_data_array[name_index].objects[i].Id);
+    }
+  }
+  else{
+    the_ids.push(id);
+  }
 
-    //ev.target.appendChild(node_copy);
-    ev.target.appendChild(node_copy);
+  if (ev.target.id == "target") { // Check so that the object has been dropped in the dropzone
+    for(var i = 0; i < the_ids.length; i++){
+      if(objectsInDropZone.findIndex(x => x == the_ids[i]) == -1){
+        var node_copy = document.getElementById(the_ids[i]).cloneNode(true); // Create a copy of the node
+        
+        // Change the style of the new node so that it matches the background of the target
+        node_copy.style.color = "white";  
+        node_copy.style.background = "#abad9f";
 
-    // find the name in our array of objects
-    //var index = show_data_array.findIndex(x => x.name == id);
-
-
-    // add the object to a new array that stores all the objects that have been
-    // dragged to the drop zone
-    //objectsInDropZone.push(show_data_array[index]);
-    objectsInDropZone.push(id);
-
-    // Change the background color of the element if is has been dropped 
-    // in a valid target
-    var element_in_list = document.getElementById(id);
-    element_in_list.style.background = "#999999";
-    element_in_list.style.color = "black";
-    console.log(id);
+        ev.target.appendChild(node_copy); // Add the object in the target
+        objectsInDropZone.push(the_ids[i]); // Add the id of the object in the array
+      }
+    }
   }
 }
 
 function dragendHandler(ev) {
-  console.log("dragEnd");
-
-	// Remove all of the drag data
+	// Clear all the drag data
 	ev.dataTransfer.clearData();
 }
 
-function sendFiles(){
-  var alert_text = "The objects: ";
-  for(var i = 0; i < objectsInDropZone.length; i++){
-    alert_text = alert_text + objectsInDropZone[i];//.name;
-
-    if(i != objectsInDropZone.length - 1){
-      alert_text = alert_text + ", ";
+// Function to clear the target of the drag and drop.
+function clearDragAndDrop(){
+    var drop_target = document.getElementById("target");   
+    while (drop_target.firstChild) { // As long as the target still has a child, remove it
+        drop_target.removeChild(drop_target.firstChild);
     }
-  }
-
-  alert_text = alert_text + "\nare sent to test.";
-  alert(alert_text);
 }

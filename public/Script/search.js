@@ -4,7 +4,6 @@ var sectraAPI = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/
 // Will contain the objects read from the database.
 var show_data_array = new Array();
 
-
 // A controller for getting and showing the data.
 app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     $scope.loading = true;
@@ -125,10 +124,10 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
       };
       
       /****************************/
-      $scope.status = " ";
+    // Delete function, this part deletes an ENTRYITEM, in values are objectID and objectType, objectID is the id to be removed, objectType is
+    // the type like dicom  
 
     $scope.deleteEntryItem = function(ev, objectID, objectType) {
-    // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
           .title('Delete Entry')
           .textContent('Are you sure you want do delete the entry item with ID: ' + objectID + ", of the type: " + objectType)
@@ -137,83 +136,147 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
           .ok('Yes')
           .cancel('No');
 
+    // Upon confirming the delete request will be sent.
     $mdDialog.show(confirm).then(function() {
-      $scope.status = 'Person with ID:' + objectID;
       console.log("http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/" + objectType + "?purge=true", [objectID]);
-       /*$http({
+       $http({
          method: 'DELETE',
-         url: "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/"
-         data: { testDataType: {
-           path : {"testDataType" : String(objectType)},
-           body: {"ids" : String([objectID])},
-           query:{"purge" : Boolean("true")}
-        }},
+         url: 'http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/TestData/BulkDelete/' + objectType + '?purge=true' ,
+         data: [objectID],
          headers: {
-        "Content-type": "application/json"
-        } */
-       })
-        .success(function (data, status, headers) {
-            $scope.ServerResponse = objectID;
-        })
-    }, function() {
-      $scope.status = 'Nothing removed.';
-    };
+        "Content-type": "application/json",
+        "Accept" : "application/json"
+        }
+       }).success(function(data, status, headers) {
+            console.log(data);
+           var row = document.getElementById(objectID);
+            row.style.display = "none";
+
+      })
+    })
+    }
     
 
-    function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-      $mdDialog.hide();
+    function DialogController($scope, $mdDialog) {  
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+
+      $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
     };
 
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
 
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
-  };
-});
+  /***************************************************************************/
+  /******************************** EDIT DATA ********************************/
+  /***************************************************************************/  
 
+  // The ID of the testdata that has been chosen to edit
+  var the_edit_ID;
 
-  function editInitData(ev){
-    var edit_id = ev.target.id;
-    var the_object;
+  // Function for setting the initial values in the edit modal for the chosen testdata.
+  $scope.editInitData = function(ev){
+      var edit_id = ev.target.id;
+      the_edit_ID = edit_id;
+      var the_object;
 
-    console.log(edit_id)
-    for(var i = 0; i < show_data_array.length; i++){
-         
-      for(var j = 0; j < show_data_array[i].objects.length; j++){
-        if(show_data_array[i].objects[j].Id == edit_id){
-           console.log("HEj");
-          the_object = show_data_array[i].objects[j];
-          console.log(the_object.Document["Attributes"]["Info"]["Creator"]);
-          break;
+      // Find the object with the gotten ID
+      for(var i = 0; i < show_data_array.length; i++){
+        for(var j = 0; j < show_data_array[i].objects.length; j++){
+          if(show_data_array[i].objects[j].Id == edit_id){
+            the_object = show_data_array[i].objects[j];
+            break;
+          }
         }
       }
-    }
-    //console.log(the_object.Document["Attributes"]["Info"]["Creator"])
-    $('#edit-creator').val(the_object.Document["Attributes"]["Info"]["Creator"]);
-    $('#edit-TDID').val(the_object.Document["Attributes"]["Info"]["TestDataID"]);
-    $('#edit-TCID').val(the_object.Document["Attributes"]["Info"]["TestCaseID"]);
-    $('#edit-patient-name').val(the_object.Document["Attributes"]["Info"]["NewPatientName"]);
-    $('#edit-tags').val(the_object.Document["Attributes"]["Tags"]);
-    $('#edit-description').val(the_object.Document["Attributes"]["Info"]["Description"]);
-    $('#edit-anonymize').val(the_object.Document["Attributes"]["Info"]["Anonymized"]);
 
-  }
+      // Sets the value of the input fields to the values the already have.
+      $('#edit-creator').val(the_object.Document["Attributes"]["Info"]["Creator"]);
+      $('#edit-TDID').val(the_object.Document["Attributes"]["Info"]["TestDataID"]);
+      $('#edit-TCID').val(the_object.Document["Attributes"]["Info"]["TestCaseID"]);
+      $('#edit-patient-name').val(the_object.Document["Attributes"]["Info"]["NewPatientName"]);
+      $('#edit-tags').val(the_object.Document["Attributes"]["Tags"]);
+      $('#edit-description').val(the_object.Document["Attributes"]["Info"]["Description"]);
+      if(the_object.Document["Attributes"]["Info"]["Anonymized"] == "true")
+        document.getElementById("edit-anonymize").checked = true;
+      else
+        document.getElementById("edit-anonymize").checked = false;
+
+    };
 
 
-// Function that edits the data written by the user.
-function editDataFunction(){
-  var new_creator = $('#edit-creator').val();
-  var new_TDID = $('#edit-TDID').val();
-  var new_TCID = $('#edit-TCID').val();
-  var new_patient_name = $('#edit-patient-name').val();
-  var new_tags = $('#edit-tags').val();
-  var new_description = $('#edit-description').val();
-  var new_anonymized = $('#edit-anonymize').val();    
-  
-  console.log(new_tags);
-}
+    // Function that edits the data written by the user.
+    $scope.editDataFunction = function(){
+      // Get the values from the input fields
+      var new_creator = $('#edit-creator').val();
+      var new_TDID = $('#edit-TDID').val();
+      var new_TCID = $('#edit-TCID').val();
+      var new_patient_name = $('#edit-patient-name').val();
+      var new_tags = $('#edit-tags').val();
+      var new_description = $('#edit-description').val();
+      if($('#edit-anonymize').val() == "on")
+        var new_anonymized = true;    
+      else
+        var new_anonymized = false;
 
+      // RequestURL for getting the entry for the testdata
+      var getEntryURL = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/Entries?q=" + the_edit_ID + "&from=0&size=1";
+      
+      // GET request for getting the entry
+      $http.get(getEntryURL).then(function(response){
+        var testDataEntryID = response.data.Result[0].Id;
+        var RootDirectory = response.data.Result[0].RootDirectory;
+        var DocIdsToPaths = response.data.Result[0].DocIdsToPaths;
+        var ImportDate = response.data.Result[0].Info["Import Date"];
+        
+        // Create the testdataentry for the PUT request
+        var testDataEntry = {
+          "Id": testDataEntryID,
+          "RootDirectory": RootDirectory,
+          "DocIdsToPaths": DocIdsToPaths,
+          "Info": {
+            "Import Date": ImportDate,
+            "Anonymized": new_anonymized,
+            "Creator": new_creator,
+            "TestDataID": new_TDID,
+            "TestCaseID": new_TCID,
+            "NewPatientName": new_patient_name,
+            "Description": new_description
+          },
+          "Tags": new_tags.split(","),
+          "Status": 2,
+          "StatusMessage": ""
+        }
+
+        // RequestURL for the PUT request
+        var requestURL = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Entries/" + testDataEntryID;
+        console.log(testDataEntry);
+        console.log(requestURL);
+
+      /*
+        // PUT request for updating the entry (and thereby also the testdata) 
+        $http({
+          method  : 'PUT',
+          url     : requestURL,
+          data    : testDataEntry,
+          headers: {
+          "Content-type": "application/json",
+          "Accept" : "application/json"
+          } 
+        }).success(function(data, status, headers) {
+              console.log(data);
+              console.log("status: " + status);
+        });*/
+      
+      });
+    };
+
+
+
+
+});

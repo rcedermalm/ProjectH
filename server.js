@@ -38,7 +38,7 @@ app.post('/upload', function(req,res) {
 
     // This is taking care of writing to a file (in cour case td.json), first argument is the filepath, second is what goes in.
     // Is currently hard coded to write to \\teatime.westeurope.cloudapp.azure.com\SharedStorage\nyTest123.
-    fs.writeFile( '\\\\teatime.westeurope.cloudapp.azure.com\\SharedStorage\\nyTest123' + '\\'  + 'td.json',JSON.stringify(req.body), (err) =>{
+    fs.writeFile( '\\\\teatime.westeurope.cloudapp.azure.com\\SharedStorage\\' + Object.keys(directoryToFolder) + '\\'  + 'td.json',JSON.stringify(req.body), (err) =>{
         if (err) throw err;
         console.log('Saved: ' + JSON.stringify(req.body) + ', to: ' + Object.keys(directoryToFolder) + '\\td.json' );
     })

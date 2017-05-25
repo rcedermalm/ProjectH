@@ -1,0 +1,18 @@
+/** TEST TABLE **/
+
+#test-table {
+	margin-top: 20px;
+}
+
+#remove-btn {
+	background-color: red;
+}
+
+#remove-btn:hover {
+  background-color: darkred;
+}
+
+#to-test-btn {
+	margin: 10px;
+	float: right;
+}
