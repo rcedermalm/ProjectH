@@ -182,10 +182,11 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     $('#edit-patient-name').val(the_object.Document["Attributes"]["Info"]["NewPatientName"]);
     $('#edit-tags').val(the_object.Document["Attributes"]["Tags"]);
     $('#edit-description').val(the_object.Document["Attributes"]["Info"]["Description"]);
-    if (the_object.Document["Attributes"]["Info"]["Anonymized"] == "true")
-      document.getElementById("edit-anonymize").checked = true;
+    if (the_object.Document["Attributes"]["Info"]["Anonymized"] == "Yes"){
+      document.getElementById("radio-yes").checked = true;
+    }
     else
-      document.getElementById("edit-anonymize").checked = false;
+      document.getElementById("radio-no").checked = true;
   };
 
 
@@ -198,10 +199,11 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     var new_patient_name = $('#edit-patient-name').val();
     var new_tags = $('#edit-tags').val();
     var new_description = $('#edit-description').val();
-    if ($('#edit-anonymize').val() == "on")
-      var new_anonymized = true;
+
+    if (document.getElementById("radio-yes").checked)
+      var new_anonymized = "Yes";
     else
-      var new_anonymized = false;
+      var new_anonymized = "No";
 
     // RequestURL for getting the entry for the testdata
     var getEntryURL = "http://teatime.westeurope.cloudapp.azure.com/teatimewebapi/api/v0/Search/Entries?q=" + the_edit_ID + "&from=0&size=1";
@@ -220,7 +222,7 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
         "DocIdsToPaths": DocIdsToPaths,
         "Info": {
           "Import Date": ImportDate,
-          "Anonymized": new_anonymized,
+          "Anonymized": "true", //new_anonymized,
           "Creator": new_creator,
           "TestDataID": new_TDID,
           "TestCaseID": new_TCID,

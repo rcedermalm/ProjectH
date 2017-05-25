@@ -165,12 +165,18 @@
         </div>
 
         <div class="row">
-          <label for="anonymized" class="col-md-6 txt-info">Anonymized?</label>
-          <label class="switch">
-                <input type="checkbox" class="col-md-6" id="edit-anonymize">
-                <div class="slider"></div>
-              </label>
-        </div>
+          <label class="col-md-6 txt-info" for="radios">Anonymized</label>
+          <div class="col-md-6"> 
+            <label class="radio-inline" for="yes">
+              <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" required="">
+              Yes
+            </label> 
+            <label class="radio-inline" for="no">
+              <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No">
+              No
+            </label> 
+          </div>
+        </div> 
 
       </div>
       <div class="modal-footer">
