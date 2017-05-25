@@ -1,167 +1,225 @@
 <head>
   <script src="Script/typeahead.js"></script>
   <script src="Script/bootstrap-tagsinput.js"></script>
- </head>
-<h1 id="heading-browse">Add files to the database</h1>
+</head>
+<div class="row content">
+  <!-- Rubrik för sidan -->
+  <div class="col-sm-12">
+    <div class="well">
+      <h2>Import files</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="well" id = "well-form">
+          <!-- ************************************************ User input begin ************************************************ -->
+          <div ng-controller="AddController">
+            <form ng-submit="processForm()" class="form-horizontal">
+              <fieldset>
+                <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Choose files</label>  
+                  <div class="col-md-8">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <span class="btn btn-primary btn-file">
+                        Browse… <!-- <input type="file" multiple=""> -->
+                          <input type="file" name = "file" id="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
+                        </span> 
+                      </span>
+                      <input type="text" class="form-control filename" readonly="">
+                    </div>
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
 
-<div class="alert alert-success" id="successMsg">
-  <strong>Success!</strong> {{Folder[0]}} added to the database.
-</div>
-<!-- File picker -->
-<div class="container" style="margin-top: 20px;">
-  <div class="row">
-    <div class="col-lg-6 col-sm-6 col-12">
-      <div class="input-group">
-        <span class="input-group-btn">
-          <span class="btn btn-primary btn-file">
-          Browse… <!-- <input type="file" multiple=""> -->
-          <input type="file" name = "file" id="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
-          </span> 
-        </span>
-        <input type="text" class="form-control filename" readonly="">
+                <!-- ************************************************ FILE PICKER END ******************************************** -->
+
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="types">Data Types</label>  
+                  <div class="col-md-8">
+                    <input type="text" placeholder="e.g. dicom" class="form-control input-md" ng-model="dataTypes" required="">
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="creator">Creator</label>  
+                  <div class="col-md-8">
+                    <input type="text" placeholder="Write your name here" class="form-control input-md" ng-model="Info.Creator" required="">
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="infoTestData">TestData ID</label>  
+                  <div class="col-md-8">
+                    <input type="text" placeholder="e.g. 123456" class="form-control input-md" ng-model="Info.TestDataID" required="">
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="infoTestCase">TestCase ID</label>  
+                  <div class="col-md-8">
+                    <input type="text" placeholder="e.g. abcdef" class="form-control input-md" ng-model="Info.TestCaseID" required="">
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="patient-name">New patient name</label>  
+                  <div class="col-md-8">
+                    <input type="text" placeholder="e.g. Anna Andersson" class="form-control input-md" ng-model="Info.NewPatientName" required="">
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="tags"">Labels</label>  
+                  <div class="col-md-8">
+                    <input type="text" placeholder="tags" class="form-control input-md" ng-model="Tags" ng-init="Tags=''" required="" value="" data-role="tagsinput">
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>            
+                                        
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="description">Description</label>  
+                  <div class="col-md-8">
+                   <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description" required=""></textarea>
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+
+                <!--
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="anonymized">Anonymized</label>  
+                  <div class="col-md-8">
+                  <label class="switch">
+                   <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
+                    <div class="slider" ng-click="sliderAnonymize"></div>
+                  </label>
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div>
+                -->
+
+                <!-- Checkboxes instead of the switch -->
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="radios">Anonymized</label>
+                  <div class="col-md-8"> 
+                    <label class="radio-inline" for="yes">
+                      <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" required="">
+                      Yes
+                    </label> 
+                    <label class="radio-inline" for="no">
+                      <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No" checked="checked">
+                      No
+                    </label> 
+                  </div>
+                  <div class = "col-md-2">&nbsp;</div>
+                </div> 
+                                         
+                <!-- Custom Fields -->
+                <div class="form-group">
+                  <div id="nestedform">
+                    <label class="col-md-2 control-label">Custom fields:</label>
+                    <div class="col-md-8">
+                      <button id="b1" class="btn add-more btn-primary" type="button">Add Custom Field</button>
+                        <div class="controls custom-fields" id="profs">
+                          <input class="input1 form-control input-md" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
+                          <input class="input2 form-control input-md" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
+                          <button class="btn remove btn-custom form-control btn-danger glyphicon glyphicon-remove" type="button"></button>
+                        </div>
+                    </div>
+                    <div class = "col-md-2">&nbsp;</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class = "col-md-2">&nbsp;</div>
+                    <div class="col-md-8">
+                      <button class="btn btn-import btn-primary" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
+                      <button type="button" onclick="reloadPage()" class="btn btn-cancel btn-primary">Cancel</button>
+                    </div>
+                    <div class = "col-md-2">&nbsp;</div>
+                </div>
+              </fieldset> 
+            </form>
+
+            <!-- ************************************************ Modal ************************************************-->
+            <div class="modal fade" id="register" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close btnX" data-dismiss="modal">x</button>
+                    <h2 class="modal-title">Overview</h2>
+                  </div>
+                  <div class="modal-body">
+                    <div class="modal1">
+                      <label for="directory" class="txt-modal">Chosen Folder:</label>
+                      <input class="input-modal" id="directory" name="directory" type="text" value="{{ request.form.directory }}" disabled/>
+                    </div> 
+
+                    <div class="modal1">
+                      <label for="types" class="txt-modal">Data Types:</label>
+                      <input class="input-modal" id="data-types" name="data-types" type="text" value="{{ request.form.data-types }}" disabled/>
+                    </div>
+
+                    <div class="modal1">
+                      <label for="creator" class="txt-modal">Creator:</label>
+                      <input class="input-modal" id="creator" name="creator" type="text" value="{{ request.form.creator }}" disabled/>
+                    </div>
+
+                    <div class="modal1">
+                      <label for="infoTestData" class="txt-modal">TestData ID:</label>
+                      <input class="input-modal" id="TDID" name="TDID" type="text" value="{{ request.form.TDID }}" disabled/>
+                    </div>
+
+                    <div class="modal1">
+                      <label for="infoTestCase" class="txt-modal">TestCase ID:</label>
+                      <input class="input-modal" id="TCID" name="TCID" type="text" value="{{ request.form.TCID }}" disabled/>
+                    </div>
+
+                    <div class="modal1">
+                      <label for="patient-name" class="txt-modal">New patient name:</label>
+                      <input class="input-modal" id="patient-name" name="patient-name" type="text" value="{{ request.form.patient-name }}" disabled/>
+                    </div>
+
+                    <div class="modal1">
+                      <label for="tags" class="txt-modal">Labels:</label>
+                      <input class="input-modal" id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
+                    </div> 
+
+                    <div class="modal1">
+                      <label for="description" class="txt-modal">Description:</label>
+                      <input class="input-modal" id="description" name="description" type="text" value="{{ request.form.description }}" disabled/>
+                    </div>
+
+                    <div class="modal1">
+                      <label for="anonymized" class="txt-modal">Anonymized:</label>
+                      <input class="input-modal" id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
+                    </div> 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+                    <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" >Add entry</button>                                                                                                                                                                                                                                                                                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ************************************************ MODAL END ************************************************-->
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="well well-files">
+          <h4>Chosen files to import</h4>
+          <!-- Show selected files in a list -->
+          <!-- <div id="fileList"></div> -->
+          <div id="fileList"></div>
+        </div>
       </div>
     </div>
-    <!-- Show selected files in a list -->
-    <div id="fileList"></div>
   </div>
 </div>
 
-<!-- User input -->
-<div id="ngController" ng-controller="AddController">
-
-  <form ng-submit="processForm()">
-
-    <div>
-      <label for="types" class="txt-info">Data Types:</label>
-      <input type="text" class="txt-field" ng-model="dataTypes">
-    </div>
-
-    <div>
-      <label for="creator" class="txt-info">Creator:</label>
-        <input type="text" ng-model="Info.Creator" class="txt-field">
-    </div>
-
-    <div>
-      <label for="infoTestData" class="txt-info">TestData ID:</label>
-      <input type="text" ng-model="Info.TestDataID" class="txt-field">
-    </div>
-
-    <div>
-      <label for="infoTestCase" class="txt-info">TestCase ID:</label>
-      <input type="text" ng-model="Info.TestCaseID"  class="txt-field">
-    </div>
-
-    <div>
-      <label for="patient-name" class="txt-info">New patient name:</label>
-      <input type="text" ng-model="Info.NewPatientName" class="txt-field">
-    </div>
-
-    <div>
-      <label for="tags" class="txt-info">Labels:</label>
-      <input type="text" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''">
-    </div>
-
-    <div>
-      <label for="description" class="txt-info">Description:</label>
-      <textarea type="text" class="txt-area" ng-model="Info.Description"/>
-    </div>
-
-    <div>
-      <label for="anonymized" class="txt-info">Anonymized?</label>
-      <label class="switch">
-        <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'">
-        <div class="slider" ng-click="sliderAnonymize"></div>
-      </label>
-    </div>
-
-
-    <!-- Custom Fields -->
-
-    <div id="nestedform">
-
-      <label class="txt-info">Custom fields:</label>
-      <button id="b1" class="btn add-more btn-import" type="button">Add Custom Field</button>
-        <div class="controls custom-fields" id="profs">
-          <input class="input1 custom-input" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
-          <input class="input2 txt-field custom-input" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
-          <button class="remove btn-danger" type="button">X</button>
-        </div>
-    </div>
-
-
-    <div class="buttons">
-      <button type="button" onclick="reloadPage()" class="btn btn-cancel">Clear Fields</button>
-      <!--<button type="submit" class="btn btn-import">Add entry</button>  
-      <button ng-click="SendData()" type="submit" class="btn btn-import">Add entry</button> -->   
-      <button class="btn btn-import" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
-    </div>
-  </form>
-
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="register" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close btnX" data-dismiss="modal">x</button>
-          <h2 class="modal-title">Overview</h2>
-        </div>
-        <div class="modal-body">
-          <div class="modal1">
-            <label for="directory" class="txt-modal">Chosen Folder:</label>
-            <input class="input-modal" id="directory" name="directory" type="text" value="{{ request.form.directory }}" disabled/>
-          </div> 
-
-          <div class="modal1">
-            <label for="types" class="txt-modal">Data Types:</label>
-            <input class="input-modal" id="data-types" name="data-types" type="text" value="{{ request.form.data-types }}" disabled/>
-          </div>
-
-          <div class="modal1">
-            <label for="creator" class="txt-modal">Creator:</label>
-            <input class="input-modal" id="creator" name="creator" type="text" value="{{ request.form.creator }}" disabled/>
-          </div>
-
-          <div class="modal1">
-            <label for="infoTestData" class="txt-modal">TestData ID:</label>
-            <input class="input-modal" id="TDID" name="TDID" type="text" value="{{ request.form.TDID }}" disabled/>
-          </div>
-
-          <div class="modal1">
-            <label for="infoTestCase" class="txt-modal">TestCase ID:</label>
-            <input class="input-modal" id="TCID" name="TCID" type="text" value="{{ request.form.TCID }}" disabled/>
-          </div>
-
-          <div class="modal1">
-            <label for="patient-name" class="txt-modal">New patient name:</label>
-            <input class="input-modal" id="patient-name" name="patient-name" type="text" value="{{ request.form.patient-name }}" disabled/>
-          </div>
-
-          <div class="modal1">
-            <label for="tags" class="txt-modal">Labels:</label>
-            <input class="input-modal" id="labels" name="labels" type="text" value="{{ request.form.labels }}" disabled/>
-          </div> 
-
-          <div class="modal1">
-            <label for="description" class="txt-modal">Description:</label>
-            <input class="input-modal" id="description" name="description" type="text" value="{{ request.form.description }}" disabled/>
-          </div>
-
-          <div class="modal1">
-            <label for="anonymized" class="txt-modal">Anonymized:</label>
-            <input class="input-modal" id="anonymized" name="anonymized" type="text" value="{{ request.form.anonymized }}" disabled/>
-          </div> 
-
-        </div>
-        <div class="modal-footer">
-
-          <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-          <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" >Add entry</button> 
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
