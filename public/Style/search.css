@@ -14,30 +14,43 @@
   background-color: lightgray;
 }
 .r-table {
-  border: 1px solid #014d6f;
+  position: relative;
 	display: table;
-	width: 100%;
+	width: 95%;
+  box-shadow: 5px 5px 10px gray;
 }
+
 .r-table-row {
   background-color: white;
   color:#2d2d2d;
   display: table-row;
-  box-shadow: 2px 2px 5px gray;
 }
 
 .r-table-heading {
 	background-color: #014d6f;
-  border: 0;
   color: white;
   cursor: pointer;
-  display: table-header-group;
+  display: table-row;
+  height: 50px !important;
   font-weight: bold;
 }
 
 .r-table-cell, .r-table-head {
-  border: 0;
   display: table-cell;
 	padding: 3px 10px;
+  vertical-align: middle;
+  outline: none;
+  border-bottom: 1px solid #ededed;
+}
+.r-table-cell:active {
+  outline: none;
+}
+.paddThese {
+  padding-left: 12%!important;
+}
+
+.r-table-head {
+  position: relative;
 }
 
 #options {
@@ -50,9 +63,10 @@
   vertical-align: middle;
 }
 .r-table-foot {
-  background-color: #014d6f;
-  color: white;
-  display: table-footer-group;
+  background-color: white;
+  color: gray;
+  height: 50px;
+  display: table-row;
   font-weight: bold;
 }
 
@@ -67,9 +81,10 @@
 }
 
 #expanded-table-head {
-	background: #eae8e2;
+	background: lightgray;
 	font-weight: bold;
-
+  color: white;
+  height: 50px;
 }
 
 .expanded-table {
@@ -100,6 +115,7 @@
 .table-second-level {
 	width: 17% ;
   position: relative;
+  border-bottom: 1px solid #e5e5e5 !important;
 }
 
 .table-third-level {
