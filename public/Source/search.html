@@ -90,10 +90,10 @@
       <div class="r-table-cell table-second-level">StudyID</div>
       <div class="r-table-cell table-second-level"></div>
     </div>
-    <div class="r-table-row expanded-table" ng-if="x.expanded" ng-repeat-start="object in x.objects | filter : search_filter" id="{{object.Id}}" >
+    <div class="r-table-row expanded-table" ng-if="x.expanded" ng-repeat-start="object in x.objects | filter : search_filter" name="{{object.Id}}">
       <div class="r-table-cell expanded-first-cell table-second-level" ng-click="xExpand(object)"> <!-- Id -->
         <span class="glyphicon glyphicon-triangle-bottom search-glyph" ng-if="object.expanded" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-right search-glyph" ng-if="!object.expanded" aria-hidden="true"></span>
-        <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)">
+        <span draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)" id="{{object.Id}}">
           {{object.Id}}
         </span>
       </div> 
