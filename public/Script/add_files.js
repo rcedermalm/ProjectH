@@ -1,4 +1,3 @@
-
 //Variables to show anonymization and tags in modal
 var modalAnonymize;
 var modalTags;
@@ -163,6 +162,8 @@ app.controller('AddController', function($scope, $http) {
       };
       console.log(jsonData);
       console.log($scope.Tags);
+
+      console.log($scope.Info.Anonymized);
 
       //Copy value to modal variables
       modalTags = $scope.Tags;
