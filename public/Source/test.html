@@ -12,7 +12,7 @@
       <div class="r-table-head">TestCase ID</div>
       <div class="r-table-head"></div>
     </div>
-    <div ng-show="test_objects.length == 0" class="r-table-row">    
+    <div ng-show="test_objects.length == 0" class="r-table-row"> <!-- If no objects has been dragged to the drop zone -->   
       <div class="r-table-cell">No objects selected.</div>
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>
@@ -33,10 +33,14 @@
       <div class="r-table-cell"> <!-- Tags -->
         <span ng-repeat="tag in x.Document['Attributes']['Tags']"> {{ tag }} </span>
       </div>
-      <div class="r-table-cell"> {{ x.Document["Attributes"]["Info"]["TestCaseID"] }} </div>
-      <div class="r-table-cell"><md-button class="md-raised md-primary" id="remove-btn" ng-click="deleteFromTest(x.Id)" aria-hidden="true">REMOVE</md-button></div>
+      <div class="r-table-cell"> <!-- TestCasID -->
+        {{ x.Document["Attributes"]["Info"]["TestCaseID"] }} 
+      </div>
+      <div class="r-table-cell"> <!-- Remove Button -->
+        <md-button class="md-raised md-primary" id="remove-btn" ng-click="deleteFromTest(x.Id)" aria-hidden="true">REMOVE</md-button>
+      </div>
     </div>
-    <div class="r-table-foot">
+    <div class="r-table-foot"> 
       <div class="r-table-cell">Number of objects: {{ test_objects.length }} </div>
       <div class="r-table-cell"></div>
       <div class="r-table-cell"></div>

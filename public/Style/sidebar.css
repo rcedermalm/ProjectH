@@ -46,11 +46,11 @@ body {
 }
 
 #page-content-wrapper {
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 15px;
   position: absolute;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -90,6 +90,8 @@ body {
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
+  background-color: #eae8e2;
+  color: #2d2d2d;
   text-decoration: none;
 }
 
@@ -159,13 +161,11 @@ body {
   #send-button{
     display: none;
   }
-
 }
 
 @media screen and (min-height: 700px) {
   #target {
     height: 45vh;
-
   }
   #drag-drop-and-button {
     margin-top: 40vh;
@@ -179,7 +179,6 @@ body {
   height: 6vh;
   margin: 2vh 0 20% -2vh;
   width: 95%;
-
 }
 
 #dimensions {
@@ -192,8 +191,8 @@ body {
 .navbar {
   /* Dark blue color, used in eg. header */
   background-color: #014d6f !important;
-  border-radius: 0 !important;
   border-color:#014d6f !important;
+  border-radius: 0 !important;
   margin-bottom: 0 !important;
 }
 
@@ -204,10 +203,6 @@ body {
   position: relative;
   z-index:1010;
 }
-
-/*.navbar-brand {
-  color: #9cf !important;
-}*/
 
 /** Sectra image on header **/
 #header-image {

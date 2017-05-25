@@ -24,6 +24,7 @@ app.controller('test_data_ctrl', function ($scope) {
 	// Save the result in the variable objects_to_test
 	$scope.test_objects = objects_to_test;
 
+	// Function to delete objects from the "test table" (removes the item from the array)
 	$scope.deleteFromTest = function(id){
 		var index_to_delete = objects_to_test.findIndex(x => x.Id == id);
 		if(index_to_delete != -1)
@@ -35,6 +36,5 @@ app.controller('test_data_ctrl', function ($scope) {
 		objects_to_test.splice(0, objects_to_test.length); // Clear the data
 		alert("TestData was sent to test");
 	}
-
 
 });
