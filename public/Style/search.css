@@ -86,9 +86,9 @@
 }
 
 #expanded-table-head {
-	background: lightgray;
+	background: #efefef;
 	font-weight: bold;
-  color: white;
+  color: black;
   height: 50px;
 }
 
@@ -105,11 +105,11 @@
 }
 
 .expanded-first-cell {
-	padding-left: 30px;
+	padding-left: 50px;
 }
 
 .expanded-x2-first-cell {
-	padding-left: 60px;
+	padding-left: 100px;
 }
 
 .table-first-level {
@@ -160,7 +160,7 @@
   width: 100% !important;
 }
 
-.form-control {
+#search-bar-control {
   width: 95% !important;
 }
 
