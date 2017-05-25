@@ -31,6 +31,9 @@
   color:#2d2d2d;
   display: table-row;
 }
+.r-table-row:hover {
+  background-color: #f6f7f2;
+}
 
 .r-table-heading {
 	background-color: #014d6f;
