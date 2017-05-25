@@ -12,7 +12,7 @@
       <div class="col-sm-6">
         <div class="well" id = "well-form">
           <!-- ************************************************ User input begin ************************************************ -->
-          <div ng-controller="AddController">
+          <div id = "ngController" ng-controller="AddController">
             <form ng-submit="processForm()" class="form-horizontal">
               <fieldset>
                 <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
@@ -201,8 +201,8 @@
                     </div> 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-                    <button ng-click="SendData()" type="submit" data-dismiss="modal"class="btn btn-import" >Add entry</button>                                                                                                                                                                                                                                                                                     
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button ng-click="SendData()" type="submit" data-dismiss="modal" class="btn btn-primary">Add entry</button>                                                                                                                                                                                                                                                                                     
                   </div>
                 </div>
               </div>
