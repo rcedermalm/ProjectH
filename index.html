@@ -5,7 +5,10 @@
   <title>TDDB</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="Style/bootstrap-select.min.css">
   <link rel="stylesheet" href="Style/sidebar.css">
+  <link rel="stylesheet" type="text/css" href="Style/search.css">
   <link rel="stylesheet" href="Style/add_files.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
@@ -17,10 +20,12 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="Script/bootstrap-select.min.js"></script>
   <script src="Script/index.js"></script>
   <script src="Script/search.js"></script>
   <script src="Script/sidebar.js"></script>
   <script src="Script/add_files.js"></script>
+  <script src="Script/test.js"></script>
  </head>
   
 <body ng-app="TDDB" >
@@ -45,7 +50,7 @@
       <ul id="drag-drop-and-button">     
         <!-- The target for dropping files -->   
         <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event);"></div> 
-        <button type="button" class="btn btn-default" onclick="sendFiles()" id="send-button">Send to test</button>
+        <a type="button" class="btn btn-default" onclick="clearDragAndDrop()" href="#page_test" id="send-button">Send to test</a>
       </ul>
     </div>
     <div id="page-content-wrapper"  ng-view ></div>

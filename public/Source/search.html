@@ -1,7 +1,4 @@
-<link rel="stylesheet" type="text/css" href="Style/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="Style/search.css">
-<link rel="stylesheet" type="text/css" href="Style/bootstrap-select.min.css">
-<script src="Script/bootstrap-select.min.js"></script>
 
 
 <div id="page-content-wrapper">
@@ -134,50 +131,48 @@
             <h2 class="modal-title">Edit TestData</h2>
           </div>
           <div class="modal-body">
-            <div>
-              <label for="creator" class="txt-info">Creator:</label>
-              <input id="edit-creator" name="creator" type="text"/>
+            <div class="row">
+              <label for="creator" class="col-sm-6 txt-info">Creator:</label>
+              <input id="edit-creator" class="col-sm-6" name="creator" type="text"/>
             </div>
 
-            <div>
-              <label for="infoTestData" class="txt-info">TestData ID:</label>
-              <input id="edit-TDID" name="TDID" type="text"/>
+            <div class="row">
+              <label for="infoTestData" class="col-sm-6 txt-info">TestData ID:</label>
+              <input id="edit-TDID" class="col-sm-6" name="TDID" type="text"/>
             </div>
 
-            <div>
-              <label for="infoTestCase" class="txt-info">TestCase ID:</label>
-              <input id="edit-TCID" name="TCID" type="text"/>
+            <div class="row">
+              <label for="infoTestCase" class="col-md-6 txt-info">TestCase ID:</label>
+              <input id="edit-TCID" class="col-md-6" name="TCID" type="text"/>
             </div>
 
-            <div>
-              <label for="patient-name" class="txt-info">New patient name:</label>
-              <input id="edit-patient-name" name="patient-name" type="text" />
+            <div class="row">
+              <label for="patient-name" class="col-md-6 txt-info">New patient name:</label>
+              <input id="edit-patient-name" class="col-md-6" name="patient-name" type="text" />
             </div>
 
-            <div>
-              <label for="tags" class="txt-info">Labels:</label>
-              <input id="edit-tags" data-role="tagsinput" name="tags" type="text" />
+            <div class="row">
+              <label for="tags" class="col-md-6 txt-info">Labels:</label>
+              <input id="edit-tags" class="col-md-6" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''" name="tags" type="text" />
             </div>
 
-            <div>
-              <label for="description" class="txt-info">Description:</label>
-              <textarea type="text" class="txt-area" id="edit-description"/>
+            <div class="row">
+              <label for="description" class="col-md-6 txt-info">Description:</label>
+              <textarea type="text" class="col-md-6 txt-area" id="edit-description"/>
             </div>
 
-            <div>
-              <label for="anonymized" class="txt-info">Anonymized?</label>
+            <div class="row">
+              <label for="anonymized" class="col-md-6 txt-info">Anonymized?</label>
               <label class="switch">
-                <input type="checkbox" id="edit-anonymize">
+                <input type="checkbox" class="col-md-6" id="edit-anonymize">
                 <div class="slider"></div>
               </label>
             </div>
 
           </div>
           <div class="modal-footer">
-
             <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
             <button type="submit" data-dismiss="modal" class="btn btn-import" ng-click="editDataFunction()" >Save</button> 
-
           </div>
         </div>
       </div>

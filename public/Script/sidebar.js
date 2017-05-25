@@ -92,16 +92,10 @@ function dragendHandler(ev) {
 	ev.dataTransfer.clearData();
 }
 
-function sendFiles(){
-  var alert_text = "The objects: ";
-  for(var i = 0; i < objectsInDropZone.length; i++){
-    alert_text = alert_text + objectsInDropZone[i];//.name;
-
-    if(i != objectsInDropZone.length - 1){
-      alert_text = alert_text + ", ";
+// Function to clear the target of the drag and drop.
+function clearDragAndDrop(){
+    var drop_target = document.getElementById("target");   
+    while (drop_target.firstChild) { // As long as the target still has a child, remove it
+        drop_target.removeChild(drop_target.firstChild);
     }
-  }
-
-  alert_text = alert_text + "\nare sent to test.";
-  alert(alert_text);
 }
