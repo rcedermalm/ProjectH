@@ -1,6 +1,6 @@
-
 /*********************************** FILE PICKER ***********************************************/
 //Changes the text in the file picker depending on the chosen files
+
 $(document).on('change', '.btn-file :file', function(value) {
     console.log(value);
         var input = $('.filename'),
