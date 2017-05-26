@@ -17,7 +17,7 @@
               <fieldset>
                 <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
                 <div class="form-group">
-                  <label class="col-md-2 control-label">Choose files</label>  
+                  <label class="col-md-3 control-label">Choose files</label>  
                   <div class="col-md-8">
                     <div class="input-group">
                       <span class="input-group-btn">
@@ -29,65 +29,65 @@
                       <input type="text" class="form-control filename" readonly="">
                     </div>
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <!-- ************************************************ FILE PICKER END ******************************************** -->
 
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="types">Data Types</label>  
+                  <label class="col-md-3 control-label" for="types">Data Types</label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="e.g. dicom" class="form-control input-md" ng-model="dataTypes" required="">
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="creator">Creator</label>  
+                  <label class="col-md-3 control-label" for="creator">Creator</label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="Write your name here" class="form-control input-md" ng-model="Info.Creator" required="">
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="infoTestData">TestData ID</label>  
+                  <label class="col-md-3 control-label" for="infoTestData">TestData ID</label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="e.g. 123456" class="form-control input-md" ng-model="Info.TestDataID" required="">
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="infoTestCase">TestCase ID</label>  
+                  <label class="col-md-3 control-label" for="infoTestCase">TestCase ID</label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="e.g. abcdef" class="form-control input-md" ng-model="Info.TestCaseID" required="">
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="patient-name">New patient name</label>  
+                  <label class="col-md-3 control-label" for="patient-name">New patient name</label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="e.g. Anna Andersson" class="form-control input-md" ng-model="Info.NewPatientName" required="">
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="tags"">Labels</label>  
+                  <label class="col-md-3 control-label" for="tags">Labels</label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="tags" class="form-control input-md" ng-model="Tags" ng-init="Tags=''" required="" value="" data-role="tagsinput">
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>            
                                         
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="description">Description</label>  
+                  <label class="col-md-3 control-label" for="description">Description</label>  
                   <div class="col-md-8">
                    <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description" required=""></textarea>
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div>
 
                 <!--
@@ -105,7 +105,7 @@
 
                 <!-- Checkboxes instead of the switch -->
                 <div class="form-group">
-                  <label class="col-md-2 control-label" for="radios">Anonymized</label>
+                  <label class="col-md-3 control-label" for="radios">Anonymized</label>
                   <div class="col-md-8"> 
                     <label class="radio-inline" for="yes">
                       <input type="radio" name="radios" id="radio-yes-add" ng-model="Info.Anonymized" value="Yes" required="">
@@ -116,13 +116,13 @@
                       No
                     </label> 
                   </div>
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-1">&nbsp;</div>
                 </div> 
                                          
                 <!-- Custom Fields -->
                 <div class="form-group">
                   <div id="nestedform">
-                    <label class="col-md-2 control-label">Custom fields:</label>
+                    <label class="col-md-3 control-label">Custom fields:</label>
                     <div class="col-md-8">
                       <button id="b1" class="btn add-more btn-primary" type="button">Add Custom Field</button>
                         <div class="controls custom-fields" id="profs">
@@ -131,17 +131,17 @@
                           <button class="btn remove btn-custom form-control btn-danger glyphicon glyphicon-remove" type="button"></button>
                         </div>
                     </div>
-                    <div class = "col-md-2">&nbsp;</div>
+                    <div class = "col-md-1">&nbsp;</div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <div class = "col-md-2">&nbsp;</div>
+                  <div class = "col-md-3">&nbsp;</div>
                     <div class="col-md-8">
                       <button class="btn btn-import btn-primary" type="submit" data-toggle="modal" data-target="#register" onclick="modalFunction()">Proceed</button>
                       <button type="button" onclick="reloadPage()" class="btn btn-cancel btn-primary">Cancel</button>
                     </div>
-                    <div class = "col-md-2">&nbsp;</div>
+                    <div class = "col-md-1">&nbsp;</div>
                 </div>
               </fieldset> 
             </form>
