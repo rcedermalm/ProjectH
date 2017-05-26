@@ -153,6 +153,13 @@ body {
   width: 90%;
 }
 
+#drag-drop-text{
+  color: white;
+  text-align: center;
+  margin-top:50%;
+  opacity:0.5;
+}
+
 @media screen and (max-height: 400px) {
   #target {
     border: 0;

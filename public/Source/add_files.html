@@ -108,11 +108,11 @@
                   <label class="col-md-2 control-label" for="radios">Anonymized</label>
                   <div class="col-md-8"> 
                     <label class="radio-inline" for="yes">
-                      <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" required="">
+                      <input type="radio" name="radios" id="radio-yes-add" ng-model="Info.Anonymized" value="Yes" required="">
                       Yes
                     </label> 
                     <label class="radio-inline" for="no">
-                      <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No" checked="checked">
+                      <input type="radio" name="radios" id="radio-no-add" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No" >
                       No
                     </label> 
                   </div>
@@ -202,7 +202,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    <button ng-click="SendData()" type="submit" data-dismiss="modal" class="btn btn-primary">Add entry</button>                                                                                                                                                                                                                                                                                     
+                    <button ng-click="SendData()" type="submit" data-dismiss="modal" class="btn btn-primary">Add entry</button> 
                   </div>
                 </div>
               </div>

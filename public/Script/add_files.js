@@ -1,3 +1,4 @@
+
 /*********************************** FILE PICKER ***********************************************/
 //Changes the text in the file picker depending on the chosen files
 
@@ -79,12 +80,13 @@ $('.bootstrap-tagsinput').focusout(function() {
 
 
 /******************************** FORM HANDLING ***********************************************/
+
+
 // Post files in the database using POST in storeRequest
 // url: C:\\temp\\SharedStorage\\nyTest123
 // Create angular controller and pass $scope and $http
 // This handles the input from the user
 app.controller('AddController', function($scope, $http) {
-
 
   /**************************** CUSTOM FIELDS ************************************/
   $(".custom-fields:first").hide(); //hide template

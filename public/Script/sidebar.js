@@ -85,6 +85,9 @@ function dropHandler(ev) {
       }
     }
   }
+  if(objectsInDropZone.length != 0){
+    document.getElementById("drag-drop-text").style.display = 'none';
+  }
 }
 
 function dragendHandler(ev) {
@@ -94,8 +97,9 @@ function dragendHandler(ev) {
 
 // Function to clear the target of the drag and drop.
 function clearDragAndDrop(){
-  var drop_target = document.getElementById("target");   
-  while (drop_target.firstChild) { // As long as the target still has a child, remove it
-    drop_target.removeChild(drop_target.firstChild);
+  var drop_target = document.getElementById("target");  
+  while (drop_target.children[1]) { // As long as the target still has a child, remove it
+    drop_target.removeChild(drop_target.children[1]);
   }
+  document.getElementById("drag-drop-text").style.display = '';
 }

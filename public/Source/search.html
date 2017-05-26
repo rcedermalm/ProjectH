@@ -133,55 +133,55 @@
         <h2 class="modal-title">Edit TestData</h2>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <label for="creator" class="col-sm-6 txt-info">Creator:</label>
-          <input id="edit-creator" class="col-sm-6" name="creator" type="text" />
+        <div class="modal1">
+          <label for="creator" class="txt-modal">Creator:</label>
+          <input id="edit-creator" class="input-modal" name="creator" type="text" />
         </div>
 
-        <div class="row">
-          <label for="infoTestData" class="col-sm-6 txt-info">TestData ID:</label>
-          <input id="edit-TDID" class="col-sm-6" name="TDID" type="text" />
+        <div class="modal1">
+          <label for="infoTestData" class="txt-modal">TestData ID:</label>
+          <input id="edit-TDID" class="input-modal" name="TDID" type="text" />
         </div>
 
-        <div class="row">
-          <label for="infoTestCase" class="col-md-6 txt-info">TestCase ID:</label>
-          <input id="edit-TCID" class="col-md-6" name="TCID" type="text" />
+        <div class="modal1">
+          <label for="infoTestCase" class="txt-modal">TestCase ID:</label>
+          <input id="edit-TCID" class="input-modal" name="TCID" type="text" />
         </div>
 
-        <div class="row">
-          <label for="patient-name" class="col-md-6 txt-info">New patient name:</label>
-          <input id="edit-patient-name" class="col-md-6" name="patient-name" type="text" />
+        <div class="modal1">
+          <label for="patient-name" class="txt-modal">New patient name:</label>
+          <input id="edit-patient-name" class="input-modal" name="patient-name" type="text" />
         </div>
 
-        <div class="row">
-          <label for="tags" class="col-md-6 txt-info">Labels:</label>
-          <input id="edit-tags" class="col-md-6" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''"
+        <div class="modal1">
+          <label for="tags" class="txt-modal">Labels:</label>
+          <input id="edit-tags" class="input-modal" value="" data-role="tagsinput" class="form-control" ng-model="Tags" ng-init="Tags=''"
             name="tags" type="text" />
         </div>
 
-        <div class="row">
-          <label for="description" class="col-md-6 txt-info">Description:</label>
-          <textarea type="text" class="col-md-6 txt-area" id="edit-description" />
+        <div class="modal1">
+          <label for="description" class="txt-modal">Description:</label>
+          <textarea type="text" class="input-modal" id="edit-description" />
         </div>
 
-        <div class="row">
-          <label class="col-md-6 txt-info" for="radios">Anonymized</label>
-          <div class="col-md-6"> 
-            <label class="radio-inline" for="yes">
-              <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" required="">
-              Yes
-            </label> 
-            <label class="radio-inline" for="no">
-              <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No">
-              No
-            </label> 
-          </div>
+        <div class="modal1">
+          <label class="txt-modal" for="radios">Anonymized</label> 
+            <span class="input-modal">
+              <label class="radio-inline" for="yes">
+                <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" required="">
+                Yes
+              </label> 
+              <label class="radio-inline" for="no">
+                <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No">
+                No
+              </label> 
+            </span>
         </div> 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
-        <button type="submit" data-dismiss="modal" class="btn btn-import" ng-click="editDataFunction()">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="submit" data-dismiss="modal" class="btn btn-primary" ng-click="editDataFunction()">Save</button>
       </div>
     </div>
   </div>

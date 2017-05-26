@@ -49,7 +49,9 @@
         </ul>
         <ul id="drag-drop-and-button">     
           <!-- The target for dropping files -->   
-          <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event)"></div> 
+          <div id="target" ondrop="dropHandler(event);" ondragleave="dragleaveHandler(event)" ondragover="dragoverHandler(event)">
+            <p id="drag-drop-text">Drag data here..</p>
+          </div> 
           <a type="button" class="btn btn-default" onclick="clearDragAndDrop()" href="#page_test" id="send-button">Proceed to testing</a>
         </ul>
       </div>
