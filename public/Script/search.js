@@ -321,7 +321,7 @@ app.controller('show_data_ctrl', function ($scope, $http, $mdDialog) {
     { key: 'Tags', name: 'Tags', id: "Tags" },
     //-----------------------------------
     { key: '(0008,0005)', name: 'SpecificCharacterSet', id: "Document" },
-    //     { key: '(0008,0008))', name: 'ImageType' , id:"Document"},                          BORTKOMMENTERADE RADER ÄR arrays/object behöver ny funktion för dem antar jag
+    //     { key: '(0008,0008))', name: 'ImageType' , id:"Document"},                        
     { key: '(0008,0012)', name: 'InstanceCreationDate', id: "Document" },
     { key: '(0008,0013)', name: 'InstanceCreationTime', id: "Document" },
     { key: '(0008,0016)', name: 'SOPClassUID', id: "Document" },
