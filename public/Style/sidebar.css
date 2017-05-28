@@ -181,12 +181,10 @@ body {
 }
 
 #send-button{
-  background: #eae8e2;
-  border: 0;
-  color: #2e2e2c;
-  height: 6vh;
-  margin: 2vh 0 20% -2vh;
-  width: 95%;
+  height: 35px;
+  margin: 20px 0px 20% 15px; 
+  position: absolute;
+  min-width: 90px;
 }
 
 #dimensions {

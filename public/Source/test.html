@@ -1,53 +1,58 @@
 <link rel="stylesheet" type="text/css" href="Style/test.css">
 
-<h1 id="heading-browse">Files to send to test</h1>
-
-<div ng-controller="test_data_ctrl">
-  <div class="r-table" id="test-table">
-    <div class="r-table-heading">
-      <div class="r-table-head table-6-cell">Patient Name</div>
-      <div class="r-table-head table-6-cell">Id</div>
-      <div class="r-table-head table-6-cell">Modality</div>
-      <div class="r-table-head table-6-cell">Tags</div>
-      <div class="r-table-head table-6-cell">TestCase ID</div>
-      <div class="r-table-head table-6-cell"></div>
+<div class="row content">
+  <div class="col-sm-12">
+    <div class="well">
+      <h2>Files to send to test</h2>
     </div>
-    <div ng-show="test_objects.length == 0" class="r-table-row"> <!-- If no objects has been dragged to the drop zone -->   
-      <div class="r-table-cell table-6-cell">No objects selected.</div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-    </div>
-    <div class="r-table-row" ng-repeat="x in test_objects" >
-      <div class="r-table-cell table-6-cell" > <!-- Patient Name -->
-        {{ x.Document["(0010,0010)"] }}
+    <div ng-controller="test_data_ctrl">
+      <div class="r-table" id="test-table">
+        <div class="r-table-heading">
+          <div class="r-table-head table-6-cell">Patient Name</div>
+          <div class="r-table-head table-6-cell">Id</div>
+          <div class="r-table-head table-6-cell">Modality</div>
+          <div class="r-table-head table-6-cell">Tags</div>
+          <div class="r-table-head table-6-cell">TestCase ID</div>
+          <div class="r-table-head table-6-cell"></div>
+        </div>
+        <div ng-show="test_objects.length == 0" class="r-table-row"> <!-- If no objects has been dragged to the drop zone -->   
+          <div class="r-table-cell table-6-cell">No objects selected.</div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+        </div>
+        <div class="r-table-row" ng-repeat="x in test_objects" >
+          <div class="r-table-cell table-6-cell" > <!-- Patient Name -->
+            {{ x.Document["(0010,0010)"] }}
+          </div>
+          <div class="r-table-cell table-6-cell"> <!-- Id -->
+            {{x.Id}}
+          </div> 
+          <div class="r-table-cell table-6-cell"> <!-- Modality -->
+            {{ x.Document["(0008,0060)"] }}
+          </div>
+          <div class="r-table-cell table-6-cell"> <!-- Tags -->
+            <span ng-repeat="tag in x.Document['Attributes']['Tags']"> {{ tag }} </span>
+          </div>
+          <div class="r-table-cell table-6-cell"> <!-- TestCasID -->
+            {{ x.Document["Attributes"]["Info"]["TestCaseID"] }} 
+          </div>
+          <div class="r-table-cell table-6-cell"> <!-- Remove Button -->
+            <md-button class="md-raised md-primary" id="remove-btn" ng-click="deleteFromTest(x.Id)" aria-hidden="true">REMOVE</md-button>
+          </div>
+        </div>
+        <div class="r-table-foot"> 
+          <div class="r-table-cell table-6-cell">Number of objects: {{ test_objects.length }} </div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+          <div class="r-table-cell table-6-cell"></div>
+        </div>
       </div>
-      <div class="r-table-cell table-6-cell"> <!-- Id -->
-        {{x.Id}}
-      </div> 
-      <div class="r-table-cell table-6-cell"> <!-- Modality -->
-        {{ x.Document["(0008,0060)"] }}
-      </div>
-      <div class="r-table-cell table-6-cell"> <!-- Tags -->
-        <span ng-repeat="tag in x.Document['Attributes']['Tags']"> {{ tag }} </span>
-      </div>
-      <div class="r-table-cell table-6-cell"> <!-- TestCasID -->
-        {{ x.Document["Attributes"]["Info"]["TestCaseID"] }} 
-      </div>
-      <div class="r-table-cell table-6-cell"> <!-- Remove Button -->
-        <md-button class="md-raised md-primary" id="remove-btn" ng-click="deleteFromTest(x.Id)" aria-hidden="true">REMOVE</md-button>
-      </div>
-    </div>
-    <div class="r-table-foot"> 
-      <div class="r-table-cell table-6-cell">Number of objects: {{ test_objects.length }} </div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
-      <div class="r-table-cell table-6-cell"></div>
+      <button class="btn btn-primary" id="to-test-btn" ng-click="sendToTest()" aria-hidden="true">Send to test</button>
     </div>
   </div>
-  <button class="btn btn-primary" id="to-test-btn" ng-click="sendToTest()" aria-hidden="true">SEND TO TEST</button>
 </div>
