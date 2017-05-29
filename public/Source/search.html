@@ -8,16 +8,10 @@
     </div>
     <div ng-controller="show_data_ctrl">
       <div id="page-content-wrapper">
-        <div class="searchbar">
           <div class="input-group">
-            <input type="text" class="form-control" id="search-bar-control" ng-model="search_filter" placeholder="Search..." />
-            <button type="button" class="btn btn-default search-button">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
+            <div ng-dropdown-multiselect="" class="ddmen" options="fullFilter" selected-model="selectedFilter" extra-settings="ddsettings" display:inline-block;></div>
+            <div class="searchfield"><input type="text" class="form-control"  ng-model="search_filter" placeholder="Search..." /></div>
           </div>
-          <div ng-dropdown-multiselect="" options="fullFilter" selected-model="selectedFilter" extra-settings="ddsettings"></div>
-
-        </div>
 
         <div class="r-table">
           <div class="r-table-heading">
