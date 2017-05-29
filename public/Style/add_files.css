@@ -226,16 +226,17 @@ Show selected files in a list
 /* File selector end */ 
 
 .input1 {
-  width: 45% !important;
+  width: 42% !important;
   float: left !important;
   margin-right: 1%;
   margin-top: 2%;
 }
 
 .input2 {
-  width: 45% !important;
+  width: 42% !important;
   float: left !important;
   margin-top: 2%;
+  margin: 
 }
 
 .btn-custom {
@@ -249,6 +250,15 @@ Show selected files in a list
 .glyphicon-remove {
 vertical-align: center;
 
+}
+.remove {
+  float: right;
+  margin-top: 1% !important;
+  margin-left: 0 !important;
+}
+
+.material-icons:hover{
+  text-shadow: 1px 1px 3px gray;
 }
 
 /* Modal */

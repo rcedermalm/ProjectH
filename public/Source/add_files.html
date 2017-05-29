@@ -1,6 +1,7 @@
 <head>
   <script src="Script/typeahead.js"></script>
   <script src="Script/bootstrap-tagsinput.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <div class="row content">
   <!-- Rubrik för sidan -->
@@ -37,7 +38,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="types">Data Types</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. dicom" class="form-control input-md" ng-model="dataTypes" required="">
+                    <input type="text" placeholder="e.g. dicom" class="form-control input-md" ng-model="dataTypes">
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>
@@ -45,7 +46,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="creator">Creator</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="Write your name here" class="form-control input-md" ng-model="Info.Creator" required="">
+                    <input type="text" placeholder="Write your name here" class="form-control input-md" ng-model="Info.Creator">
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>
@@ -53,7 +54,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="infoTestData">TestData ID</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. 123456" class="form-control input-md" ng-model="Info.TestDataID" required="">
+                    <input type="text" placeholder="e.g. 123456" class="form-control input-md" ng-model="Info.TestDataID">
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>
@@ -61,7 +62,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="infoTestCase">TestCase ID</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. abcdef" class="form-control input-md" ng-model="Info.TestCaseID" required="">
+                    <input type="text" placeholder="e.g. abcdef" class="form-control input-md" ng-model="Info.TestCaseID">
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>
@@ -69,7 +70,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="patient-name">New patient name</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. Anna Andersson" class="form-control input-md" ng-model="Info.NewPatientName" required="">
+                    <input type="text" placeholder="e.g. Anna Andersson" class="form-control input-md" ng-model="Info.NewPatientName">
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>
@@ -77,7 +78,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="tags">Labels</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="tags" class="form-control input-md" ng-model="Tags" ng-init="Tags=''" required="" value="" data-role="tagsinput">
+                    <input type="text" placeholder="tags" class="form-control input-md" ng-model="Tags" ng-init="Tags=' '" data-role="tagsinput">
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>            
@@ -85,7 +86,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="description">Description</label>  
                   <div class="col-md-8">
-                   <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description" required=""></textarea>
+                   <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description"></textarea>
                   </div>
                   <div class = "col-md-1">&nbsp;</div>
                 </div>
@@ -108,11 +109,11 @@
                   <label class="col-md-3 control-label" for="radios">Anonymized</label>
                   <div class="col-md-8"> 
                     <label class="radio-inline" for="yes">
-                      <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" required="">
+                      <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" ng-init="Info.Anonymized='no'" >
                       Yes
                     </label> 
                     <label class="radio-inline" for="no">
-                      <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" value="No" checked="checked">
+                      <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" value="No" checked="checked">
                       No
                     </label> 
                   </div>
@@ -128,7 +129,9 @@
                         <div class="controls custom-fields" id="profs">
                           <input class="input1 form-control input-md" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
                           <input class="input2 form-control input-md" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
-                          <button class="btn remove btn-custom form-control btn-danger glyphicon glyphicon-remove" type="button"></button>
+                          <md-button class="md-icon-button md-primary remove" aria-label="clear">
+                            <md-icon class="material-icons">clear</md-icon>
+                          </md-button>
                         </div>
                     </div>
                     <div class = "col-md-1">&nbsp;</div>
