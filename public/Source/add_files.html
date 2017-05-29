@@ -16,9 +16,10 @@
           <div id = "ngController" ng-controller="AddController">
             <form ng-submit="processForm()" class="form-horizontal">
               <fieldset>
+                <p><span style="color: darkred">*</span> indicates required fields</p>
                 <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
                 <div class="form-group">
-                  <label class="col-md-3 control-label">Choose files</label>  
+                  <label class="col-md-3 control-label">Choose files<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
                     <div class="input-group">
                       <span class="input-group-btn">
@@ -36,7 +37,7 @@
                 <!-- ************************************************ FILE PICKER END ******************************************** -->
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="types">Data Types</label>  
+                  <label class="col-md-3 control-label" for="types">Data Types<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="e.g. dicom" class="form-control input-md" ng-model="dataTypes">
                   </div>
@@ -44,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="creator">Creator</label>  
+                  <label class="col-md-3 control-label" for="creator">Creator<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="Write your name here" class="form-control input-md" ng-model="Info.Creator">
                   </div>
@@ -52,7 +53,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="infoTestData">TestData ID</label>  
+                  <label class="col-md-3 control-label" for="infoTestData">TestData ID<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
                     <input type="text" placeholder="e.g. 123456" class="form-control input-md" ng-model="Info.TestDataID">
                   </div>
@@ -106,14 +107,14 @@
 
                 <!-- Checkboxes instead of the switch -->
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="radios">Anonymized</label>
+                  <label class="col-md-3 control-label" for="radios">Anonymized<span style="color: darkred">*</span></label>
                   <div class="col-md-8"> 
                     <label class="radio-inline" for="yes">
-                      <input type="radio" name="radios" id="radio-yes" ng-model="Info.Anonymized" value="Yes" ng-init="Info.Anonymized='no'" >
+                      <input type="radio" name="radios" id="radio-yes-add" ng-model="Info.Anonymized" value="Yes" required="">
                       Yes
                     </label> 
                     <label class="radio-inline" for="no">
-                      <input type="radio" name="radios" id="radio-no" ng-model="Info.Anonymized" value="No" checked="checked">
+                      <input type="radio" name="radios" id="radio-no-add" ng-model="Info.Anonymized" ng-init="Info.Anonymized='no'" value="No" >
                       No
                     </label> 
                   </div>
@@ -204,8 +205,8 @@
                     </div> 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    <button ng-click="SendData()" type="submit" data-dismiss="modal" class="btn btn-primary">Add entry</button>                                                                                                                                                                                                                                                                                     
+                    <button type="button" class="btn btn-primary btn-modal" data-dismiss="modal">Close</button>
+                    <button ng-click="SendData()" type="submit" data-dismiss="modal" class="btn btn-primary btn-modal-add">Add entry</button> 
                   </div>
                 </div>
               </div>

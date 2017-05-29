@@ -3,11 +3,11 @@
 /****************** TEST TABLE ***********************/
 /*****************************************************/
 
-app.controller('test_data_ctrl', function ($scope) {
+// Create array that are going to store the objects that has
+// been in the dropzone
+var objects_to_test = new Array();
 
-	// Create array that are going to store the objects that has
-	// been in the dropzone
-	var objects_to_test = new Array();
+app.controller('test_data_ctrl', function ($scope) {
 
 	// Find the object's with the id's stored in the array objectsInDropZone
 	for(var i = 0; i < objectsInDropZone.length; i++){
@@ -20,6 +20,8 @@ app.controller('test_data_ctrl', function ($scope) {
 			}
 		}
 	}
+
+	objectsInDropZone.splice(0, objectsInDropZone.length); // Clear the data
 
 	// Save the result in the variable objects_to_test
 	$scope.test_objects = objects_to_test;

@@ -128,6 +128,7 @@ body {
   }
 
   #page-content-wrapper {
+    min-height:500px;
     padding: 20px;
     position: relative;
   }
@@ -153,6 +154,13 @@ body {
   width: 90%;
 }
 
+#drag-drop-text{
+  color: white;
+  text-align: center;
+  margin-top:50%;
+  opacity:0.5;
+}
+
 @media screen and (max-height: 400px) {
   #target {
     border: 0;
@@ -173,12 +181,10 @@ body {
 }
 
 #send-button{
-  background: #eae8e2;
-  border: 0;
-  color: #2e2e2c;
-  height: 6vh;
-  margin: 2vh 0 20% -2vh;
-  width: 95%;
+  height: 35px;
+  margin: 20px 0px 20% 15px; 
+  position: absolute;
+  min-width: 90px;
 }
 
 #dimensions {
