@@ -40,11 +40,11 @@
     
     <div id="wrapper">
       <!-- Sidebar -->
-      <div id="sidebar-wrapper">
+      <div id="sidebar-wrapper" ng-controller="sideBar">
         <ul class="sidebar-nav" id="sidebar-ul">
-          <li><a href="#page_search" class="active">Search</a>
-          <li><a href="#page_add">Add Files</a>
-          <li><a href="#page_test">Testing</a>
+          <li><a id="searchPage" href="#page_search" ng-class="{active:isActive('/page_search')}" >Search</a>
+          <li><a id="addPage" href="#page_add" ng-class="{active:isActive('/page_add')}">Add Files</a>
+          <li><a id="testPage" href="#page_test" ng-class="{active:isActive('/page_test')}" >Testing</a>
             
         </ul>
         <ul id="drag-drop-and-button">     

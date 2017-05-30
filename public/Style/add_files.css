@@ -252,7 +252,7 @@ vertical-align: center;
 
 }
 .remove {
-  float: right;
+  float: left;
   margin-top: 1% !important;
   margin-left: 0 !important;
 }

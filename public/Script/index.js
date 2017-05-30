@@ -7,3 +7,9 @@ var app = angular.module("TDDB", ["ngRoute","ngMaterial"]);
     .when("/page_test", {templateUrl : "Source/test.html"});
   });
 
+  app.controller('sideBar', function($scope, $location){
+      $scope.isActive = function(route) {
+        return route === $location.path();
+    }
+  })
+
