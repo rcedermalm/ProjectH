@@ -28,7 +28,6 @@
 .r-table-row {
   height: 50px;
   background-color: white;
-  box-shadow: 2px 2px 5px gray;
   color:#2d2d2d;
   display: table-row;
 }

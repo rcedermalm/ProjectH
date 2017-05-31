@@ -179,6 +179,7 @@ body {
   margin: 20px 0px 20% 15px; 
   position: absolute;
   min-width: 90px;
+  color: gray;
 }
 
 #dimensions {
