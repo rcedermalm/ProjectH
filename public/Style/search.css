@@ -152,8 +152,12 @@
 .input-group{
   margin:auto;
   padding: 0 0 20px 0;
+}
+
+#search-bar{
   width: 80%;
 }
+
 .searchfield{
  display:table-cell; 
  width:100%;

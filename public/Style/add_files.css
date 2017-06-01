@@ -19,7 +19,7 @@
   filter: alpha(opacity=0);
   font-size: 100px;
   min-height: 100%;
-  min-width: 100%;
+  min-width: 100% !important;
   opacity: 0;
   outline: none;
   position: absolute;
@@ -176,12 +176,13 @@ input:checked + .slider:before {
 .btn-file {
   position: relative;
   overflow: hidden;
+  width: 100% !important;
 }
 .btn-file input[type=file] {
   position: absolute;
   top: 0;
   right: 0;
-  min-width: 100%;
+  min-width: 100% !important;
   min-height: 100%;
   font-size: 100px;
   text-align: right;
