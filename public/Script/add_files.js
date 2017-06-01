@@ -167,7 +167,7 @@ app.controller('AddController', function($scope, $http) {
     //If import was unsuccessful
     .error(function (data, status, headers, config) {
       //Give user feedback
-      $scope.content = "Caution! Import unsuccessfull";
+      $scope.content = "Caution! Import unsuccessful";
       alert($scope.content);
     });
   };
