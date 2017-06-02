@@ -307,5 +307,9 @@ vertical-align: center;
   margin-right: 7%;
 }
 
+#textarea {
+  max-width: 100%;
+}
+
 
 
