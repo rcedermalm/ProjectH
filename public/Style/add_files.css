@@ -1,59 +1,3 @@
-#heading-browse {
-  margin-left: 2%;
-}
-
-.btn-browse {
-  margin-left: 2%;
-  overflow: hidden;
-  position: relative;
-}
-#successMsg{
-  visibility: hidden;
-  display: none;
-}
-
-.btn-browse input[type=file] {
-  background: white;
-  cursor: inherit;
-  display: block;
-  filter: alpha(opacity=0);
-  font-size: 100px;
-  min-height: 100%;
-  min-width: 100% !important;
-  opacity: 0;
-  outline: none;
-  position: absolute;
-  right: 0;
-  text-align: right;
-  top: 0;
-}
-
-.table-file-selection {
-  color:white;
-  margin-left: 2%;
-  width: 50% !important;
-  max-width: 50% !important;
-}
-
-.txt-field {
-  color: black !important;
-  margin: 5px 2px 5px 2% !important;
-  vertical-align: top !important;
-  width: 25% !important;
-  border-radius: 5px !important;
-}
-
-.txt-area {
-  color: black;
-  height: 15%;
-  margin: 5px 2% 5px 2%;
-  resize: none;
-  vertical-align: top;
-  width: 25%;
-  border-radius: 5px;
-}
-
-
 .bootstrap-tagsinput {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -75,9 +19,7 @@
   margin: 0;
   max-width: inherit;
   outline: none;
-  /* width: auto; */
 }
-
 
 .focus {
   border-color: #66afe9;
@@ -87,110 +29,51 @@
 }
 
 .btn-import {
-  width: 80px;
   float: right;
+  width: 80px;
 }
 
 .btn-cancel {
-  width: 70px;
   float: right;
   margin-right: 2%;
+    width: 70px;
 }
 
-.txt-info {
-  margin-left: 2% !important;
-  width: 20% !important;
-}
-
-.success{
+.success {
   background: #6cf;
 }
-.warning{
+
+.warning {
   background: #c60000;
 }
+
 td {
   background: inherit !important;
 }
+
 thead {
   border: none;
 }
 
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  vertical-align: top;
-  display: inline-block;
-  width: 56px;
-  height: 27px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* The slider */
-.slider {
-  background-color: #abad9f !important; /*#014d6f; */
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .2s;
-  transition: .2s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #014d6f !important;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #6cf;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(28px);
-  -ms-transform: translateX(28px);
-  transform: translateX(28px);
-}
-
-
 /* FILE SELECTOR */
-
 .btn-file {
-  position: relative;
   overflow: hidden;
+  position: relative;
   width: 100% !important;
 }
 .btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100% !important;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
   background: blue;
   cursor: inherit;
   display: block;
+  filter: alpha(opacity=0);
+  font-size: 100px;
+  min-height: 100%;
+  min-width: 100% !important;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
 }
 
 input[readonly] {
@@ -198,64 +81,46 @@ input[readonly] {
   cursor: text !important;
 }
 
-/*
-Show selected files in a list 
-#fileList {
-  position: relative;
-  min-height: 600px;
-  max-height: 600px;
-  /* width: 50%;
-  max-width: 600px;
-  min-width: 600px;
-  max-height: 800px;
-  min-height: 0px; 
-  overflow-y: auto;  
-
-} */
-
 .well-files{
-  min-height: 600px !important;
   max-height: 600px !important;
-  position: relative;
+  min-height: 600px !important;
   overflow-y: auto; 
+  position: relative;
 }
 
 #well-form {
   min-height: 600px;
 }
-
 /* File selector end */ 
 
 .input1 {
-  width: 42% !important;
   float: left !important;
   margin-right: 1%;
   margin-top: 2%;
+  width: 42% !important;
 }
 
 .input2 {
-  width: 42% !important;
   float: left !important;
   margin-top: 2%;
-  margin: 
+  width: 42% !important;
 }
 
 .btn-custom {
   float: right !important;
-  width: 7% !important;
-  position: relative;
   margin-top: 1.7%;
-  height: ;
+  position: relative;
+  width: 7% !important;
 }
 
 .glyphicon-remove {
-vertical-align: center;
-
+  vertical-align: center;
 }
+
 .remove {
   float: left;
-  margin-top: 1% !important;
   margin-left: 0 !important;
+  margin-top: 1% !important;
 }
 
 .material-icons:hover{
@@ -290,7 +155,6 @@ vertical-align: center;
   margin: 5px 0px 5px 3%;
   width: 28%;
 }
-
 
 .input-modal {
   color: black;

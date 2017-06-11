@@ -14,7 +14,7 @@
         <div class="well" id = "well-form">
           <!-- ************************************************ User input begin ************************************************ -->
           <div id = "ngController" ng-controller="AddController">
-            <form ng-submit="processForm()" class="form-horizontal">
+            <form class="form-horizontal" ng-submit="processForm()">
               <fieldset>
                 <p><span style="color: darkred">*</span> indicates required fields</p>
                 <!-- ************************************************ FILE PICKER BEGIN ******************************************** -->
@@ -25,7 +25,7 @@
                       <span class="input-group-btn">
                         <span class="btn btn-primary btn-file">
                         Browse… <!-- <input type="file" multiple=""> -->
-                          <input type="file" name = "file" id="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
+                          <input type="file" id="file" name="file" onchange="selectFolder(event)" webkitdirectory directory multiple/>
                         </span> 
                       </span>
                       <input type="text" class="form-control filename" readonly="">
@@ -39,86 +39,73 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="types">Data Types<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. dicom" class="form-control input-md" ng-model="dataTypes">
+                    <input type="text" class="form-control input-md" placeholder="e.g. dicom" ng-model="dataTypes">
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="creator">Creator<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="Write your name here" class="form-control input-md" ng-model="Info.Creator">
+                    <input type="text" class="form-control input-md" placeholder="Write your name here" ng-model="Info.Creator">
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="infoTestData">TestData ID<span style="color: darkred">*</span></label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. 123456" class="form-control input-md" ng-model="Info.TestDataID">
+                    <input type="text" class="form-control input-md" placeholder="e.g. 123456" ng-model="Info.TestDataID">
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="infoTestCase">TestCase ID</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. abcdef" class="form-control input-md" ng-model="Info.TestCaseID">
+                    <input type="text" class="form-control input-md" placeholder="e.g. abcdef" ng-model="Info.TestCaseID">
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="patient-name">New patient name</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="e.g. Anna Andersson" class="form-control input-md" ng-model="Info.NewPatientName">
+                    <input type="text" class="form-control input-md" placeholder="e.g. Anna Andersson" ng-model="Info.NewPatientName">
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="tags">Labels</label>  
                   <div class="col-md-8">
-                    <input type="text" placeholder="tags" class="form-control input-md" ng-model="Tags" ng-init="Tags=' '" data-role="tagsinput">
+                    <input type="text" class="form-control input-md" placeholder="tags" ng-model="Tags" ng-init="Tags=' '" data-role="tagsinput">
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>            
                                         
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="description">Description</label>  
                   <div class="col-md-8">
-                   <textarea placeholder="Write description here" id="textarea" class="form-control" ng-model="Info.Description"></textarea>
+                   <textarea class="form-control" id="textarea" placeholder="Write description here" ng-model="Info.Description"></textarea>
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div>
 
-                <!--
-                <div class="form-group">
-                  <label class="col-md-2 control-label" for="anonymized">Anonymized</label>  
-                  <div class="col-md-8">
-                  <label class="switch">
-                   <input type="checkbox" ng-model="Info.Anonymized" ng-init="Info.Anonymized='false'" id="anonymized-init">
-                    <div class="slider" ng-click="sliderAnonymize"></div>
-                  </label>
-                  </div>
-                  <div class = "col-md-2">&nbsp;</div>
-                </div>
-                -->
-
-                <!-- Checkboxes instead of the switch -->
+                <!-- Checkboxes for anonymization-->
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="radios">Anonymized<span style="color: darkred">*</span></label>
                   <div class="col-md-8"> 
                     <label class="radio-inline" for="yes">
-                      <input type="radio" name="radios" id="radio-yes-add" ng-model="Info.Anonymized" value="Yes">
+                      <input type="radio" id="radio-yes-add" name="radios" ng-model="Info.Anonymized" value="Yes">
                       Yes
                     </label> 
                     <label class="radio-inline" for="no">
-                      <input type="radio" name="radios" id="radio-no-add" ng-model="Info.Anonymized" ng-init="Info.Anonymized='no'" value="No">
+                      <input type="radio" id="radio-no-add" name="radios" ng-model="Info.Anonymized" ng-init="Info.Anonymized='no'" value="No">
                       No
                     </label> 
                   </div>
-                  <div class = "col-md-1">&nbsp;</div>
+                  <div class="col-md-1">&nbsp;</div>
                 </div> 
                                          
                 <!-- Custom Fields -->
@@ -126,7 +113,7 @@
                   <div id="nestedform">
                     <label class="col-md-3 control-label">Custom fields:</label>
                     <div class="col-md-8">
-                      <button id="b1" class="btn add-more btn-primary" type="button">Add Custom Field</button>
+                      <button class="btn add-more btn-primary" type="button">Add Custom Field</button>
                         <div class="controls custom-fields" id="profs">
                           <input class="input1 form-control input-md" id="field1"  ng-model="KEYZ" type="text" placeholder="Key" value="" />
                           <input class="input2 form-control input-md" id="field2" ng-model="VALUEZ" type="text" placeholder="Value" value="" />
